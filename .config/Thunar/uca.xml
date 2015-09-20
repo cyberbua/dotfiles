@@ -1,0 +1,36 @@
+<?xml encoding="UTF-8" version="1.0"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<unique-id>1419380146549857-1</unique-id>
+	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
+	<description>Example for a custom action</description>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>folder-publicshare-symbolic</icon>
+	<name>Start Python File Server</name>
+	<unique-id>1432144115399297-1</unique-id>
+	<command>xfce4-terminal -e &apos;sh /home/hassan/scripts/sharefolder.sh&apos;</command>
+	<description></description>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>7zip</icon>
+	<name>Create zip</name>
+	<unique-id>1437000933183166-1</unique-id>
+	<command>zip -r %n.zip %N</command>
+	<description></description>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+</actions>
