@@ -1,0 +1,50 @@
+#!/bin/sh
+
+################
+#    CONFIG    #
+################
+bspc config border_width 1
+bspc config window_gap 12
+bspc config top_padding 22
+bspc config focus_follows_pointer false
+bspc config split_ratio 0.5
+bspc config borderless_monocle true
+bspc config gapless_monocle true
+bspc config focus_by_distance true
+
+# COLOR
+bspc config focused_border_color	"#00A2FF"
+
+
+bspc monitor -d 1 2 3 4 5 6 7 8 9
+
+# RULES
+bspc rule -a gimp-2.8 desktop=9 follow=on floating=on
+bspc rule -a Chromium desktop=2 locked=on
+bspc rule -a firefox desktop=2 locked=on
+bspc rule -a xfce4-mixer floating=on
+bspc rule -a Telegram floating=on
+bspc rule -a xfce4-panel floating=on
+bspc rule -a /usr/lib/xfce4/panel/wrapper-1.0 floating=on
+bspc rule -a Screenkey manage=off
+
+# DESKTOP
+bspc desktop 2 -l monocle
+#################
+
+
+
+#################
+#   AUTOSTART   #
+#################
+feh --bg-scale ~/.config/bspwm/space-wallpaper.jpg
+xsetroot -cursor_name left_ptr
+xautolock -locker slock -time 5 -corners 0-00 &
+redshift -l 16:48 -t 6500:4600 &
+xfsettingsd &
+compton -b
+xfce4-panel -d &
+xfce4-power-manager
+/usr/bin/start-pulseaudio-x11 &
+nm-applet &
+#################
