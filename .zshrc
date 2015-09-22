@@ -6,7 +6,7 @@ export ZSH=$HOME/.oh-my-zsh
 #    THEMES     #
 #################
 if [ -z $DISPLAY ]; then
-        ZSH_THEME="gentoo"
+	ZSH_THEME="gentoo"
 else
 	ZSH_THEME="agnoster-mod"
 fi
