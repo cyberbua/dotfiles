@@ -109,7 +109,6 @@ super + {_,shift + }p
 ~button1
 	bspc pointer -g focus
 
-
 super + button{1-3}
 	bspc pointer -g {move,resize_side,resize_corner}
 
@@ -118,7 +117,6 @@ super + !button{1-3}
 
 super + @button{1-3}
 	bspc pointer -u
-
 
 super + {_,shift + }button1
        bspc pointer -g resize_corner
@@ -142,9 +140,7 @@ super + Return
 	xfce4-terminal
 
 # open drop-down terminal
-super + ctrl + Return
-	xfce4-terminal --drop-down
-super + asciicircum
+super + {asciicircum,ctrl + Return}
 	xfce4-terminal --drop-down
 
 # open application launcher
@@ -155,13 +151,10 @@ super + d
 super + t
 	thunar
 
-# lock screen
-super + space
-	slock
+# lock screen, lock and suspend
+super + {_,alt +} space
+	blurlock {_,& sleep 1; systemctl suspend}
 
-# lock screen & suspend
-super + alt + space
-	slock & sleep 1; systemctl suspend
 # logout
 super + alt + Escape
 	bspc quit
