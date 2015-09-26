@@ -112,12 +112,8 @@ if [ -e /usr/share/terminfo/x/xterm-256color ] && [ "$COLORTERM" = "xfce4-termin
     export TERM='xterm-256color'
 fi
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
 export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+export PKGDEST="/var/cache/pacman/pkg/aur"
 ##################
 
 #if [ "$TERM" != 'screen' ]; then
