@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# exit if already running
+if [ $(ps cax | grep slock | wc -l) -gt 2 ]; then
+        exit
+fi
+
+
+# take screenshot
+scrot /tmp/scrot.png
+
+# apply effect
+#convert /tmp/scrot.png -blur 0x5 /tmp/background.png
+#convert /tmp/scrot.png -scale 20% -scale %500 /tmp/scrot.png
+xwobf /tmp/scrot.png
+
+# run i3lock
+i3lock -e -f -i /tmp/scrot.png
+
+# turn off screen after 30 seconds if still locked
+while true; do
+	for i in {1..30}; do
+		if [ $(ps cax | grep i3lock | wc -l) -lt 2 ]; then
+			exit 0
+		fi
+		sleep 1
+	done
+	xset dpms force off
+done
