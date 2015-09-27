@@ -101,6 +101,8 @@ alias -r clip='xclip -selection clipboard'
 
 alias -r mnt='udisksctl mount -b'
 alias -r umnt='udisksctl unmount -b'
+
+alias -r histclean='sort -t ";" -k 2 -u ~/.zsh_history | sort -o ~/.zsh_history'
 ##################
 
 
