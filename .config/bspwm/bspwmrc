@@ -42,7 +42,7 @@ xsetroot -cursor_name left_ptr
 xautolock -locker blurlock -time 5 -corners 0-00 &
 redshift -l 16:48 -t 6500:4600 &
 xfsettingsd &
-compton -b
+compton -b --backend glx --paint-on-overlay --vsync opengl-mswc
 xfce4-panel -d &
 xfce4-power-manager
 /usr/bin/start-pulseaudio-x11 &
