@@ -32,11 +32,11 @@ super + ctrl + {_,shift + }space
 
 # move focus to seleted direction
 super + {h,j,k,l}
-        bspc window -f {left,down,up,right}
+	bspc window -f {left,down,up,right}
 
 # preselect splitting area
 super + ctrl + {h,j,k,l}
-        bspc window -p {left,down,up,right}
+	bspc window -p {left,down,up,right}
 
 # resize window
 super + alt + {h,j,k,l}
@@ -55,7 +55,7 @@ super + {_,shift + }{1-9,0}
 	bspc {desktop -f,window -d} ^{1-9,10}
 
 super + {grave,Tab}
-        bspc {window,desktop} -f last
+	bspc {window,desktop} -f last
 
 super + bracket{left,right}
 	bspc desktop -f {prev,next}
@@ -90,16 +90,16 @@ super + {o,p}
 	bspc config top_padding 22; bspc config -d focused window_gap {25,0}
 
 super + {_,shift + }u   
-        bspc config left_padding 0
+	bspc config left_padding 0
 
 super + {_,shift + }i
 	bspc config left_padding 960	
 
 super + {_,shift + }o
-        bspc config right_padding 0
+	bspc config right_padding 0
 
 super + {_,shift + }p
-        bspc config right_padding 960
+	bspc config right_padding 960
 
 
 #
@@ -119,16 +119,16 @@ super + @button{1-3}
 	bspc pointer -u
 
 super + {_,shift + }button1
-       bspc pointer -g resize_corner
+	bspc pointer -g resize_corner
 
 super + !{_,shift + }button1
-       bspc pointer -t %i %i
+	bspc pointer -t %i %i
 	
 super + @{_,shift + }button1
-       bspc pointer -u
+	bspc pointer -u
 
 super + button{4,5}
-        bspc config -d focused window_gap $((`bspc config -d focused window_gap` {+,-} 5))
+	bspc config -d focused window_gap $((`bspc config -d focused window_gap` {+,-} 5))
 
 
 ##########################
