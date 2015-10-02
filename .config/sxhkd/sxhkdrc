@@ -83,11 +83,8 @@ super + ctrl + r
 # CONFIG
 #
 
-super + {u,i}
+super + {o,i}
 	bspc config -d focused window_gap $((`bspc config -d focused window_gap` {+,-} 5))
-
-super + {o,p}
-	bspc config top_padding 22; bspc config -d focused window_gap {25,0}
 
 super + {_,shift + }u   
 	bspc config left_padding 0
