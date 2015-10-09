@@ -18,7 +18,6 @@ MiscTabPosition=GTK_POS_TOP
 MiscHighlightUrls=TRUE
 FontName=DejaVu Sans Mono for Powerline 10
 ScrollingBar=TERMINAL_SCROLLBAR_NONE
-ScrollingSingleLine=FALSE
 ColorPalette=#000058586e6e;#eb841e9e1e9e;#047dc8810000;#fffff0b81adb;#45ce9493dc28;#c3896359d256;#0000b6f7c2e1;#d7d7d7d7d7d7;#5a205a205a20;#eb8454c954c9;#8c0be6bc546f;#fffff2e788c7;#7b18ca42ffff;#d0438952db77;#3434e2e2e2e2;#eeeeeeeeecec
 TitleMode=TERMINAL_TITLE_REPLACE
 DropdownAlwaysShowTabs=FALSE
