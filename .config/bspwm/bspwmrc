@@ -24,6 +24,7 @@ bspc rule -a Chromium desktop=2 locked=on
 bspc rule -a firefox desktop=2 locked=on
 bspc rule -a xfce4-mixer floating=on
 bspc rule -a Telegram floating=on
+bspc rule -a xterm floating=on
 bspc rule -a xfce4-panel floating=on
 bspc rule -a /usr/lib/xfce4/panel/wrapper-1.0 floating=on
 bspc rule -a Screenkey manage=off

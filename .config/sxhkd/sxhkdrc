@@ -34,9 +34,16 @@ super + ctrl + {_,shift + }space
 super + {h,j,k,l}
 	bspc window -f {left,down,up,right}
 
+super + {Left,Down,Up,Right}
+    bspc window -f {left,down,up,right}
+
 # preselect splitting area
 super + ctrl + {h,j,k,l}
 	bspc window -p {left,down,up,right}
+
+super + ctrl + {Left,Down,Up,Right}
+    bspc window -p {left,down,up,right}
+
 
 # resize window
 super + alt + {h,j,k,l}

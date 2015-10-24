@@ -36,7 +36,7 @@ COMPLETION_WAITING_DOTS="true"
 ################
 #   PLUGINS    #
 ################
-plugins=(git zsh-syntax-highlighting sudo)
+plugins=(git sudo zsh-syntax-highlighting)
 ################
 
 # User configuration
@@ -74,6 +74,7 @@ ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=cyan,bold'
 ##################
 #     ALIAS      #
 ##################
+alias -r sudo='sudo '
 alias -g gp='| grep'
 alias -g lss='| less'
 
