@@ -96,7 +96,10 @@ alias -r cal='cal -m'
 alias -r tree='tree -C'
 alias -r wanip='curl ipinfo.io/ip'
 alias -r lanip='ip addr show wlp2s0 | /usr/bin/grep -Po "inet \K[\d.]+"'
-alias -r pastebin="curl -F 'sprunge=<-' http://sprunge.us"
+
+alias -r pastebin="curl -F c=@- https://ptpb.pw"
+alias -r pastefile="curl -F c=@- https://ptpb.pw <"
+
 alias -r share='echo "IP addr: "; lanip; python -m http.server 8080'
 alias -r clip='xclip -selection clipboard'
 
