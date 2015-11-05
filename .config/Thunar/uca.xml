@@ -36,19 +36,10 @@
 <action>
 	<icon>furiusisomount</icon>
 	<name>Mount Image</name>
-	<unique-id>1446483699651552-2</unique-id>
-	<command>mkdir ~/Desktop/%n.fuseiso &amp; fuseiso %f ~/Desktop/%n.fuseiso</command>
-	<description></description>
+	<unique-id>1446736398542705-2</unique-id>
+	<command>udisksctl loop-setup -r -f %f</command>
+	<description>mount image files using udiskctl</description>
 	<patterns>*.iso;*.ISO;*.img;*.IMG</patterns>
 	<other-files/>
-</action>
-<action>
-	<icon>drive-cdrom</icon>
-	<name>Unmount Image</name>
-	<unique-id>1446483258680437-8</unique-id>
-	<command>fusermount -u %f &amp; rmdir %f</command>
-	<description></description>
-	<patterns>*.fuseiso</patterns>
-	<directories/>
 </action>
 </actions>
