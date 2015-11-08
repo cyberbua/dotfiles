@@ -13,7 +13,7 @@
 <action>
 	<icon>folder-publicshare-symbolic</icon>
 	<name>Start Python File Server</name>
-	<unique-id>1432144115399297-1</unique-id>
+	<unique-id>1446984993792889-1</unique-id>
 	<command>xfce4-terminal -e &apos;sh /home/hassan/scripts/sharefolder.sh&apos;</command>
 	<description></description>
 	<patterns>*</patterns>
