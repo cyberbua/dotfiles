@@ -27,6 +27,7 @@ bspc rule -a Telegram floating=on
 bspc rule -a simplescreenrecorder floating=on
 bspc rule -a xfce4-panel floating=on
 bspc rule -a /usr/lib/xfce4/panel/wrapper-1.0 floating=on
+bspc rule -a gnuplot_qt floating=on
 bspc rule -a Screenkey manage=off
 
 # DESKTOP
