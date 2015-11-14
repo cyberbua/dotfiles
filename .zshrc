@@ -80,9 +80,6 @@ alias -g lss='| less'
 
 alias -r rf='rm -rf'
 
-alias -r pm='pacman'
-alias -r spm='sudo pacman'
-
 alias -r S='sudo pacman -S'
 alias -r Ss='pacman -Ss'
 alias -r Syu='sudo pacman -Syu'
@@ -107,6 +104,7 @@ alias -r mnt='udisksctl mount -b'
 alias -r umnt='udisksctl unmount -b'
 
 alias -r histclean='sort -t ";" -k 2 -u ~/.zsh_history | sort -o ~/.zsh_history'
+alias -r duf='du -sk * .* | sort -n | perl -ne '\''($s,$f)=split(m{\t});for (qw(K M G)) {if($s<1024) {printf("%.1f",$s);print "$_\t$f"; last};$s=$s/1024}'\'
 ##################
 
 
