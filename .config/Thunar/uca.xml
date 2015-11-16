@@ -42,4 +42,13 @@
 	<patterns>*.iso;*.ISO;*.img;*.IMG</patterns>
 	<other-files/>
 </action>
+<action>
+	<icon>atom</icon>
+	<name>Open in Atom</name>
+	<unique-id>1447677815056315-1</unique-id>
+	<command>atom %f</command>
+	<description>Open this Folder with Atom Editor</description>
+	<patterns>*</patterns>
+	<directories/>
+</action>
 </actions>
