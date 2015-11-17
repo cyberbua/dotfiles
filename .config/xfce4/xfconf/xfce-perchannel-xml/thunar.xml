@@ -18,5 +18,5 @@
   <property name="last-details-view-column-order" type="string" value="THUNAR_COLUMN_NAME,THUNAR_COLUMN_DATE_MODIFIED,THUNAR_COLUMN_SIZE,THUNAR_COLUMN_TYPE,THUNAR_COLUMN_DATE_ACCESSED,THUNAR_COLUMN_OWNER,THUNAR_COLUMN_PERMISSIONS,THUNAR_COLUMN_MIME_TYPE,THUNAR_COLUMN_GROUP"/>
   <property name="last-details-view-fixed-columns" type="bool" value="true"/>
   <property name="last-location-bar" type="string" value="ThunarLocationButtons"/>
-  <property name="misc-date-style" type="string" value="THUNAR_DATE_STYLE_SIMPLE"/>
+  <property name="misc-date-style" type="string" value="THUNAR_DATE_STYLE_ISO"/>
 </channel>
