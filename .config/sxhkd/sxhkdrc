@@ -152,4 +152,8 @@ super + ctrl + Escape
 
 # screenshots
 {_,super,super + ctrl} + Print
-	xfce4-screenshooter --sync -{f,w,r}	
+	xfce4-screenshooter --sync -{f,w,r}
+
+# display settings
+super + p
+	xfce4-display-settings --minimal	
