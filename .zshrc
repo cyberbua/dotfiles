@@ -82,7 +82,7 @@ alias -r rf='rm -rf'
 
 alias -r S='sudo pacman -S'
 alias -r Ss='pacman -Ss'
-alias -r Syu='sudo pacman -Syu'
+alias -r Syu='pacaur -Syu'
 
 alias -r start='sudo systemctl start'
 alias -r restart='sudo systemctl restart'
@@ -104,7 +104,9 @@ alias -r mnt='udisksctl mount -b'
 alias -r umnt='udisksctl unmount -b'
 
 alias -r histclean='sort -t ";" -k 2 -u ~/.zsh_history | sort -o ~/.zsh_history'
-alias -r duf='du -sch .[!.]* * |sort -h'
+
+setopt dotglob
+function duf() { cd $1; du -sch * | sort -h; cd - > /dev/null}
 ##################
 
 
