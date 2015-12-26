@@ -1,15 +1,34 @@
-# my dotfiles
+# My Setup
 
-- OS:
-    - Arch Linux x86_64
-- Window Manager:
-    - bspwm
-- Bar:
-    - xfce4-panel
-- Shell
-
-
-
+- **OS:** Arch Linux x86_64
+- **Window Manager:** bspwm
+- **Bar:** xfce4-panel
+- **Shell**
+    - Zsh
+    - [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) configuration
+- **Terminal**
+    - xfce4-terminal
+- **Firefox**
+    - [Arc Darker Theme](https://github.com/horst3180/arc-firefox-theme)
+    - Add-ons
+        - uMatrix
+        - Tab Groups
+        - SSleuth
+        - HTTPS-Everywhere
+        - FindBar Tweak
+- **Atom Editor**
+    - Packages
+        - minimap
+        - minimap-autohide
+        - markdown-writer
+        - tidy-markdown
+        - activate-power-mode
+        - linter
+        - linter-gcc
+        - autocomplete-clang
+    - Theme
+        - **UI:** Dark One
+        - **Syntax:** Chester Atom
 
 ## Index
 ```
