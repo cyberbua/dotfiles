@@ -41,7 +41,7 @@ bspc desktop 2 -l monocle
 feh --bg-scale ~/.config/bspwm/space-wallpaper.jpg 
 xsetroot -cursor_name left_ptr	# set the default mouse cursor
 xset s off -dpms	# disbale screen blanking (already handled by blurlock)
-xautolock -locker blurlock -time 5 -corners 0-00 &
+xautolock -locker ~/scripts/blurlock/blurlock -time 3 -corners 0-00 &
 redshift -l 16:48 -t 6500:4500 &
 xfsettingsd &
 compton -b --backend glx --paint-on-overlay --vsync opengl-mswc

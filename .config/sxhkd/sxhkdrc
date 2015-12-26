@@ -136,7 +136,7 @@ super + t
 
 # lock screen, lock and suspend
 super + {_,alt +} space
-	blurlock {_,& sleep 1; systemctl suspend}
+	~/scripts/blurlock/blurlock {_,& sleep 1; systemctl suspend}
 
 # logout
 super + alt + Escape
