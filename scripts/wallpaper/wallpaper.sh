@@ -3,7 +3,6 @@
 # TODO:
 # improve option handling (allow -ov)
 # improve dawn/day/dusk/night timings
-# check for dependencies either in $PATH or current directory
 # cicle through wallpaper sets
 
 
@@ -12,6 +11,9 @@ VERSION="0.9"
 let LASTRUN=DAWN=DAY=DUSK=NIGHT=0
 VERBOSE=false
 ONESHOT=false
+
+command -v feh >/dev/null && FEH="feh" || FEH="./feh"
+command -v sunwait >/dev/null && SUNWAIT="sunwait" || SUNWAIT="./sunwait"
 
 function printHelp() {
 	echo -e "$(basename $0) v$VERSION, sets wallpapers depending on daytime"
@@ -39,10 +41,10 @@ function printHelp() {
 
 function getTimes() {
 	LASTRUN=$(date +%F)
-	DAWN=$(./sunwait -p $LAT $LONG | grep "Civil twilight starts" | grep -Eo '[0-9]{1,4}' | head -n1)
-	DAY=$(./sunwait -p $LAT $LONG | grep "Sun rises" | grep -Eo '[0-9]{1,4}' | head -n1)
-	DUSK=$(./sunwait -p $LAT $LONG | grep "Sun rises" | grep -Eo '[0-9]{1,4}' | tail -n1)
-	NIGHT=$(./sunwait -p $LAT $LONG | grep "Civil twilight starts" | grep -Eo '[0-9]{1,4}' | tail -n1)
+	DAWN=$($SUNWAIT list civil rise $LAT $LONG | tr -d :)
+	DAY=$($SUNWAIT list daylight rise $LAT $LONG | tr -d :)
+	DUSK=$($SUNWAIT list daylight set $LAT $LONG | tr -d :)
+	NIGHT=$($SUNWAIT list civil set $LAT $LONG | tr -d :)
 }
 
 # parse options
@@ -102,22 +104,22 @@ while true; do
 
 	# set the wallpaper
 	if [ $TIME -ge $DAWN ] && [ $TIME -lt $DAY ]; then
-	    feh --bg-scale ${DAWNPAPER[$PAPERSET]}
+	    $FEH --bg-scale ${DAWNPAPER[$PAPERSET]}
 		[ $VERBOSE = true ] && echo "Time: $TIME; WP: ${DAWNPAPER[$PAPERSET]}"
 	fi
 
 	if [ $TIME -ge $DAY ] && [ $TIME -lt $DUSK ]; then
-	    feh --bg-scale ${DAYPAPER[$PAPERSET]}
+	    $FEH --bg-scale ${DAYPAPER[$PAPERSET]}
 		[ $VERBOSE = true ] && echo "Time: $TIME; WP: ${DAYPAPER[$PAPERSET]}"
 	fi
 
 	if [ $TIME -ge $DUSK ] && [ $TIME -lt $NIGHT ]; then
-	    feh --bg-scale ${DUSKPAPER[$PAPERSET]}
+	    $FEH --bg-scale ${DUSKPAPER[$PAPERSET]}
 		[ $VERBOSE = true ] && echo "Time: $TIME; WP: ${DUSKPAPER[$PAPERSET]}"
 	fi
 
 	if [ $TIME -ge $NIGHT ] || [ $TIME -lt $DAWN ]; then
-	    feh --bg-scale ${NIGHTPAPER[$PAPERSET]}
+	    $FEH --bg-scale ${NIGHTPAPER[$PAPERSET]}
 		[ $VERBOSE = true ] && echo "Time: $TIME; WP: ${NIGHTPAPER[$PAPERSET]}"
 	fi
 
