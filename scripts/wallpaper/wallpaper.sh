@@ -15,7 +15,7 @@ command -v feh >/dev/null && FEH="feh" || FEH="./feh"
 command -v sunwait >/dev/null && SUNWAIT="sunwait" || SUNWAIT="./sunwait"
 
 function printHelp() {
-	echo -e "$(basename $0) v$VERSION, sets wallpapers depending on daytime"
+	echo -e "$(basename $0) v$VERSION, changes your wallpaper depending on daytime"
 	echo -e "Usage: $(basename $0) [latitude] [longitude] [wallpaper path]\n"
 	echo -e "This script requires 'feh' for setting the wallpaper and 'sunwait' to calculate sunrise/set."
 	echo -e "They can either be somewhere in your \$PATH or in the same directory as this script.\n"

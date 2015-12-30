@@ -8,7 +8,7 @@ The feh and sunwait must be in the same directory as this script or accessible f
 
 ## Usage
 ```
-wallpaper.sh, sets wallpapers depending on daytime
+wallpaper.sh, changes your wallpaper depending on daytime
 Usage: wallpaper.sh [latitude] [longitude] [wallpaper path]
 
 This script requires 'feh' for setting the wallpaper and 'sunwait' to calculate sunrise/set.
@@ -35,4 +35,4 @@ Command exapmle:
 	wallpaper.sh 48.20849N 16.37208E ~/wallpapers/nowPaper
 ```
 ## Example wallpaper set
-![](https://imgur.com/lrZAbFr)
+![](https://i.imgur.com/lrZAbFr.png)
