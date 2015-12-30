@@ -2,12 +2,11 @@
 
 # TODO:
 # improve option handling (allow -ov)
-# improve dawn/day/dusk/night timings
 # cicle through wallpaper sets
 
 
 # Define global variables
-VERSION="0.9"
+VERSION="1.0"
 let LASTRUN=DAWN=DAY=DUSK=NIGHT=0
 VERBOSE=false
 ONESHOT=false
@@ -29,9 +28,9 @@ function printHelp() {
 	echo -e " \t├── Canyonday.png"
 	echo -e " \t├── Canyondusk.png"
 	echo -e " \t└── Canyonnight.png"
-	echo -e "If you have multiple sets of wallpapers in this directory it will cicle trough them daily\n"
+	echo -e "If you have multiple sets of wallpapers in this directory it will cicle trough them randomly.\n"
 	echo -e "Options:"
-	echo -e " -h \tPrint help (this screen)^"
+	echo -e " -h \tPrint help (this screen)"
 	# echo -e " -i \tIntervall in minutes to check if new wallpaper has to be set (D=5)"
 	echo -e " -o \tOne Shot mode (set wallpaper and exit)"
 	echo -e " -v \tVerbose Mode"
@@ -42,18 +41,17 @@ function printHelp() {
 function getTimes() {
 	LASTRUN=$(date +%F)
 	DAWN=$($SUNWAIT list civil rise $LAT $LONG | tr -d :)
-	DAY=$($SUNWAIT list daylight rise $LAT $LONG | tr -d :)
-	DUSK=$($SUNWAIT list daylight set $LAT $LONG | tr -d :)
+	DAY=$(date -d "$($SUNWAIT list daylight rise $LAT $LONG) 30 minutes" +'%H%M')
+	DUSK=$(date -d "$($SUNWAIT list daylight set $LAT $LONG) 30 minutes ago" +'%H%M')
 	NIGHT=$($SUNWAIT list civil set $LAT $LONG | tr -d :)
 }
 
-# parse options
+# print help if -h is specified
+[ $1 = "-h" ] && printHelp && exit 0
+
+# parse other options
 while [[ $# > 3 ]]; do
     case $1 in
-        -h)
-            printHelp
-			exit 0
-            ;;
         -o)
             ONESHOT=true
             ;;
