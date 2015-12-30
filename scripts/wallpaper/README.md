@@ -5,6 +5,7 @@ The feh and sunwait must be in the same directory as this script or accessible f
 - [feh](http://feh.finalrewind.org/) for setting the wallpaper
 - [sunwait](http://sourceforge.net/projects/sunwait4windows/) for calculating sunrise/-set based on your location. You can compile it yourself or use the precompiled version from this repository.
 - some sets of wallpapers like those: [nowPaper by Alex Pasquarella](https://imgur.com/a/SBxCV)
+- the coordinates of your city (http://dateandtime.info has them in the right format)
 
 ## Usage
 ```
