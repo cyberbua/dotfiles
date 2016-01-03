@@ -3,7 +3,7 @@
 ################
 #    CONFIG    #
 ################
-bspc config border_width 1
+bspc config border_width 0
 bspc config window_gap 12
 bspc config top_padding 22
 bspc config focus_follows_pointer false
@@ -44,7 +44,7 @@ xset s off -dpms	# disbale screen blanking (already handled by blurlock)
 xautolock -locker ~/scripts/blurlock/blurlock -time 3 -corners 0-00 &
 redshift -l 16:48 -t 6500:4500 &
 xfsettingsd &
-compton -b --backend glx --paint-on-overlay --vsync opengl-mswc
+compton -b
 xfce4-panel -d &
 xfce4-power-manager
 /usr/bin/start-pulseaudio-x11 &
