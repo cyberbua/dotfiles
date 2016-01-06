@@ -3,7 +3,7 @@
 ################
 #    CONFIG    #
 ################
-bspc config border_width 0
+bspc config border_width 1
 bspc config window_gap 12
 bspc config top_padding 22
 bspc config focus_follows_pointer false
@@ -49,5 +49,5 @@ xfce4-panel -d &
 xfce4-power-manager
 /usr/bin/start-pulseaudio-x11 &
 nm-applet &
-export QT_STYLE_OVERRIDE=GTK+
+export QT_STYLE_OVERRIDE=GTK+	# use GTK theme for Qt-Apps
 #################
