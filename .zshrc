@@ -79,6 +79,7 @@ alias -g gp='| grep'
 alias -g lss='| less'
 
 alias -r rf='rm -rf'
+alias -r mkdir='mkdir -p'
 
 alias -r S='sudo pacman -S'
 alias -r Ss='pacman -Ss'
@@ -89,7 +90,7 @@ alias -r restart='sudo systemctl restart'
 alias -r stop='sudo systemctl stop'
 alias -r status='systemctl status'
 
-alias -r cal='cal -m'
+alias -r cal='cal -m3'
 alias -r tree='tree -C'
 alias -r wanip='curl ipinfo.io/ip'
 alias -r lanip='ip addr show wlp2s0 | /usr/bin/grep -Po "inet \K[\d.]+"'
