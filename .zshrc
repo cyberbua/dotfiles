@@ -101,6 +101,9 @@ alias -r pastefile="curl -F c=@- https://ptpb.pw <"
 alias -r share='ip addr; webfsd -Fdp 8000'
 alias -r clip='xclip -selection clipboard'
 
+alias -r qr='qrencode -t UTF8'
+alias -r qrclip='xclip -o | qrencode -t UTF8'
+
 alias -r mnt='udisksctl mount -b'
 alias -r umnt='udisksctl unmount -b'
 
