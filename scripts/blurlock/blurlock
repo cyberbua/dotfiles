@@ -20,9 +20,10 @@ xset s 30
 # use notify-send to show basic status info
 while :
 do 
-	notify-send -t 10000 "$(date "+%F %R")" \
+	sleep 1
+	notify-send -t 4900 "$(date "+%F %R")" \
 	"$(cat /sys/class/power_supply/BAT1/capacity)%, $(cat /sys/class/power_supply/BAT1/status)"
-	sleep 10
+	sleep 4
 done &
 
 # run i3lock
