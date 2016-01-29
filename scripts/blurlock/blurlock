@@ -17,8 +17,18 @@ scrot /tmp/scrot.png
 # set screen timeout to 30 sec
 xset s 30
 
+# use notify-send to show basic status info
+while :
+do 
+	notify-send -t 10000 "$(date "+%F %R")" \
+	"$(cat /sys/class/power_supply/BAT1/capacity)%, $(cat /sys/class/power_supply/BAT1/status)"
+	sleep 10
+done &
+
 # run i3lock
 i3lock -n -e -f -i /tmp/scrot.png
 
 # disable screen timeout
 xset s off
+
+killall blurlock
