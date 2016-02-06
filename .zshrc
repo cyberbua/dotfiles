@@ -81,7 +81,7 @@ alias -g lss='| less'
 alias -r rf='rm -rf'
 alias -r mkdir='mkdir -p'
 
-alias -r S='sudo pacaur -S'
+alias -r S='pacaur -S'
 alias -r Ss='pacaur -Ss'
 alias -r Syu='pacaur -Syu'
 
