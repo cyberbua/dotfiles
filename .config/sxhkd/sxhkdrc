@@ -156,4 +156,9 @@ super + ctrl + Escape
 
 # display settings
 super + p
-	xfce4-display-settings --minimal	
+	xfce4-display-settings --minimal
+
+# mute/unmute sound
+super + {m,u}
+	MODE="{_,un}mute"; amixer -c1 set Master $MODE; amixer -c1 set Speaker $MODE
+	
