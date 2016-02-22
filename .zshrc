@@ -109,6 +109,9 @@ alias -r umnt='udisksctl unmount -b'
 
 alias -r histclean='sort -t ";" -k 2 -u ~/.zsh_history | sort -o ~/.zsh_history'
 
+# commit all changes with generic commit message for minor changes
+alias -r commit='git commit -am "unimportant changes"'
+
 setopt dotglob
 function duf() { cd $1; du -sch * | sort -h; cd - > /dev/null}
 ##################
