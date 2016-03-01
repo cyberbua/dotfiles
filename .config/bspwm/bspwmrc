@@ -38,7 +38,7 @@ bspc desktop 2 -l monocle
 #################
 #   AUTOSTART   #
 #################
-feh --bg-scale ~/.config/bspwm/space-wallpaper.jpg 
+feh --bg-scale ~/.config/bspwm/wallpaper
 xsetroot -cursor_name left_ptr	# set the default mouse cursor
 xset s off -dpms	# disbale screen blanking (already handled by blurlock)
 xautolock -locker ~/scripts/blurlock/blurlock -time 3 -corners 0-00 &
