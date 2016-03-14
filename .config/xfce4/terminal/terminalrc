@@ -28,6 +28,6 @@ ColorBold=#ffffffffffff
 ColorForeground=#ee14ee14ee14
 ColorBoldUseDefault=FALSE
 BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
-BackgroundDarkness=0.900000
 ScrollingLines=10000
+BackgroundDarkness=0.800000
 
