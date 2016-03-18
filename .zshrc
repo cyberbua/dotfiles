@@ -80,6 +80,7 @@ alias -g lss='| less'
 
 alias -r rf='rm -rf'
 alias -r mkdir='mkdir -p'
+alias -r dd="dd status=progress"
 
 alias -r S='pacaur -S'
 alias -r Ss='pacaur -Ss'
