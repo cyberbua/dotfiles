@@ -30,4 +30,6 @@ ColorBoldUseDefault=FALSE
 BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
 ScrollingLines=10000
 BackgroundDarkness=0.800000
+ShortcutsNoMenukey=TRUE
+ShortcutsNoMnemonics=TRUE
 
