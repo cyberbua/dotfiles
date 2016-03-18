@@ -14,4 +14,4 @@ fi
 # let capslock act as escape
 setxkbmap -option caps:escape
 
-sxhkd & exec bspwm
+exec bspwm
