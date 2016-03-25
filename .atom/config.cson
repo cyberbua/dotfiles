@@ -1,0 +1,50 @@
+"*":
+  "activate-power-mode":
+    particles:
+      size: {}
+      spawnCount: {}
+      totalCount: {}
+    screenShake:
+      maxIntensity: 5
+      minIntensity: 2
+  "atom-material-ui":
+    panelContrast: true
+  "autoclose-html": {}
+  "autocomplete-clang": {}
+  "autocomplete-plus": {}
+  core:
+    audioBeep: false
+    disabledPackages: [
+      "spell-check"
+      "autoclose-html"
+    ]
+  editor:
+    invisibles: {}
+    tabLength: 4
+  "exception-reporting":
+    userId: "9b50b718-670a-34ab-7fd3-ad2733ec070b"
+  linter:
+    errorPanelHeight: 95
+    ignoreVCSIgnoredFiles: false
+    showErrorTabProject: false
+    statusIconScope: "File"
+  "linter-clang": {}
+  "linter-gcc": {}
+  "markdown-pdf": {}
+  "markdown-preview": {}
+  "markdown-preview-plus":
+    useGitHubStyle: true
+  "markdown-writer": {}
+  minimap:
+    absoluteMode: true
+    plugins:
+      "minimap-autohide": true
+      "minimap-autohideDecorationsZIndex": 0
+  "one-dark-ui": {}
+  "one-light-ui": {}
+  "spell-check": {}
+  "tidy-markdown":
+    ensureFirstHeaderIsH1: false
+    runOnSave: false
+  welcome:
+    showOnStartup: false
