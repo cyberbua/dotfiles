@@ -8,79 +8,77 @@
 
 # close window
 super + q
-	bspc window -c
+	bspc node -c
 
 # kill window
 super + shift + k
-	bspc window -k
+	bspc node -k
 
 # change window state
-super + {s,f,a}
-	bspc window -t {sticky,floating,fullscreen}
+super + {t,shift + t,f,a}
+	bspc node -t "~{tiled,pseudo_tiled,floating,fullscreen}"
+
+# toggle window flags
+super + {shift + l,s}
+	bspc node -g {locked,sticky}
 
 # cycle through windows
 alt + {_,shift + } Tab
-	bspc window -f {next,prev}
+	bspc node -f {last,next}
 
-# cancel preseletion
-super + ctrl + {_,shift + }space
-	bspc {window -p cancel,desktop -c}
 
 # move focus to seleted direction
 super + {h,j,k,l}
-	bspc window -f {left,down,up,right}
+	bspc node -f {west,south,north,east}
 
 super + {Left,Down,Up,Right}
-    bspc window -f {left,down,up,right}
+    bspc node -f {west,south,north,east}
 
 # preselect splitting area
 super + ctrl + {h,j,k,l}
-	bspc window -p {left,down,up,right}
+	bspc node -p {west,south,north,east}
 
 super + ctrl + {Left,Down,Up,Right}
-    bspc window -p {left,down,up,right}
+    bspc node -p {west,south,north,east}
 
-# resize window
-super + alt + {h,j,k,l}
-	bspc window -e {left -10,down +10,up -10,right +10}
+# cancel preseletion
+super + Escape
+	bspc node -p cancel
 
-# resize window (reversed)
-super + alt + shift + {h,j,k,l}
-	bspc window -e {right -10,up +10,down -10,left +10}
+# flip the tree
+super + ctrl + {_,shift +} f
+	bspc node @focused:/ -F {vertical,horizontal}
 
+# rotate the tree
+super + ctrl + r
+	bspc node @focused:/ -R 90
+
+# balance
+super + b
+	bspc node @focused:/ -B
 
 #
 # DESKTOP
 #
 
-# switch to workspace 1-9
+# switch to workspace 1-9, move Window
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,window -d} ^{1-9,10}
+	bspc {desktop -f,node -d} ^{1-9,10}
 
 # switch to last/next workspace
 super + {_,ctrl + } Tab
 	bspc desktop -f {last,next}
 
-# fullscreen
+# monocle
 super + w
 	bspc desktop -l next
 
-# balance
-super + b
-	bspc desktop -B
-
-# flip the tree 
-super + ctrl + f
-	bspc desktop -F vertical
-
-# rotate the tree
-super + ctrl + r
-	bspc desktop -R 90
 
 #
 # CONFIG
 #
 
+# resize window gap
 super + {o,i}
 	bspc config -d focused window_gap $((`bspc config -d focused window_gap` {+,-} 4))
 
@@ -106,7 +104,7 @@ super + {_,shift + }button1
 
 super + !{_,shift + }button1
 	bspc pointer -t %i %i
-	
+
 super + @{_,shift + }button1
 	bspc pointer -u
 
@@ -130,13 +128,13 @@ super + {asciicircum,ctrl + Return}
 super + d
 	xfce4-popup-whiskermenu
 
-# open thunar
-super + t
+# open file browser
+super + e
 	thunar
 
 # lock screen, lock and suspend
 super + {_,alt +} space
-	~/scripts/blurlock/blurlock {_,& sleep 1; systemctl suspend}
+	~/scripts/blurlock/blurlock {_,& sleep 2; systemctl suspend}
 
 # logout
 super + alt + Escape
@@ -161,4 +159,3 @@ super + p
 # mute/unmute sound
 super + {m,u}
 	MODE="{_,un}mute"; amixer -c1 set Master $MODE; amixer -c1 set Speaker $MODE
-	
