@@ -130,6 +130,14 @@ export EDITOR='vim'
 export PKGDEST="/var/cache/pacman/pkg/aur"
 ##################
 
+# warn me if more than one user is logged in
+if [ $(who|wc -l) -gt 1 ]; then
+	echo -e "Warning! More than one user logged in:"
+	who
+fi
+
+
 #if [ "$TERM" != 'screen' ]; then
 #	tmux has-session && exec tmux attach || exec tmux
 #fi
+
