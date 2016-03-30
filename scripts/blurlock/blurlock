@@ -20,7 +20,7 @@ scrot /tmp/scrot.png
 xset s 30
 
 # use notify-send to show basic status info
-while :
+while [ -f /tmp/blurlock.lock ]
 do 
 	sleep 1
 	notify-send -t 4900 "$(date "+%F %R")" \
@@ -38,4 +38,4 @@ xset s off
 rm /tmp/blurlock.lock
 
 # kill itself
-trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
+#trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
