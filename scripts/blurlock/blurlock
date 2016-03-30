@@ -36,6 +36,3 @@ xset s off
 
 # delete lockfile
 rm /tmp/blurlock.lock
-
-# kill itself
-#trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
