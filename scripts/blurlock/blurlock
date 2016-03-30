@@ -1,10 +1,12 @@
 #!/bin/bash
 
 # exit if already running
-if [ $(ps cax | grep blurlock | wc -l) -gt 2 ]; then
+if [ -f /tmp/blurlock.lock  ]; then
         exit
 fi
 
+# create lockfile
+touch /tmp/blurlock.lock
 
 # take screenshot
 scrot /tmp/scrot.png
@@ -32,4 +34,8 @@ i3lock -n -e -f -i /tmp/scrot.png
 # disable screen timeout
 xset s off
 
-killall blurlock
+# delete lockfile
+rm /tmp/blurlock.lock
+
+# kill itself
+trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
