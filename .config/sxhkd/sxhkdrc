@@ -26,7 +26,6 @@ super + {shift + l,s}
 alt + {_,shift + } Tab
 	bspc node -f {last,next}
 
-
 # move focus to seleted direction
 super + {h,j,k,l}
 	bspc node -f {west,south,north,east}
@@ -127,6 +126,10 @@ super + {asciicircum,ctrl + Return}
 # open application launcher
 super + d
 	xfce4-popup-whiskermenu
+
+# dmenu based calculator
+super + c
+	~/scripts/=
 
 # open file browser
 super + e
