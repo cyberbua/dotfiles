@@ -85,6 +85,7 @@ alias -r dd="dd status=progress"
 alias -r S='pacaur -S'
 alias -r Ss='pacaur -Ss'
 alias -r Syu='pacaur -Syu'
+alias -r Rns='pacaur -Rns'
 
 alias -r start='sudo systemctl start'
 alias -r restart='sudo systemctl restart'
