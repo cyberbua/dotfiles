@@ -41,7 +41,7 @@ plugins=(git sudo zsh-syntax-highlighting)
 
 # User configuration
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin/core_perl:/usr/bin:$HOME/scripts"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -137,7 +137,7 @@ if [ $(who|wc -l) -gt 1 ]; then
 	who
 fi
 
-
+# auto tmux attach
 #if [ "$TERM" != 'screen' ]; then
 #	tmux has-session && exec tmux attach || exec tmux
 #fi
