@@ -17,8 +17,8 @@ case "${#array[@]}" in
 esac
 
 # run the countdown
-date1=$((`date +%s` + $secs)); 
-while [ "$date1" -ge `date +%s` ]; do 
+date1=$((`date +%s` + $secs));
+while [ "$date1" -ge `date +%s` ]; do
 	output="$(date -u --date @$(($date1 - `date +%s`)) +$format)"
 	# output either with echo or as specified in the second argument
 	[ -z "$2" ] && echo -en "$output\r"
