@@ -1,1 +1,15 @@
 #!/bin/bash
+command -v countdown >/dev/null && COUNTDOWN="countdown" || COUNTDOWN="$(dirname $0)/countdown"
+
+function tictac() {
+    while true; do
+        aplay $(dirname $0)/tictac.wav
+        aplay_pid=$1
+    done
+}
+POM=1
+while true; do
+    $COUNTDOWN 00:25 "$1" "Pomodoro $POM"
+    (( POM++ ))
+    $COUNTDOWN 00:05 "$1" "Short Break"
+done

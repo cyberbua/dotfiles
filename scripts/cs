@@ -1,7 +1,7 @@
 #!/bin/bash
-[[ $1 == "list" ]] && ls $HOME/scripts/colorscripts/ && exit
+[[ $1 == "ls" ]] && ls $(dirname $0)/colorscripts/ && exit
 
 for var in "$@"
 do
-	$HOME/scripts/colorscripts/$var
+	$(dirname $0)/colorscripts/$var
 done

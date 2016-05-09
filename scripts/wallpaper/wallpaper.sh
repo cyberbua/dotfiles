@@ -11,8 +11,8 @@ let LASTRUN=DAWN=DAY=DUSK=NIGHT=0
 VERBOSE=false
 ONESHOT=false
 
-command -v feh >/dev/null && FEH="feh" || FEH="./feh"
-command -v sunwait >/dev/null && SUNWAIT="sunwait" || SUNWAIT="./sunwait"
+command -v feh >/dev/null && FEH="feh" || FEH="$(dirname $0)/feh"
+command -v sunwait >/dev/null && SUNWAIT="sunwait" || SUNWAIT="$(dirname $0)/sunwait"
 
 function printHelp() {
 	echo -e "$(basename $0) v$VERSION, changes your wallpaper depending on daytime"
