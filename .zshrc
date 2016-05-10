@@ -1,53 +1,27 @@
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+###########
+# Antigen #
+###########
+source $HOME/.antigen/antigen.zsh
 
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
 
-#################
-#    THEMES     #
-#################
-if [ -z $DISPLAY ]; then
-	ZSH_THEME="gentoo"
-else
-	ZSH_THEME="agnoster-mod"
-fi
-################
+# Antigen bundles
+antigen bundles <<EOBUNDLES
+  sudo
+  git
+  systemd
+  zsh-users/zsh-syntax-highlighting
+  colored-man-pages
+EOBUNDLES
 
+# Load the theme.
+DEFAULT_USER=$USER
+antigen theme agnoster
 
-# DEFAULT_USER="hassan"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-
-################
-#   PLUGINS    #
-################
-plugins=(git sudo zsh-syntax-highlighting)
-################
-
-# User configuration
-
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin/core_perl:/usr/bin:$HOME/scripts"
-# export MANPATH="/usr/local/man:$MANPATH"
-
-source $ZSH/oh-my-zsh.sh
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+# Tell antigen that you're done.
+antigen apply
+###########
 
 ##################
 #  HIGHLIGHTING  #
@@ -86,11 +60,6 @@ alias -r S='pacaur -S'
 alias -r Ss='pacaur -Ss'
 alias -r Syu='pacaur -Syu'
 alias -r Rns='pacaur -Rns'
-
-alias -r start='sudo systemctl start'
-alias -r restart='sudo systemctl restart'
-alias -r stop='sudo systemctl stop'
-alias -r status='systemctl status'
 
 alias -r cal='cal -m3'
 alias -r tree='tree -C'
