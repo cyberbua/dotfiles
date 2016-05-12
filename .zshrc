@@ -1,33 +1,28 @@
-###########
-# Antigen #
-###########
-source $HOME/.antigen/antigen.zsh
+#############
+# OH-MY-ZSH #
+#############
+export ZSH=$HOME/.oh-my-zsh
 
-# Load the oh-my-zsh's library.
-antigen use oh-my-zsh
+# Themes
+if [ -z $DISPLAY ]; then
+	ZSH_THEME="gentoo"
+else
+	ZSH_THEME="agnoster-mod"
+fi
 
-# Antigen bundles
-antigen bundles <<EOBUNDLES
-  sudo
-  git
-  systemd
-  zsh-users/zsh-syntax-highlighting
-  colored-man-pages
-EOBUNDLES
 
-# Load the theme.
-DEFAULT_USER=$USER
-antigen theme agnoster
+DISABLE_AUTO_UPDATE="true"
+COMPLETION_WAITING_DOTS="true"
 
-# Tell antigen that you're done.
-antigen apply
-###########
+# Plugins
+plugins=(git sudo systemd zsh-syntax-highlighting)
 
-##################
-#  HIGHLIGHTING  #
-##################
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin/core_perl:/usr/bin:$HOME/scripts"
+
+source $ZSH/oh-my-zsh.sh
+
+# highlighting rules
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
-
 ZSH_HIGHLIGHT_STYLES[alias]='fg=green,bold'
 ZSH_HIGHLIGHT_STYLES[builtin]='fg=green,bold'
 ZSH_HIGHLIGHT_STYLES[function]='fg=green,bold'
@@ -35,14 +30,11 @@ ZSH_HIGHLIGHT_STYLES[command]='fg=green,bold'
 ZSH_HIGHLIGHT_STYLES[precommand]='fg=green'
 ZSH_HIGHLIGHT_STYLES[hashed-command]='fg=green,bold'
 ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=magenta'
-
-
 ZSH_HIGHLIGHT_STYLES[path]='fg=blue,bold'
 ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=blue,bold'
-
 ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=cyan,bold'
 ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=cyan,bold'
-##################
+#############
 
 
 ##################
