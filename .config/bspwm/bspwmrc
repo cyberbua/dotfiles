@@ -22,7 +22,7 @@ bspc monitor -d 1 2 3 4 5 6 7 8 9
 # RULES
 bspc rule -a firefox locked=on
 bspc rule -a xfce4-mixer state=floating
-bspc rule -a Telegram state=floating
+bspc rule -a telegram-desktop state=floating
 bspc rule -a simplescreenrecorder state=floating
 bspc rule -a xfce4-panel state=floating
 bspc rule -a /usr/lib/xfce4/panel/wrapper-1.0 state=floating
