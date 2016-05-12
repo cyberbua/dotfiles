@@ -1,5 +1,6 @@
 "*":
   "activate-power-mode":
+    autoToggle: false
     particles:
       size: {}
       spawnCount: {}
@@ -11,6 +12,7 @@
     panelContrast: true
   "autoclose-html": {}
   "autocomplete-clang": {}
+  "autocomplete-java": {}
   "autocomplete-plus": {}
   core:
     audioBeep: false
@@ -30,6 +32,7 @@
     statusIconScope: "File"
   "linter-clang": {}
   "linter-gcc": {}
+  "linter-javac": {}
   "markdown-pdf": {}
   "markdown-preview": {}
   "markdown-preview-plus":
