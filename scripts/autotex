@@ -1,0 +1,23 @@
+#!/bin/bash
+DOCNAME="${1%.*}"
+
+# remakes pdf if .tex files change
+function mkpdf() {
+	while inotifywait -r -e modify -e create -e delete -e move --includei ".*\.tex" .; do
+		rubber -d $DOCNAME
+	done
+}
+
+# starts atom in current directory
+atom .
+
+# start mkpdf() and saves its PIID
+mkpdf & mkpdf_pid=$!
+
+# starts evince pdf reader
+evince $DOCNAME.pdf
+
+# when evince exits, kill mkpdf and clean directory
+kill $mkpdf_pid
+rubber --clean $DOCNAME
+rm -f $DOCNAME.ent
