@@ -51,3 +51,6 @@
     runOnSave: false
   welcome:
     showOnStartup: false
+".bibtex.text":
+  editor:
+    softWrap: false
