@@ -9,6 +9,7 @@
       maxIntensity: 5
       minIntensity: 2
   "atom-material-ui":
+    fonts: {}
     panelContrast: true
   "autoclose-html": {}
   "autocomplete-clang": {}
@@ -22,6 +23,8 @@
     ]
   editor:
     invisibles: {}
+    showIndentGuide: true
+    softWrap: true
     tabLength: 4
   "exception-reporting":
     userId: "9b50b718-670a-34ab-7fd3-ad2733ec070b"
@@ -53,4 +56,4 @@
     showOnStartup: false
 ".bibtex.text":
   editor:
-    softWrap: false
+    softWrap: true
