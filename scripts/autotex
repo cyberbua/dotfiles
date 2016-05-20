@@ -3,7 +3,7 @@ DOCNAME="${1%.*}"
 
 # remakes pdf if .tex files change
 function mkpdf() {
-	while inotifywait -r -e modify -e create -e delete -e move --includei ".*\.tex" .; do
+	while inotifywait -r -qq -e modify -e create -e delete -e move --includei ".*\.tex" .; do
 		rubber -d $DOCNAME
 	done
 }
