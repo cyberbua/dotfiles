@@ -54,7 +54,7 @@ alias -r Syu='pacaur -Syu'
 alias -r Rns='pacaur -Rns'
 
 alias -r cal='cal -m3'
-alias -r tree='tree -C'
+alias -r t='tree -C'
 alias -r wanip='curl ipinfo.io/ip'
 alias -r lanip='ip addr show wlp2s0 | /usr/bin/grep -Po "inet \K[\d.]+"'
 
