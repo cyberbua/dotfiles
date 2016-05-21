@@ -8,6 +8,56 @@
     screenShake:
       maxIntensity: 5
       minIntensity: 2
+  "atom-beautify":
+    apex: {}
+    arduino: {}
+    c: {}
+    cfml: {}
+    coffeescript: {}
+    cpp: {}
+    cs: {}
+    css: {}
+    d: {}
+    ejs: {}
+    erb: {}
+    fortran: {}
+    general:
+      _analyticsUserId: "4d8df1d5-ba21-481d-ba98-5c8a0addab83"
+    gherkin: {}
+    handlebars: {}
+    html: {}
+    jade: {}
+    java: {}
+    js: {}
+    json: {}
+    jsx:
+      break_chained_methods: true
+    latex:
+      remove_trailing_whitespace: true
+    less: {}
+    marko: {}
+    mustache: {}
+    objectivec: {}
+    pawn: {}
+    perl: {}
+    php: {}
+    python: {}
+    riot: {}
+    ruby: {}
+    rust: {}
+    sass: {}
+    scss: {}
+    spacebars: {}
+    sql: {}
+    svg: {}
+    swig: {}
+    tss: {}
+    twig: {}
+    typescript: {}
+    vala: {}
+    visualforce: {}
+    xml: {}
+    xtemplate: {}
   "atom-material-ui":
     fonts: {}
     panelContrast: true
@@ -20,6 +70,9 @@
     disabledPackages: [
       "spell-check"
       "autoclose-html"
+      "autocomplete-clang"
+      "linter"
+      "linter-gcc"
     ]
   editor:
     invisibles: {}
