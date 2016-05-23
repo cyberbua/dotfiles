@@ -109,4 +109,5 @@
     showOnStartup: false
 ".bibtex.text":
   editor:
+    scrollPastEnd: false
     softWrap: true
