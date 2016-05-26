@@ -133,7 +133,7 @@ super + c
 
 # open file browser
 super + e
-	thunar
+	nautilus
 
 # lock screen, lock and suspend
 super + {_,alt +} space
