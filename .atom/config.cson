@@ -67,6 +67,7 @@
   "autocomplete-plus": {}
   core:
     audioBeep: false
+    autoHideMenuBar: true
     disabledPackages: [
       "spell-check"
       "autoclose-html"
