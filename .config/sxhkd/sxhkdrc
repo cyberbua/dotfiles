@@ -22,9 +22,9 @@ super + {t,shift + t,f,a}
 super + {shift + l,s}
 	bspc node -g {locked,sticky}
 
-# cycle through windows
-alt + {_,shift + } Tab
-	bspc node -f {last,next}
+# slelect last window on desktop
+alt + Tab
+	bspc node -f last.local
 
 # move focus to seleted direction
 super + {h,j,k,l}
@@ -98,7 +98,7 @@ super + !button{1-3}
 super + @button{1-3}
 	bspc pointer -u
 
-super + {_,shift + }button1
+super + shift + button1
 	bspc pointer -g resize_corner
 
 super + !{_,shift + }button1
