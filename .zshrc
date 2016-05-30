@@ -43,6 +43,7 @@ ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=cyan,bold'
 alias -r sudo='sudo '
 alias -g gp='| grep'
 alias -g lss='| less'
+alias -r l='ls -lah --group-directories-first'
 
 alias -r rf='rm -rf'
 alias -r mkdir='mkdir -p'
