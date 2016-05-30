@@ -14,7 +14,7 @@ scrot /tmp/scrot.png
 # apply effect
 #convert /tmp/scrot.png -blur 0x5 /tmp/scrot.png
 #convert /tmp/scrot.png -scale 5% -scale %2000 /tmp/scrot.png
-~/scripts/blurlock/xwobf /tmp/scrot.png
+xwobf /tmp/scrot.png
 
 # set screen timeout to 30 sec
 xset s 30

@@ -129,7 +129,7 @@ super + d
 
 # dmenu based calculator
 super + c
-	~/scripts/=
+	=
 
 # open file browser
 super + e
@@ -137,7 +137,7 @@ super + e
 
 # lock screen, lock and suspend
 super + {_,alt +} space
-	~/scripts/blurlock/blurlock {_,& sleep 2; systemctl suspend}
+	blurlock {_,& sleep 2; systemctl suspend}
 
 # logout
 super + alt + Escape
