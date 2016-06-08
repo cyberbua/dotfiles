@@ -15,7 +15,7 @@ DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 
 # Plugins
-plugins=(git sudo systemd zsh-syntax-highlighting)
+plugins=(sudo systemd zsh-syntax-highlighting)
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin/core_perl:/usr/bin:$HOME/scripts"
 
@@ -44,6 +44,8 @@ alias -r sudo='sudo '
 alias -g gp='| grep'
 alias -g lss='| less'
 alias -r l='ls -lah --group-directories-first'
+
+alias -r cd='pushd >/dev/null'
 
 alias -r rf='rm -rf'
 alias -r mkdir='mkdir -p'
@@ -81,9 +83,11 @@ function duf() { cd $1; du -sch * | sort -h; cd - > /dev/null}
 ##################
 
 
-##################
-#    VARIABLE    #
-##################
+################
+#    CONGIG    #
+################
+# auto reload completion for new prgrams
+zstyle ':completion:*' rehash true
 
 if [ -e /usr/share/terminfo/x/xterm-256color ] && [ "$COLORTERM" = "xfce4-terminal" ]; then
     export TERM='xterm-256color'
