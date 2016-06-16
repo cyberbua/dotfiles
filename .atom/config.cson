@@ -76,6 +76,7 @@
       "linter-gcc"
     ]
   editor:
+    fontSize: 28
     invisibles: {}
     showIndentGuide: true
     softWrap: true
