@@ -41,7 +41,7 @@ ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=cyan,bold'
 #     ALIAS      #
 ##################
 alias -r sudo='sudo '
-alias -g gp='| grep'
+alias -g gp='| grep -i'
 alias -g lss='| less'
 alias -r l='ls -lah --group-directories-first'
 
