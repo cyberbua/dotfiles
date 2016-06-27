@@ -45,7 +45,7 @@ xsetroot -cursor_name left_ptr	# set the default mouse cursor
 sxhkd & # start the hotkey daemon
 nm-applet &
 compton -b
-redshift -l 16:48 -t 6500:4500 &
+redshift-gtk -t 6500:4200 &
 xfsettingsd &
 xfce4-panel -d &
 xfce4-power-manager
