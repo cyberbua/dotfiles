@@ -87,6 +87,7 @@ function duf() { cd $1; du -sch * | sort -h; cd - > /dev/null}
 ################
 source /usr/share/fzf/key-bindings.zsh
 export FZF_CTRL_R_OPTS='-e'
+bindkey '^F' fzf-file-widget
 ################
 
 
