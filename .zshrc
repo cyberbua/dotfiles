@@ -82,6 +82,13 @@ setopt dotglob
 function duf() { cd $1; du -sch * | sort -h; cd - > /dev/null}
 ##################
 
+################
+# FUZZY FINDER #
+################
+source /usr/share/fzf/key-bindings.zsh
+export FZF_CTRL_R_OPTS='-e'
+################
+
 
 ################
 #    CONGIG    #
