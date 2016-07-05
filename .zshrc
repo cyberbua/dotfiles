@@ -86,8 +86,20 @@ function duf() { cd $1; du -sch * | sort -h; cd - > /dev/null}
 # FUZZY FINDER #
 ################
 source /usr/share/fzf/key-bindings.zsh
+
 export FZF_CTRL_R_OPTS='-e'
 bindkey '^F' fzf-file-widget
+
+# ALT-I - Paste the selected entry from locate output into the command line
+fzf-locate-widget() {
+  local selected
+  if selected=$(locate / | fzf); then
+    LBUFFER=$LBUFFER$selected
+  fi
+  zle redisplay
+}
+zle     -N    fzf-locate-widget
+bindkey '\ei' fzf-locate-widget
 ################
 
 
