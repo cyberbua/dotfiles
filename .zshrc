@@ -73,7 +73,7 @@ alias -r qrclip='xclip -o | qrencode -t UTF8'
 alias -r mnt='udisksctl mount -b'
 alias -r umnt='udisksctl unmount -b'
 
-alias -r histclean='sort -t ";" -k 2 -u ~/.zsh_history | sort -o ~/.zsh_history'
+alias -r histclean='tac ~/.zsh_history | sort -t ";" -k 2 -u | sort -o ~/.zsh_history'
 
 # commit all changes with generic commit message for minor changes
 alias -r commit='git commit -am "unimportant changes"'
