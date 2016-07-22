@@ -137,7 +137,7 @@ super + {e,n}
 
 # lock screen, lock and suspend
 super + {_,alt +} space
-	xautolock -locknow {_,& sleep 2; systemctl suspend}
+	blurlock {_,& sleep 2; systemctl suspend}
 
 # logout
 super + alt + Escape
