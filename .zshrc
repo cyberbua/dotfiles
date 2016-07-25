@@ -86,6 +86,7 @@ function duf() { cd $1; du -sch * | sort -h; cd - > /dev/null}
 # FUZZY FINDER #
 ################
 source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 
 export FZF_CTRL_R_OPTS='-e'
 bindkey '^F' fzf-file-widget
