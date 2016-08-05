@@ -70,17 +70,44 @@ alias -r clip='xclip -selection clipboard'
 alias -r qr='qrencode -t UTF8'
 alias -r qrclip='xclip -o | qrencode -t UTF8'
 
-alias -r mnt='udisksctl mount -b'
-alias -r umnt='udisksctl unmount -b'
-
 alias -r histclean='tac ~/.zsh_history | sort -t ";" -k 2 -u | sort -o ~/.zsh_history'
 
 # commit all changes with generic commit message for minor changes
 alias -r commit='git commit -am "unimportant changes"'
 
-setopt dotglob
-function duf() { cd $1; du -sch * | sort -h; cd - > /dev/null}
 ##################
+
+
+#############
+# FUNCTIONS #
+#############
+
+# print disk usage of a directory
+setopt dotglob
+function duf() { 
+	cd $1; du -sch * | sort -h; 
+	cd - > /dev/null
+}
+
+# (un)mount using udisks2 by device path or label
+function mnt() {
+	if [ -f $1 ]; then
+		udisksctl mount -b "$@"
+	else
+		udisksctl mount -b /dev/disk/by-label/"$@"
+	fi
+}
+
+function umnt() {
+	if [ -f $1 ]; then
+		udisksctl unmount -b "$@"
+	else
+		udisksctl unmount -b /dev/disk/by-label/"$@"
+	fi
+}
+#############
+
+
 
 ################
 # FUZZY FINDER #
@@ -93,11 +120,11 @@ bindkey '^F' fzf-file-widget
 
 # ALT-I - Paste the selected entry from locate output into the command line
 fzf-locate-widget() {
-  local selected
-  if selected=$(locate / | fzf); then
-    LBUFFER=$LBUFFER$selected
-  fi
-  zle redisplay
+	local selected
+	if selected=$(locate / | fzf); then
+		LBUFFER=$LBUFFER$selected
+	fi
+	zle redisplay
 }
 zle     -N    fzf-locate-widget
 bindkey '\ei' fzf-locate-widget
