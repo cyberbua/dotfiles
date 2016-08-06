@@ -92,7 +92,7 @@ function duf() {
 
 # (un)mount using udisks2 by device path or label
 function mnt() {
-	if [ -f $1 ]; then
+	if [ -b $1 ]; then
 		udisksctl mount -b "$@"
 	else
 		udisksctl mount -b /dev/disk/by-label/"$@"
@@ -100,7 +100,7 @@ function mnt() {
 }
 
 function umnt() {
-	if [ -f $1 ]; then
+	if [ -b $1 ]; then
 		udisksctl unmount -b "$@"
 	else
 		udisksctl unmount -b /dev/disk/by-label/"$@"
