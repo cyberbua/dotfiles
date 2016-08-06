@@ -49,7 +49,8 @@ alias -r cd='pushd >/dev/null'
 
 alias -r rf='rm -rf'
 alias -r mkdir='mkdir -p'
-alias -r dd="dd status=progress"
+alias -r dd='dd status=progress'
+alias -r lsblk='lsblk -o NAME,LABEL,SIZE,FSTYPE,MOUNTPOINT'
 
 alias -r S='pacaur -S'
 alias -r Ss='pacaur -Ss'
@@ -61,8 +62,8 @@ alias -r t='tree -C'
 alias -r wanip='curl ipinfo.io/ip'
 alias -r lanip='ip addr show wlp2s0 | /usr/bin/grep -Po "inet \K[\d.]+"'
 
-alias -r pastebin="curl -F c=@- https://ptpb.pw"
-alias -r pastefile="curl -F c=@- https://ptpb.pw <"
+alias -r pastebin='curl -F c=@- https://ptpb.pw'
+alias -r pastefile='curl -F c=@- https://ptpb.pw <'
 
 alias -r share='ip addr; webfsd -Fdp 8000'
 alias -r clip='xclip -selection clipboard'
