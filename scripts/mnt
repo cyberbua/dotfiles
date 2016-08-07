@@ -1,0 +1,34 @@
+#!/bin/bash
+# mount normal partition via: /dev/sdXY, sdXY, Label
+# mount image/ISO via path
+# mount LUKS via: /dev/sdXY, sdXY
+
+mnt() {
+	udisksctl mount -b $@
+	exit
+}
+
+mnt_luks() {
+	udisksctl mount -b $(udisksctl unlock -b $1 | sed 's/.* //' | tr -d .)
+	exit
+}
+
+# if luks blockdevice
+[ -b $1 ] && [ "$(lsblk -o FSTYPE $1 | tail -n1)" == "crypto_LUKS" ] && mnt_luks $1
+
+# if luks blockdevice under /dev (e.g. sdXY)
+[ -b /dev/$1 ] && [ "$(lsblk -o FSTYPE /dev/$1 | tail -n1)" == "crypto_LUKS" ] && mnt_luks /dev/$1
+
+
+# if argument is a blockdevice
+[ -b $1 ] && mnt $@
+
+# if argument is device name under /dev (e.g. sdXY)
+[ -b /dev/$1 ] && mnt /dev/$@
+
+# if argument is label
+[ -b /dev/disk/by-label/$1 ] && mnt /dev/disk/by-label/$@
+
+# if regular file (ISO, img)
+# [ -f $1 ] && udisksctl mount -b $(udisksctl loop-setup -r -f $1 | sed 's/.* //' | tr -d .) && exit
+

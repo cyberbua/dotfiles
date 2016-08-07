@@ -50,7 +50,7 @@ alias -r cd='pushd >/dev/null'
 alias -r rf='rm -rf'
 alias -r mkdir='mkdir -p'
 alias -r dd='dd status=progress'
-alias -r lsblk='lsblk -o NAME,LABEL,SIZE,FSTYPE,MOUNTPOINT'
+alias -r lb='lsblk -o NAME,LABEL,SIZE,FSTYPE,MOUNTPOINT'
 
 alias -r S='pacaur -S'
 alias -r Ss='pacaur -Ss'
@@ -88,23 +88,6 @@ setopt dotglob
 function duf() { 
 	cd $1; du -sch * | sort -h; 
 	cd - > /dev/null
-}
-
-# (un)mount using udisks2 by device path or label
-function mnt() {
-	if [ -b $1 ]; then
-		udisksctl mount -b "$@"
-	else
-		udisksctl mount -b /dev/disk/by-label/"$@"
-	fi
-}
-
-function umnt() {
-	if [ -b $1 ]; then
-		udisksctl unmount -b "$@"
-	else
-		udisksctl unmount -b /dev/disk/by-label/"$@"
-	fi
 }
 #############
 

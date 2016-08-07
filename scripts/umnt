@@ -1,0 +1,19 @@
+#!/bin/bash
+
+umnt() {
+	udisksctl unmount -b $@
+	exit
+}
+
+umnt_luks() {
+	exit	
+}
+
+# if argument is a blockdevice
+[ -b $1 ] && umnt $@ && exit
+
+# if argument is device name under /dev (e.g. sdXY)
+[ -b /dev/$1 ] && umnt /dev/$@ && exit
+
+# if argument is label
+[ -b /dev/disk/by-label/$1 ] && umnt /dev/disk/by-label/$@ && exit
