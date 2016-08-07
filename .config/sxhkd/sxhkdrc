@@ -129,7 +129,7 @@ super + d
 
 # dmenu based calculator
 super + c
-	=
+	dcalc
 
 # open file browser
 super + {e,n}
