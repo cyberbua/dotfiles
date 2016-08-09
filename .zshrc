@@ -45,7 +45,8 @@ alias -g gp='| grep -i'
 alias -g lss='| less'
 alias -r l='ls -lah --group-directories-first'
 
-alias -r cd='pushd >/dev/null'
+alias -r cd='pushd -q'
+setopt PUSHD_TO_HOME
 
 alias -r rf='rm -rf'
 alias -r mkdir='mkdir -p'
