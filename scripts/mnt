@@ -9,8 +9,7 @@ mnt() {
 }
 
 mnt_luks() {
-	udisksctl mount -b $(udisksctl unlock -b $1 | sed 's/.* //' | tr -d .)
-	exit
+	mnt $(udisksctl unlock -b $1 | sed 's/.* //' | tr -d .)
 }
 
 # if luks blockdevice
