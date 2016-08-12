@@ -128,6 +128,7 @@ fi
 
 export EDITOR='vim'
 export PKGDEST="/var/cache/pacman/pkg/aur"
+export KEYTIMEOUT=1
 ##################
 
 # warn me if more than one user is logged in
