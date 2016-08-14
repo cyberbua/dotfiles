@@ -45,9 +45,6 @@ alias -g gp='| grep -i'
 alias -g lss='| less'
 alias -r l='ls -lah --group-directories-first'
 
-alias -r cd='pushd -q'
-setopt PUSHD_TO_HOME
-
 alias -r rf='rm -rf'
 alias -r mkdir='mkdir -p'
 alias -r dd='dd status=progress'
@@ -97,8 +94,8 @@ function duf() {
 ################
 # FUZZY FINDER #
 ################
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+source $ZSH/custom/plugins/fzf/key-bindings.zsh
+source $ZSH/custom/plugins/fzf/completion.zsh
 
 export FZF_CTRL_R_OPTS='-e'
 bindkey '^F' fzf-file-widget
@@ -113,12 +110,15 @@ fzf-locate-widget() {
 }
 zle     -N    fzf-locate-widget
 bindkey '\ei' fzf-locate-widget
+
+setopt AUTO_PUSHD
+setopt PUSHD_TO_HOME
 ################
 
 
-################
-#    CONGIG    #
-################
+##################
+# OPTIONS & VARS #
+##################
 # auto reload completion for new prgrams
 zstyle ':completion:*' rehash true
 
@@ -129,6 +129,9 @@ fi
 export EDITOR='vim'
 export PKGDEST="/var/cache/pacman/pkg/aur"
 export KEYTIMEOUT=1
+
+setopt APPEND_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
 ##################
 
 # warn me if more than one user is logged in
@@ -138,7 +141,7 @@ if [ $(who|wc -l) -gt 1 ]; then
 fi
 
 # auto tmux attach
-#if [ "$TERM" != 'screen' ]; then
-#	tmux has-session && exec tmux attach || exec tmux
-#fi
+if [ "$TERM" != 'screen' ] && [ -n "$SSH_TTY" ]; then
+	tmux has-session && exec tmux attach || exec tmux
+fi
 
