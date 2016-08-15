@@ -73,16 +73,13 @@ alias -r histclean='tac ~/.zsh_history | sort -t ";" -k 2 -u | sort -o ~/.zsh_hi
 
 # commit all changes with generic commit message for minor changes
 alias -r commit='git commit -am "unimportant changes"'
-
 ##################
 
 
 #############
 # FUNCTIONS #
 #############
-
 # print disk usage of a directory
-setopt dotglob
 function duf() { 
 	cd $1; du -sch * | sort -h; 
 	cd - > /dev/null
@@ -110,16 +107,13 @@ fzf-locate-widget() {
 }
 zle     -N    fzf-locate-widget
 bindkey '\ei' fzf-locate-widget
-
-setopt AUTO_PUSHD
-setopt PUSHD_TO_HOME
 ################
 
 
 ##################
 # OPTIONS & VARS #
 ##################
-# auto reload completion for new prgrams
+# auto reload completion for new programs
 zstyle ':completion:*' rehash true
 
 if [ -e /usr/share/terminfo/x/xterm-256color ] && [ "$COLORTERM" = "xfce4-terminal" ]; then
@@ -132,6 +126,9 @@ export KEYTIMEOUT=1
 
 setopt APPEND_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
+setopt dotglob
+setopt AUTO_PUSHD
+setopt PUSHD_TO_HOME
 ##################
 
 # warn me if more than one user is logged in
