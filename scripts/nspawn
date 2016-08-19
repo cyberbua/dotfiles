@@ -2,16 +2,18 @@
 
 # TODO
 # security hardening (network especially)
-# locale fix
+# unpriveleged user creation (no need to run as root when compiling a package)
 
 install() {
-	IGNORE="linux reiserfsprogs nano xfsprogs jfsutils cryptsetup lvm2 device-mapper usbutils mdadm pciutils licenses s-nail"
+	echo '[nspawn] installing...'
+	IGNORE="linux reiserfsprogs xfsprogs jfsutils cryptsetup lvm2 device-mapper usbutils mdadm pciutils licenses s-nail"
 	PKG="$(join -v 1 <(pacman -Sgq base | sort) <(echo $IGNORE | tr " " "\n" | sort))"
 	ADDPKG="sudo"
 	pacstrap -cd $1 $PKG $ADDPKG --needed && touch $1/installed
 }
 
 configure() {
+	echo '[nspawn] configuring...'
 	# create config file
 	echo -e "# See 'man systemd.nspawn' for all available options.\n" > $1.nspawn
 	echo -e "[Exec]\nBoot=yes" >> $1.nspawn
@@ -27,6 +29,11 @@ configure() {
 
 	# allow %wheel to run sudo
 	sed -i '/^# %wheel ALL=(ALL) ALL$/s/^# //' $1/etc/sudoers
+	
+	# set locale
+	sed -i '/^#en_US.UTF-8 UTF-8/s/^#//' $1/etc/locale.gen
+	echo 'LANG=en_US.UTF-8' > $1/etc/locale.conf
+	systemd-nspawn --settings=off --directory=$1 locale-gen
 
 	touch $1/configured
 }
@@ -38,7 +45,7 @@ spawn() {
 # since the setting=trusted option must be used, the .nspawn file doesn't override the defaults. 
 # The only unwanted default is removed here
 [[ -f /etc/systemd/system/systemd-nspawn@.service ]] ||
-	sed -e 's/--network-veth //g' /usr/lib/systemd/system/systemd-nspawn@.service > \
+	sed 's/--network-veth //g;s/override/trusted/' /usr/lib/systemd/system/systemd-nspawn@.service > \
 	/etc/systemd/system/systemd-nspawn@.service
 
 
