@@ -17,6 +17,7 @@ set guioptions-=T  "toolbar
 set guioptions-=r  "scrollbar
 set timeoutlen=1000 ttimeoutlen=0
 set clipboard=unnamedplus
+set showtabline=2
 
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
@@ -31,19 +32,21 @@ set spellfile=~/.vim/spell/custom.utf-8.add
 set spelllang=de,en
 set complete+=kspell
 autocmd FileType latex,tex,md,markdown setlocal spell 
-syn match CamelCase '\v(<\u\i*>)+' contains=@NoSpell
+"syn match CamelCase '\v(<\u\i*>)+' contains=@NoSpell
 """"""""""""
 
+""""""""""""
+" Mappings "
+""""""""""""
 "disable the damn arrow keys
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
+noremap <Up>    <Nop>
+noremap <Down>  <Nop>
+noremap <Left>  <Nop>
 noremap <Right> <Nop>
 
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
-inoremap <Left> <Nop>
-inoremap <Right> <Nop>
+noremap <C-h> gT
+noremap <C-l> gt
+""""""""""""
 
 """""""""
 " Theme "
@@ -51,3 +54,21 @@ inoremap <Right> <Nop>
 syntax on
 colorscheme kalisi
 set background=light
+
+hi TabLineFill cterm=none ctermfg=white ctermbg=lightgrey
+hi TabLine     cterm=none ctermfg=white ctermbg=grey
+hi TabLineSel  cterm=none ctermfg=white ctermbg=darkgrey
+
+"""""""""""
+" Plugins "
+"""""""""""
+call plug#begin('~/.vim/plugged')
+
+Plug 'junegunn/vim-easy-align'
+nmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
+
+Plug 'terryma/vim-multiple-cursors'
+
+call plug#end()
+"""""""""""
