@@ -5,7 +5,7 @@
 # unpriveleged user creation (no need to run as root when compiling a package)
 
 pack() {
-	tar -cp $1 $1.nspawn | $(command -v pigz || command -v gzip) > $1.tgz
+	tar -cp $1 $1.nspawn | $(command -v pigz || command -v gzip) > "${1##*/}".tgz
 	exit
 }
 
