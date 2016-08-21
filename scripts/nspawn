@@ -4,6 +4,15 @@
 # security hardening (network especially)
 # unpriveleged user creation (no need to run as root when compiling a package)
 
+pack() {
+	tar -cp $1 $1.nspawn | $(command -v pigz || command -v gzip) > $1.tgz
+	exit
+}
+
+unpack() {
+	tar -xpf $1
+	exit
+}
 install() {
 	echo '[nspawn] installing...'
 	IGNORE="linux reiserfsprogs xfsprogs jfsutils cryptsetup lvm2 device-mapper usbutils mdadm pciutils licenses s-nail"
@@ -39,8 +48,18 @@ configure() {
 }
 
 spawn() {
+	echo '[nspawn] starting...'
 	systemd-nspawn --settings=trusted --directory=$1
 }
+
+
+
+# exit if not root
+[[ $EUID -ne 0 ]] && echo "This script has to run as root!" && exit 1
+
+# if first argument is --(un)pack
+[[ "$1" == "--pack" ]] && pack $2
+[[ "$1" == "--unpack" ]] && unpack $2
 
 # since the setting=trusted option must be used, the .nspawn file doesn't override the defaults. 
 # The only unwanted default is removed here
