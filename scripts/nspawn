@@ -5,7 +5,9 @@
 # unpriveleged user creation (no need to run as root when compiling a package)
 
 pack() {
-	tar -cp $1 $1.nspawn | $(command -v pigz || command -v gzip) > "${1##*/}".tgz
+	tar -cpC $1/..  ${1##*/} ${1##*/}.nspawn | $(command -v pigz || command -v gzip) > ${1##*/}.tgz
+	# change owner of archive if script was issued by a normal user via sudo
+	[[ -n "$SUDO_USER" ]] && chown $SUDO_USER ${1##*/}.tgz
 	exit
 }
 
@@ -13,6 +15,7 @@ unpack() {
 	tar -xpf $1
 	exit
 }
+
 install() {
 	echo '[nspawn] installing...'
 	IGNORE="linux reiserfsprogs xfsprogs jfsutils cryptsetup lvm2 device-mapper usbutils mdadm pciutils licenses s-nail"
@@ -51,7 +54,6 @@ spawn() {
 	echo '[nspawn] starting...'
 	systemd-nspawn --settings=trusted --directory=$1
 }
-
 
 
 # exit if not root
