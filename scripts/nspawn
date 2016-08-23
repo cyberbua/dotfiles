@@ -18,7 +18,7 @@ unpack() {
 
 install() {
 	echo '[nspawn] installing...'
-	IGNORE="linux reiserfsprogs xfsprogs jfsutils cryptsetup lvm2 device-mapper usbutils mdadm pciutils licenses s-nail"
+	IGNORE="linux reiserfsprogs xfsprogs jfsutils cryptsetup lvm2 device-mapper usbutils mdadm pciutils licenses s-nail gettext netctl dhcpcd texinfo pcmciautils"
 	PKG="$(join -v 1 <(pacman -Sgq base | sort) <(echo $IGNORE | tr " " "\n" | sort))"
 	ADDPKG="sudo"
 	pacstrap -cd $1 $PKG $ADDPKG --needed && touch $1/installed
