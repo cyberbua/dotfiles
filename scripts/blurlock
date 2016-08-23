@@ -15,7 +15,7 @@ touch /tmp/blurlock.lock
 #convert /tmp/scrot.png -scale 5% -scale %2000 /tmp/scrot.png
 #xwobf /tmp/scrot.png
 RES=$(xrandr --current | grep '*' | uniq | awk '{print $1}')
-ffmpeg -f x11grab -video_size $RES -y -i $DISPLAY -filter_complex "boxblur=8:1,boxblur=8:1" -vframes 1 /tmp/scrot.png
+ffmpeg -loglevel quiet -f x11grab -video_size $RES -y -i $DISPLAY -filter_complex "boxblur=8:1,boxblur=8:1" -vframes 1 /tmp/scrot.png
 
 # set screen timeout to 30 sec
 xset s 30
