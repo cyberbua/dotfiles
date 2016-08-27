@@ -18,14 +18,18 @@ unpack() {
 
 install() {
 	echo '[nspawn] installing...'
-	IGNORE="linux reiserfsprogs xfsprogs jfsutils cryptsetup lvm2 device-mapper usbutils mdadm pciutils licenses s-nail gettext netctl dhcpcd texinfo pcmciautils"
+	IGNORE="linux reiserfsprogs xfsprogs jfsutils cryptsetup lvm2 device-mapper usbutils mdadm pciutils licenses s-nail gettext netctl dhcpcd texinfo pcmciautils man-db perl"
 	PKG="$(join -v 1 <(pacman -Sgq base | sort) <(echo $IGNORE | tr " " "\n" | sort))"
 	ADDPKG="sudo"
-	pacstrap -cd $1 $PKG $ADDPKG --needed && touch $1/installed
+	pacstrap -cd $1 $PKG $ADDPKG --needed --assume-installed perl && touch $1/installed
 }
 
 configure() {
 	echo '[nspawn] configuring...'
+
+	# this var hold all config commands that have to run in a chroot
+	CHROOTCMD=""
+
 	# create config file
 	echo -e "# See 'man systemd.nspawn' for all available options.\n" > $1.nspawn
 	echo -e "[Exec]\nBoot=yes" >> $1.nspawn
@@ -45,7 +49,14 @@ configure() {
 	# set locale
 	sed -i '/^#en_US.UTF-8 UTF-8/s/^#//' $1/etc/locale.gen
 	echo 'LANG=en_US.UTF-8' > $1/etc/locale.conf
-	systemd-nspawn --settings=off --directory=$1 locale-gen
+	CHROOTCMD+="locale-gen;"
+
+	# create user account (mainly used for compiling)
+	CHROOTCMD+="useradd -m -G wheel -s /bin/bash user;"
+	CHROOTCMD+="gpasswd -a user wheel;"
+	
+	# chroot and run all commands that need to run natively
+	systemd-nspawn --settings=off --directory=$1 sh -c "$CHROOTCMD"
 
 	touch $1/configured
 }
