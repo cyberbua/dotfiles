@@ -2,7 +2,6 @@
 
 # TODO
 # security hardening (network especially)
-# unpriveleged user creation (no need to run as root when compiling a package)
 
 pack() {
 	tar -cpC $1/..  ${1##*/} ${1##*/}.nspawn | $(command -v pigz || command -v gzip) > ${1##*/}.tgz
@@ -46,6 +45,9 @@ configure() {
 	# allow %wheel to run sudo
 	sed -i '/^# %wheel ALL=(ALL) ALL$/s/^# //' $1/etc/sudoers
 	
+	# allow login from all ttys
+	sed -i '/ pam_securetty\.so$/s/^/#/' $1/etc/pam.d/login
+
 	# set locale
 	sed -i '/^#en_US.UTF-8 UTF-8/s/^#//' $1/etc/locale.gen
 	echo 'LANG=en_US.UTF-8' > $1/etc/locale.conf
