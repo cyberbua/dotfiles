@@ -129,7 +129,7 @@ super + d
 
 # dmenu based calculator
 super + c
-	dcalc
+	bspc rule -a Xfce4-terminal -o state=floating; xfce4-terminal --geometry=64x24 -x rlwrap maxima
 
 # open file browser
 super + {e,n}
