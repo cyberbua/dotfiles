@@ -75,7 +75,6 @@ alias -r commit='git commit -am "unimportant changes"'
 
 # allow using Ctrl-s in vim
 alias vim="stty stop '' -ixoff ; vim"
-ttyctl -f
 ##################
 
 
