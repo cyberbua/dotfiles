@@ -10,7 +10,6 @@ else
 	ZSH_THEME="agnoster-mod"
 fi
 
-
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 
@@ -73,6 +72,10 @@ alias -r histclean='tac ~/.zsh_history | sort -t ";" -k 2 -u | sort -o ~/.zsh_hi
 
 # commit all changes with generic commit message for minor changes
 alias -r commit='git commit -am "unimportant changes"'
+
+# allow using Ctrl-s in vim
+alias vim="stty stop '' -ixoff ; vim"
+ttyctl -f
 ##################
 
 
@@ -85,7 +88,6 @@ function duf() {
 	cd - > /dev/null
 }
 #############
-
 
 
 ################
@@ -129,6 +131,9 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt dotglob
 setopt AUTO_PUSHD
 setopt PUSHD_TO_HOME
+
+# restore Ctrl-s after command exits
+ttyctl -f
 ##################
 
 # warn me if more than one user is logged in
