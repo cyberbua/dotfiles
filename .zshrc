@@ -74,7 +74,7 @@ alias -r histclean='tac ~/.zsh_history | sort -t ";" -k 2 -u | sort -o ~/.zsh_hi
 alias -r commit='git commit -am "unimportant changes"'
 
 # allow using Ctrl-s in vim
-alias vim="stty stop '' -ixoff ; vim"
+alias vim="stty stop '' -ixon -ixoff ; vim"
 ##################
 
 
