@@ -18,11 +18,6 @@ set guioptions-=r  "scrollbar
 set timeoutlen=1000 ttimeoutlen=0
 set clipboard=unnamedplus
 set showtabline=2
-
-" Treat long lines as break lines (useful when moving around in them)
-map j gj
-map k gk
-map <space> /
 """""""""""
 
 """"""""""""
@@ -38,14 +33,39 @@ autocmd FileType latex,tex,md,markdown setlocal spell
 """"""""""""
 " Mappings "
 """"""""""""
+" comma as leader
+let mapleader=","
+
 "disable the damn arrow keys
 noremap <Up>    <Nop>
 noremap <Down>  <Nop>
 noremap <Left>  <Nop>
 noremap <Right> <Nop>
 
+" tab navigation
 noremap <C-h> gT
 noremap <C-l> gt
+
+" search using space
+map <space> /
+
+" Treat long lines as break lines (useful when moving around in them)
+map j gj
+map k gk
+
+" move in insert mode
+inoremap <C-h> <C-o>h
+inoremap <C-j> <C-o>gj
+inoremap <C-k> <C-o>gk
+inoremap <C-l> <C-o>a
+
+" save
+inoremap <C-s> <esc>:w<cr>
+nnoremap <C-s> :w<cr>
+
+" quit
+inoremap <C-q> <esc>:q!<cr>
+nnoremap <C-q> :q!<cr>
 """"""""""""
 
 """""""""
@@ -69,6 +89,7 @@ nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 
 Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-commentary'
 
 call plug#end()
 """""""""""
