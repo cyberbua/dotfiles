@@ -75,6 +75,10 @@
       "linter"
       "linter-gcc"
     ]
+    themes: [
+      "one-light-ui"
+      "one-light-syntax"
+    ]
   editor:
     invisibles: {}
     showIndentGuide: true
