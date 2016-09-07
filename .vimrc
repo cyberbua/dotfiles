@@ -58,14 +58,6 @@ inoremap <C-h> <C-o>h
 inoremap <C-j> <C-o>gj
 inoremap <C-k> <C-o>gk
 inoremap <C-l> <C-o>a
-
-" save
-inoremap <C-s> <esc>:w<cr>
-nnoremap <C-s> :w<cr>
-
-" quit
-inoremap <C-q> <esc>:q!<cr>
-nnoremap <C-q> :q!<cr>
 """"""""""""
 
 """""""""
