@@ -63,14 +63,13 @@ inoremap <C-l> <C-o>a
 """""""""
 " Theme "
 """""""""
-syntax on
-colorscheme kalisi
+syntax enable
 set background=light
+colorscheme kalisi
 
 hi TabLineFill cterm=none ctermfg=white ctermbg=lightgrey
 hi TabLine     cterm=none ctermfg=white ctermbg=grey
 hi TabLineSel  cterm=none ctermfg=white ctermbg=darkgrey
-
 """""""""""
 " Plugins "
 """""""""""
