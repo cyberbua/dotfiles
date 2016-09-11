@@ -20,6 +20,38 @@ set clipboard=unnamedplus
 set showtabline=2
 """""""""""
 
+"""""""""""
+" Plugins "
+"""""""""""
+call plug#begin('~/.vim/plugged')
+
+Plug 'junegunn/vim-easy-align'
+nmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
+
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-commentary'
+Plug 'rakr/vim-one'
+
+call plug#end()
+"""""""""""
+
+"""""""""
+" Theme "
+"""""""""
+if (has("nvim"))
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+if (has("termguicolors"))
+    set termguicolors
+endif
+
+syntax on
+set background=dark
+colorscheme one
+set termguicolors
+"""""""""
+
 """"""""""""
 " spelling "
 """"""""""""
@@ -27,6 +59,8 @@ set spellfile=~/.vim/spell/custom.utf-8.add
 set spelllang=de,en
 set complete+=kspell
 autocmd FileType latex,tex,md,markdown setlocal spell 
+" ignor single chars
+autocmd FileType latex,tex,md,markdown syn match SingleChar '\<\A*\a\A*\>' contains=@NoSpell
 "syn match CamelCase '\v(<\u\i*>)+' contains=@NoSpell
 """"""""""""
 
@@ -59,28 +93,3 @@ inoremap <C-j> <C-o>gj
 inoremap <C-k> <C-o>gk
 inoremap <C-l> <C-o>a
 """"""""""""
-
-"""""""""
-" Theme "
-"""""""""
-syntax enable
-set background=light
-colorscheme kalisi
-
-hi TabLineFill cterm=none ctermfg=white ctermbg=lightgrey
-hi TabLine     cterm=none ctermfg=white ctermbg=grey
-hi TabLineSel  cterm=none ctermfg=white ctermbg=darkgrey
-"""""""""""
-" Plugins "
-"""""""""""
-call plug#begin('~/.vim/plugged')
-
-Plug 'junegunn/vim-easy-align'
-nmap ga <Plug>(EasyAlign)
-xmap ga <Plug>(EasyAlign)
-
-Plug 'terryma/vim-multiple-cursors'
-Plug 'tpope/vim-commentary'
-
-call plug#end()
-"""""""""""
