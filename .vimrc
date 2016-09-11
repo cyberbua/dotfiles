@@ -3,13 +3,13 @@
 """""""""""
 set ignorecase
 set smartcase
-set nu
+set number
 set tabstop=4
 set wrap
 set linebreak
 set hlsearch
 set incsearch
-set so=7
+set scrolloff=8
 set autoindent
 set shiftwidth=4
 set guioptions-=m  "menu bar
@@ -18,6 +18,7 @@ set guioptions-=r  "scrollbar
 set timeoutlen=1000 ttimeoutlen=0
 set clipboard=unnamedplus
 set showtabline=2
+set laststatus=2
 """""""""""
 
 """""""""""
@@ -32,6 +33,10 @@ xmap ga <Plug>(EasyAlign)
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'rakr/vim-one'
+
+Plug 'vim-airline/vim-airline'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
 call plug#end()
 """""""""""
@@ -49,7 +54,6 @@ endif
 syntax on
 set background=dark
 colorscheme one
-set termguicolors
 """""""""
 
 """"""""""""
