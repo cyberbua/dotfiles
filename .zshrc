@@ -114,10 +114,6 @@ bindkey '\ei' fzf-locate-widget
 # auto reload completion for new programs
 zstyle ':completion:*' rehash true
 
-if [ -e /usr/share/terminfo/x/xterm-256color ] && [ "$COLORTERM" = "xfce4-terminal" ]; then
-    export TERM='xterm-256color'
-fi
-
 export EDITOR='vim'
 export PKGDEST="/var/cache/pacman/pkg/aur"
 export KEYTIMEOUT=1

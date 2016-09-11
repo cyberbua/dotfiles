@@ -117,7 +117,7 @@ super + button{4,5}
 
 # open termianl
 super + Return
-	xfce4-terminal
+	termite
 
 # open drop-down terminal
 super + {asciicircum,ctrl + Return}

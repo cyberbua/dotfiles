@@ -1,0 +1,35 @@
+[options]
+font = Droid Sans Mono Dotted for Powerline 10
+scrollback_lines = 10000
+audible_bell = false
+allow_bold = true
+dynamic_title = true
+cursor_blink = off
+cursor_shape = block
+mouse_autohide = true
+icon_name = terminal
+scroll_on_output = false
+scroll_on_keystroke = true
+search_wrap = true
+
+[colors]
+foreground = #EDEDED
+foreground_bold = #ffffff
+background = rgba(00, 32, 46, 0.8)
+
+color0 = #00586E
+color1 = #EB1E1E
+color2 = #04C800
+color3 = #FFF01B
+color4 = #4694DB
+color5 = #C363D2
+color6 = #00B6C2
+color7 = #CACACA
+color8 = #5A5A5A
+color9 = #EB5454
+color10 = #8BE654
+color11 = #FFF288
+color12 = #7BC9FF
+color13 = #CF89DB
+color14 = #34E2E2
+color15 = #EEEEEC
