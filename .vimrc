@@ -59,9 +59,9 @@ set spellfile=~/.vim/spell/custom.utf-8.add
 set spelllang=de,en
 set complete+=kspell
 autocmd FileType latex,tex,md,markdown setlocal spell 
-" ignor single chars
-autocmd FileType latex,tex,md,markdown syn match SingleChar '\<\A*\a\A*\>' contains=@NoSpell
-"syn match CamelCase '\v(<\u\i*>)+' contains=@NoSpell
+
+" dont check acronyms | single char words | words with numbers
+autocmd FileType latex,tex,md,markdown syn match NoSpell '\<\S\+\u\+\S*\>\|\<\S\>\|\<\S*\d\+\S*\>' contains=@NoSpell
 """"""""""""
 
 """"""""""""
