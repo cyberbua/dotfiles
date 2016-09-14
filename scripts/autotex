@@ -8,9 +8,6 @@ function mkpdf() {
 	done
 }
 
-# starts atom in current directory
-atom .
-
 # start mkpdf() and saves its PIID
 mkpdf & mkpdf_pid=$!
 
