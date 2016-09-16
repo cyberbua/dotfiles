@@ -20,7 +20,7 @@ install() {
 	IGNORE="linux reiserfsprogs xfsprogs jfsutils cryptsetup lvm2 device-mapper usbutils mdadm pciutils licenses s-nail gettext netctl dhcpcd texinfo pcmciautils man-db perl"
 	PKG="$(join -v 1 <(pacman -Sgq base | sort) <(echo $IGNORE | tr " " "\n" | sort))"
 	ADDPKG="sudo"
-	pacstrap -cd $1 $PKG $ADDPKG --needed --assume-installed perl && touch $1/installed
+	pacstrap -cdG $1 $PKG $ADDPKG --needed --assume-installed perl && touch $1/installed
 }
 
 configure() {
