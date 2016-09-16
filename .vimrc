@@ -21,6 +21,36 @@ set showtabline=2
 set laststatus=2
 """""""""""
 
+""""""""""""
+" Mappings "
+""""""""""""
+" comma as leader
+let mapleader=","
+
+"disable the damn arrow keys
+noremap <Up>    <Nop>
+noremap <Down>  <Nop>
+noremap <Left>  <Nop>
+noremap <Right> <Nop>
+
+" tab navigation
+noremap <C-h> gT
+noremap <C-l> gt
+
+" search using space
+map <space> /
+
+" Treat long lines as break lines (useful when moving around in them)
+map j gj
+map k gk
+
+" move in insert mode
+inoremap <C-h> <C-o>h
+inoremap <C-j> <C-o>gj
+inoremap <C-k> <C-o>gk
+inoremap <C-l> <C-o>a
+""""""""""""
+
 """""""""""
 " Plugins "
 """""""""""
@@ -34,9 +64,16 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'rakr/vim-one'
 
+Plug 'scrooloose/nerdtree'
+map <leader>t :NERDTreeToggle %<CR>
+
 Plug 'vim-airline/vim-airline'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+let g:vim_markdown_folding_disabled = 1
 
 call plug#end()
 """""""""""
@@ -66,34 +103,4 @@ autocmd FileType latex,tex,md,markdown setlocal spell
 
 " dont check acronyms | single char words | words with numbers
 autocmd FileType latex,tex,md,markdown syn match NoSpell '\<\S\+\u\+\S*\>\|\<\S\>\|\<\S*\d\+\S*\>' contains=@NoSpell
-""""""""""""
-
-""""""""""""
-" Mappings "
-""""""""""""
-" comma as leader
-let mapleader=","
-
-"disable the damn arrow keys
-noremap <Up>    <Nop>
-noremap <Down>  <Nop>
-noremap <Left>  <Nop>
-noremap <Right> <Nop>
-
-" tab navigation
-noremap <C-h> gT
-noremap <C-l> gt
-
-" search using space
-map <space> /
-
-" Treat long lines as break lines (useful when moving around in them)
-map j gj
-map k gk
-
-" move in insert mode
-inoremap <C-h> <C-o>h
-inoremap <C-j> <C-o>gj
-inoremap <C-k> <C-o>gk
-inoremap <C-l> <C-o>a
 """"""""""""
