@@ -1,20 +1,38 @@
 #!/bin/bash
-DOCNAME="${1%.*}"
 
-# remakes pdf if .tex files change
-function mkpdf() {
-	while inotifywait -r -qq -e modify -e create -e delete -e move --includei ".*\.tex" .; do
+# change working directory 
+cd $(dirname $1)
+
+# save basnmae without extension
+BASE=$(basename $1)
+DOCNAME="${BASE%.*}"
+
+# recompile pdf if .tex files change
+mkpdf() {
+	while inotifywait --recursive -e modify -e create -e delete -e move --includei ".*\.tex$" .; do
 		rubber -d $DOCNAME
 	done
 }
 
-# start mkpdf() and saves its PIID
+kill_mkpdf() {
+	# when evince exits, kill mkpdf and clean directory
+	kill $mkpdf_pid
+	rubber --clean $DOCNAME
+	[[ -f $DOCNAME.ent ]] && rm $DOCNAME.ent
+	exit 0
+}
+
+# trap ctrl-c and call ctrl_c() to close cleanly
+trap ctrl_c INT
+ctrl_c() {
+	kill_mkpdf
+}
+
+# start mkpdf() and save its PID
 mkpdf & mkpdf_pid=$!
 
 # starts evince pdf reader
 evince $DOCNAME.pdf
 
-# when evince exits, kill mkpdf and clean directory
-kill $mkpdf_pid
-rubber --clean $DOCNAME
-rm -f $DOCNAME.ent
+# kill everything when evince dies
+kill_mkpdf
