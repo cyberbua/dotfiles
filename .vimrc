@@ -40,6 +40,9 @@ noremap <C-l> gt
 " search using space
 map <space> /
 
+" clear search highlighting
+nnoremap <esc> :nohlsearch<return><esc>
+
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
@@ -62,6 +65,7 @@ xmap ga <Plug>(EasyAlign)
 
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
+Plug 'jiangmiao/auto-pairs'
 Plug 'rakr/vim-one'
 
 Plug 'scrooloose/nerdtree'
@@ -91,6 +95,7 @@ endif
 syntax on
 set background=dark
 colorscheme one
+hi MatchParen ctermfg=16 ctermbg=168 guifg=#e06c75 guibg=#282c34
 """""""""
 
 """"""""""""
