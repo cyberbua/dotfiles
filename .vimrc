@@ -40,8 +40,9 @@ noremap <C-l> gt
 " search using space
 map <space> /
 
-" clear search highlighting
-nnoremap <esc> :nohlsearch<return><esc>
+" Clear highlighting on escape in normal mode
+nnoremap <silent> <esc> :nohlsearch<return><esc>
+nnoremap <esc>^[ <esc>^[
 
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
