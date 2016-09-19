@@ -82,8 +82,8 @@ alias -r commit='git commit -am "unimportant changes"'
 # FUNCTIONS #
 #############
 # print disk usage of a directory
-function duf() { 
-	cd $1; du -sch * | sort -h; 
+function duf() {
+	cd $1; du -sch * | sort -h;
 	cd - > /dev/null
 }
 #############
@@ -127,6 +127,8 @@ setopt dotglob
 setopt AUTO_PUSHD
 setopt PUSHD_TO_HOME
 
+[[ -n $COLORTERM ]] && export TERM=xterm-256color
+
 # restore Ctrl-s after command exits
 ttyctl -f
 ##################
@@ -139,7 +141,6 @@ fi
 
 # auto tmux attach
 if [ "$TERM" != 'screen' ] && [ -n "$SSH_TTY" ]; then
-	export TERM=xterm-256color # TODO
 	tmux has-session && exec tmux attach || exec tmux
 fi
 
