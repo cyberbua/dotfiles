@@ -9,7 +9,7 @@ DOCNAME="${BASE%.*}"
 
 # recompile pdf if .tex files change
 mkpdf() {
-	while inotifywait --recursive -e modify -e create -e delete -e move --includei ".*\.tex$" .; do
+	while inotifywait -qq --recursive -e modify -e create -e delete -e move --includei ".*\.tex$" .; do
 		rubber -d $DOCNAME
 	done
 }
