@@ -105,8 +105,8 @@ hi MatchParen ctermfg=16 ctermbg=168 guifg=#e06c75 guibg=#282c34
 set spellfile=~/.vim/spell/custom.utf-8.add
 set spelllang=de,en
 set complete+=kspell
-autocmd FileType latex,tex,md,markdown setlocal spell 
+autocmd FileType latex,tex,plaintex,md,markdown setlocal spell 
 
 " dont check acronyms | single char words | words with numbers
-autocmd FileType latex,tex,md,markdown syn match NoSpell '\<\S\+\u\+\S*\>\|\<\S\>\|\<\S*\d\+\S*\>' contains=@NoSpell
+autocmd FileType latex,tex,plaintex,md,markdown syn match NoSpell '\<\S\+\u\+\S*\>\|\<\S\>\|\<\S*\d\+\S*\>' contains=@NoSpell
 """"""""""""
