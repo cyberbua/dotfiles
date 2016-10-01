@@ -32,7 +32,9 @@ configure() {
 	# create config file
 	echo -e "# See 'man systemd.nspawn' for all available options.\n" > $1.nspawn
 	echo -e "[Exec]\nBoot=yes" >> $1.nspawn
-	echo -e "[Files]\nBindReadOnly=/var/cache/pacman/pkg" >> $1.nspawn
+	echo -e "Environment=DISPLAY=$DISPLAY" >> $1.nspawn
+	echo -e "\n[Files]\nBindReadOnly=/var/cache/pacman/pkg" >> $1.nspawn
+	echo -e "Bind=/tmp/.X11-unix" >> $1.nspawn
 
 	# set max journal size
 	grep -q "^SystemMaxUse" $1/etc/systemd/journald.conf || 
