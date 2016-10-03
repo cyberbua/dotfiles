@@ -88,7 +88,7 @@ spawn() {
 # since the setting=trusted option must be used, the .nspawn file doesn't override the defaults.
 # The only unwanted default is removed here
 [[ -f /etc/systemd/system/systemd-nspawn@.service ]] ||
-	sed 's/--network-veth //g;s/override/trusted/' /lib/systemd/system/systemd-nspawn@.service > \
+	sed 's/--network-veth //;s/-U //;s/override/trusted/' /lib/systemd/system/systemd-nspawn@.service > \
 	/etc/systemd/system/systemd-nspawn@.service
 
 
