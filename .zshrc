@@ -43,6 +43,7 @@ alias -r sudo='sudo '
 alias -g gp='| grep -i'
 alias -g lss='| less'
 alias -r l='ls -lah --group-directories-first'
+alias -r ll='ls -lh --group-directories-first'
 
 alias -r rf='rm -rf'
 alias -r mkdir='mkdir -p'
