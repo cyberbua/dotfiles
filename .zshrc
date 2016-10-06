@@ -5,9 +5,9 @@ export ZSH=$HOME/.oh-my-zsh
 
 # Themes
 if [ -z $DISPLAY ]; then
-	ZSH_THEME="gentoo"
+    ZSH_THEME="gentoo"
 else
-	ZSH_THEME="agnoster-mod"
+    ZSH_THEME="agnoster-mod"
 fi
 
 DISABLE_AUTO_UPDATE="true"
@@ -84,8 +84,8 @@ alias -r commit='git commit -am "unimportant changes"'
 #############
 # print disk usage of a directory
 function duf() {
-	cd $1; du -sch * | sort -h;
-	cd - > /dev/null
+    cd $1; du -sch * | sort -h;
+    cd - > /dev/null
 }
 #############
 
@@ -101,11 +101,11 @@ bindkey '^F' fzf-file-widget
 
 # ALT-I - Paste the selected entry from locate output into the command line
 fzf-locate-widget() {
-	local selected
-	if selected=$(locate / | fzf); then
-		LBUFFER=$LBUFFER$selected
-	fi
-	zle redisplay
+    local selected
+    if selected=$(locate / | fzf); then
+        LBUFFER=$LBUFFER$selected
+    fi
+    zle redisplay
 }
 zle     -N    fzf-locate-widget
 bindkey '\ei' fzf-locate-widget
@@ -136,12 +136,12 @@ ttyctl -f
 
 # warn me if more than one user is logged in
 if [ $(who|wc -l) -gt 1 ]; then
-	echo -e "Warning! More than one user logged in:"
-	who
+    echo -e "Warning! More than one user logged in:"
+    who
 fi
 
 # auto tmux attach
 if [ "$TERM" != 'screen' ] && [ -n "$SSH_TTY" ]; then
-	tmux has-session && exec tmux attach || exec tmux
+    tmux has-session && exec tmux attach || exec tmux
 fi
 
