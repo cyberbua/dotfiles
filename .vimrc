@@ -4,7 +4,6 @@
 set ignorecase
 set smartcase
 set number
-set tabstop=4
 set wrap
 set linebreak
 set hlsearch
@@ -19,6 +18,14 @@ set timeoutlen=1000 ttimeoutlen=0
 set clipboard=unnamedplus
 set showtabline=2
 set laststatus=2
+
+" Indentation
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set list listchars=trail:•
+match ErrorMsg '\s\+$'  " highlight leading spaces
 """""""""""
 
 """"""""""""
@@ -105,7 +112,7 @@ hi MatchParen ctermfg=16 ctermbg=168 guifg=#e06c75 guibg=#282c34
 set spellfile=~/.vim/spell/custom.utf-8.add
 set spelllang=de,en
 set complete+=kspell
-autocmd FileType latex,tex,plaintex,md,markdown setlocal spell 
+autocmd FileType latex,tex,plaintex,md,markdown setlocal spell
 
 " dont check acronyms | single char words | words with numbers
 autocmd FileType latex,tex,plaintex,md,markdown syn match NoSpell '\<\S\+\u\+\S*\>\|\<\S\>\|\<\S*\d\+\S*\>' contains=@NoSpell
