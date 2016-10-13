@@ -55,4 +55,5 @@ xfce4-power-manager
 xautolock -locker blurlock -time 3 -corners 0-00 &
 xset s off -dpms	# disbale screen blanking (already handled by blurlock)
 export QT_STYLE_OVERRIDE=GTK+	# use GTK theme for Qt-Apps
+xhost +local:   # allow local containers to access X
 #################
