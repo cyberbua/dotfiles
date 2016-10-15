@@ -25,7 +25,7 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set list listchars=trail:•
-match ErrorMsg '\s\+$'  " highlight leading spaces
+hi SpecialKey ctermfg=66 guifg=#E06C65
 """""""""""
 
 """"""""""""
