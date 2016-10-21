@@ -8,53 +8,53 @@
 
 # close window
 super + q
-	bspc node -c
+    bspc node -c
 
 # kill window
 super + shift + k
-	bspc node -k
+    bspc node -k
 
 # change window state
 super + {t,shift + t,f,a}
-	bspc node -t "~{tiled,pseudo_tiled,floating,fullscreen}"
+    bspc node -t "~{tiled,pseudo_tiled,floating,fullscreen}"
 
 # toggle window flags
-super + {shift + l,s}
-	bspc node -g {locked,sticky}
+super + s
+    bspc node -g sticky
 
 # slelect last window on desktop
 alt + Tab
-	bspc node -f last.local
+    bspc node -f last.local
 
 # move focus to seleted direction
 super + {h,j,k,l}
-	bspc node -f {west,south,north,east}
+    bspc node -f {west,south,north,east}
 
 super + {Left,Down,Up,Right}
     bspc node -f {west,south,north,east}
 
 # preselect splitting area
 super + ctrl + {h,j,k,l}
-	bspc node -p {west,south,north,east}
+    bspc node -p {west,south,north,east}
 
 super + ctrl + {Left,Down,Up,Right}
     bspc node -p {west,south,north,east}
 
 # cancel preseletion
 super + Escape
-	bspc node -p cancel
+    bspc node -p cancel
 
 # flip the tree
 super + ctrl + {_,shift +} f
-	bspc node @focused:/ -F {vertical,horizontal}
+    bspc node @focused:/ -F {vertical,horizontal}
 
 # rotate the tree
 super + ctrl + r
-	bspc node @focused:/ -R 90
+    bspc node @focused:/ -R 90
 
 # balance
 super + b
-	bspc node @focused:/ -B
+    bspc node @focused:/ -B
 
 #
 # DESKTOP
@@ -62,15 +62,19 @@ super + b
 
 # switch to workspace 1-9, move Window
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} ^{1-9,10}
+    bspc {desktop -f,node -d} ^{1-9,10}
 
-# switch to last/next workspace
-super + {_,ctrl + } Tab
-	bspc desktop -f {last,next}
+# select previous/next desktop
+super + shift + {h,l}
+    bspc desktop -f {prev,next}
+
+# switch to last desktop
+super + Tab
+    bspc desktop -f last
 
 # monocle
 super + w
-	bspc desktop -l next
+    bspc desktop -l next
 
 
 #
@@ -79,7 +83,7 @@ super + w
 
 # resize window gap
 super + {o,i}
-	bspc config -d focused window_gap $((`bspc config -d focused window_gap` {+,-} 4))
+    bspc config -d focused window_gap $((`bspc config -d focused window_gap` {+,-} 4))
 
 
 #
@@ -87,28 +91,28 @@ super + {o,i}
 #
 
 ~button1
-	bspc pointer -g focus
+    bspc pointer -g focus
 
 super + button{1-3}
-	bspc pointer -g {move,resize_side,resize_corner}
+    bspc pointer -g {move,resize_side,resize_corner}
 
 super + !button{1-3}
-	bspc pointer -t %i %i
+    bspc pointer -t %i %i
 
 super + @button{1-3}
-	bspc pointer -u
+    bspc pointer -u
 
 super + shift + button1
-	bspc pointer -g resize_corner
+    bspc pointer -g resize_corner
 
 super + !{_,shift + }button1
-	bspc pointer -t %i %i
+    bspc pointer -t %i %i
 
 super + @{_,shift + }button1
-	bspc pointer -u
+    bspc pointer -u
 
 super + button{4,5}
-	bspc config -d focused window_gap $((`bspc config -d focused window_gap` {+,-} 5))
+    bspc config -d focused window_gap $((`bspc config -d focused window_gap` {+,-} 5))
 
 
 ##########################
@@ -117,48 +121,48 @@ super + button{4,5}
 
 # open termianl
 super + Return
-	termite
+    termite
 
 # open drop-down terminal
-super + {asciicircum,ctrl + Return}
-	xfce4-terminal --drop-down
+super + asciicircum
+    tdrop -a -w 80% -x 10% -y 20 termite
 
 # open application launcher
 super + d
-	xfce4-popup-whiskermenu
+    xfce4-popup-whiskermenu
 
 # dmenu based calculator
 super + c
-	bspc rule -a Xfce4-terminal -o state=floating; xfce4-terminal --geometry=64x24 -x rlwrap -H $HOME/.cache/maxima_history -s 1000 maxima
+    bspc rule -a Xfce4-terminal -o state=floating; xfce4-terminal --geometry=64x24 -x rlwrap -H $HOME/.cache/maxima_history -s 1000 maxima
 
 # open file browser
 super + {e,n}
-	{thunar,nautilus -w}
+    {thunar,nautilus -w}
 
 # lock screen, lock and suspend
 super + {_,alt +} space
-	blurlock {_,& sleep 2; systemctl suspend}
+    blurlock {_,& sleep 2; systemctl suspend}
 
 # logout
 super + alt + Escape
-	bspc quit
+    bspc quit
 
 # Strg + Alt = AltGr
 ctrl + alt + {7,8,9,0}
-	xvkbd -xsendevent -text {'\{','[',']','\}'}
+    xvkbd -xsendevent -text {'\{','[',']','\}'}
 
 # reload sxhkd configuration files:
 super + ctrl + Escape
-	pkill -USR1 -x sxhkd
+    pkill -USR1 -x sxhkd
 
 # screenshots
 {_,super,super + ctrl} + Print
-	xfce4-screenshooter --sync -{f,w,r}
+    xfce4-screenshooter --sync -{f,w,r}
 
 # display settings
 super + p
-	xfce4-display-settings --minimal
+    xfce4-display-settings --minimal
 
 # mute/unmute sound
 super + {m,u}
-	MODE="{_,un}mute"; amixer -c1 set Master $MODE; amixer -c1 set Speaker $MODE
+    MODE="{_,un}mute"; amixer -c1 set Master $MODE; amixer -c1 set Speaker $MODE
