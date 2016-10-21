@@ -10,7 +10,7 @@ DOCNAME="${BASE%.*}"
 # recompile pdf if .tex files change
 mkpdf() {
     while inotifywait -qq --recursive -e modify -e create -e delete -e move --includei ".*\.tex$|.*\.bib$" .; do
-       latexmk -silent -xelatex $DOCNAME
+       rubber -d -m xelatex $DOCNAME
     done
 }
 
