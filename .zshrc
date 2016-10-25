@@ -74,6 +74,9 @@ alias -r histclean='tac ~/.zsh_history | sort -t ";" -k 2 -u | sort -o ~/.zsh_hi
 # commit all changes with generic commit message for minor changes
 alias -r commit='git commit -am "unimportant changes"'
 
+# user other TERM over ssh
+alias -r ssh='TERM=xterm-256color ssh'
+
 # Use truecolor in tmux if possible TODO
 [[ "$COLORTERM" == truecolor ]] && alias -r tmux="env TERM=xterm-256color tmux"
 ##################
@@ -128,7 +131,13 @@ setopt dotglob
 setopt AUTO_PUSHD
 setopt PUSHD_TO_HOME
 
-[[ -n $COLORTERM ]] && export TERM=xterm-256color
+# [[ -n $COLORTERM ]] && export TERM=xterm-256color
+
+# set current dir for termite
+if [[ $TERM == xterm-termite ]]; then
+    . /etc/profile.d/vte.sh
+    __vte_osc7
+fi
 
 # restore Ctrl-s after command exits
 ttyctl -f
