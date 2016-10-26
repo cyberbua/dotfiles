@@ -31,6 +31,7 @@ bspc rule -a Xfce4-panel state=floating
 bspc rule -a Wrapper-1.0 state=floating
 bspc rule -a gnuplot_qt state=floating
 bspc rule -a Gnuplot state=floating
+bspc rule -a Gpick state=floating
 
 # DESKTOP
 bspc desktop 2 -l monocle
