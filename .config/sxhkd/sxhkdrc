@@ -8,73 +8,71 @@
 
 # close window
 super + q
-    bspc node -c
+    bspc node --close
 
 # kill window
-super + shift + k
-    bspc node -k
+super + shift + q
+    bspc node --kill
 
 # change window state
 super + {t,shift + t,f,a}
-    bspc node -t "~{tiled,pseudo_tiled,floating,fullscreen}"
+    bspc node --state "~{tiled,pseudo_tiled,floating,fullscreen}"
 
 # toggle window flags
 super + s
-    bspc node -g sticky
+    bspc node --flag sticky
 
 # slelect last window on desktop
 alt + Tab
-    bspc node -f last.local
+    bspc node --focus last.local
 
 # move focus to seleted direction
 super + {h,j,k,l}
-    bspc node -f {west,south,north,east}
-
-super + {Left,Down,Up,Right}
-    bspc node -f {west,south,north,east}
+    bspc node --focus {west,south,north,east}
 
 # preselect splitting area
 super + ctrl + {h,j,k,l}
-    bspc node -p {west,south,north,east}
+    bspc node --presel-dir "~{west,south,north,east}"
 
-super + ctrl + {Left,Down,Up,Right}
-    bspc node -p {west,south,north,east}
+# swap windows
+super + shift + {h,j,k,l}
+    bspc node --swap {west,south,north,east}
 
-# cancel preseletion
-super + Escape
-    bspc node -p cancel
+# move Window to workspace
+super + shift + {1-9,0}
+    bspc node --to-desktop ^{1-9,10}
 
 # flip the tree
 super + ctrl + {_,shift +} f
-    bspc node @focused:/ -F {vertical,horizontal}
+    bspc node @focused:/ --flip {vertical,horizontal}
 
 # rotate the tree
 super + ctrl + r
-    bspc node @focused:/ -R 90
+    bspc node @focused:/ --rotate 90
 
 # balance
 super + b
-    bspc node @focused:/ -B
+    bspc node @focused:/ --balance
 
 #
 # DESKTOP
 #
 
-# switch to workspace 1-9, move Window
-super + {_,shift + }{1-9,0}
-    bspc {desktop -f,node -d} ^{1-9,10}
+# switch to workspace 1-9
+super + {1-9,0}
+    bspc desktop --focus ^{1-9,10}
 
 # select previous/next desktop
-super + shift + {h,l}
-    bspc desktop -f {prev,next}
+super + shift + {Left,Right}
+    bspc desktop --focus {prev,next}
 
 # switch to last desktop
 super + Tab
-    bspc desktop -f last
+    bspc desktop --focus last
 
 # monocle
 super + w
-    bspc desktop -l next
+    bspc desktop --layout next
 
 
 #
@@ -83,36 +81,16 @@ super + w
 
 # resize window gap
 super + {o,i}
-    bspc config -d focused window_gap $((`bspc config -d focused window_gap` {+,-} 4))
+    bspc config -d focused window_gap $((`bspc config -d focused window_gap` {+,-} 2))
 
 
 #
 # MOUSE
 #
 
-~button1
-    bspc pointer -g focus
-
-super + button{1-3}
-    bspc pointer -g {move,resize_side,resize_corner}
-
-super + !button{1-3}
-    bspc pointer -t %i %i
-
-super + @button{1-3}
-    bspc pointer -u
-
-super + shift + button1
-    bspc pointer -g resize_corner
-
-super + !{_,shift + }button1
-    bspc pointer -t %i %i
-
-super + @{_,shift + }button1
-    bspc pointer -u
-
-super + button{4,5}
-    bspc config -d focused window_gap $((`bspc config -d focused window_gap` {+,-} 5))
+# resize window gap
+super + shift + button{4,5}
+    bspc config -d focused window_gap $((`bspc config -d focused window_gap` {+,-} 1))
 
 
 ##########################
