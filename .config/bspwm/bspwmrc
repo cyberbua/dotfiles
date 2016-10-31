@@ -14,16 +14,14 @@ bspc config split_ratio 0.5
 bspc config borderless_monocle true
 bspc config gapless_monocle true
 bspc config focus_by_distance true
+bspc config click_to_focus true
 
 # COLOR
-bspc config focused_border_color	"#00A2FF"
+bspc config focused_border_color    "#00A2FF"
 bspc config presel_feedback_color   "#00A2FF"
 
-
-bspc monitor -d 1 2 3 4 5 6 7 8 9
-
 # RULES
-bspc rule -a Firefox locked=on #not working
+bspc rule -a Firefox locked=on
 bspc rule -a Xfce4-mixer state=floating
 bspc rule -a telegram-desktop state=floating
 bspc rule -a Simplescreenrecorder state=floating
@@ -35,6 +33,7 @@ bspc rule -a Gpick state=floating
 
 # DESKTOP
 bspc desktop 2 -l monocle
+bspc monitor -d 1 2 3 4 5 6 7 8 9
 #################
 
 
@@ -43,7 +42,7 @@ bspc desktop 2 -l monocle
 #################
 setxkbmap -option 'caps:ctrl_modifier' # caps = ctrl
 xcape -e 'Caps_Lock=Escape' # ctrl = esc when tapped on its own
-xsetroot -cursor_name left_ptr	# set the default mouse cursor
+xsetroot -cursor_name left_ptr  # set the default mouse cursor
 feh --bg-scale ~/.config/bspwm/wallpaper    # set the wallpaper
 sxhkd & # start the hotkey daemon
 nm-applet &
@@ -54,7 +53,8 @@ xfce4-panel -d &
 xfce4-power-manager
 /usr/bin/start-pulseaudio-x11 &
 xautolock -locker blurlock -time 3 -corners 0-00 &
-xset s off -dpms	# disbale screen blanking (already handled by blurlock)
-export QT_STYLE_OVERRIDE=GTK+	# use GTK theme for Qt-Apps
+xset s off -dpms    # disbale screen blanking (already handled by blurlock)
+export QT_STYLE_OVERRIDE=GTK+   # use GTK theme for Qt-Apps
 xhost +local:   # allow local containers to access X
+xset r rate 200 30  # key auto-repeat   # key auto-repeat
 #################
