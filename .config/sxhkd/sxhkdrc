@@ -103,13 +103,13 @@ super + Return
 
 # open drop-down terminal
 super + asciicircum
-    tdrop -a -w 80% -x 10% -y 20 termite
+    drop
 
 # open application launcher
 super + d
     xfce4-popup-whiskermenu
 
-# dmenu based calculator
+# maxima in floating terminal
 super + c
     bspc rule -a Xfce4-terminal -o state=floating; xfce4-terminal --geometry=64x24 -x rlwrap -H $HOME/.cache/maxima_history -s 1000 maxima
 

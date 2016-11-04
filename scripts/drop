@@ -1,0 +1,23 @@
+#!/bin/bash
+spawndrop() {
+    bspc rule -a Termite -o state=floating
+    termite --geometry=1537x486 &
+    sleep 0.5
+    bspc query -N -n focused > /tmp/drop
+}
+
+drop() {
+    if bspc query -N -n $(cat /tmp/drop).hidden; then
+        bspc node $(cat /tmp/drop).hidden -g hidden=off
+        bspc node $(cat /tmp/drop) --to-desktop focused
+        bspc node $(cat /tmp/drop) --focus
+    else
+        bspc node $(cat /tmp/drop).!hidden -g hidden=on
+    fi
+}
+
+if [[ -f /tmp/drop ]] && bspc query -N -n $(cat /tmp/drop); then
+    drop
+else
+    spawndrop
+fi
