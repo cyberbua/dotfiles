@@ -32,19 +32,19 @@ bspc rule -a Gnuplot state=floating
 bspc rule -a Gpick state=floating
 
 # DESKTOP
-bspc desktop 2 -l monocle
 bspc monitor -d 1 2 3 4 5 6 7 8 9
+bspc desktop 2 -l monocle
 #################
 
 
 #################
 #   AUTOSTART   #
 #################
-setxkbmap -option 'caps:ctrl_modifier' # caps = ctrl
-xcape -e 'Caps_Lock=Escape' # ctrl = esc when tapped on its own
-xsetroot -cursor_name left_ptr  # set the default mouse cursor
-feh --bg-scale ~/.config/bspwm/wallpaper    # set the wallpaper
-sxhkd & # start the hotkey daemon
+setxkbmap -option 'caps:ctrl_modifier'   # caps = ctrl
+xcape -e 'Caps_Lock=Escape'              # ctrl = esc when tapped on its own
+xsetroot -cursor_name left_ptr           # set the default mouse cursor
+feh --bg-scale ~/.config/bspwm/wallpaper # set the wallpaper
+sxhkd &                                  # start the hotkey daemon
 nm-applet &
 compton -b
 redshift -l 16:48 -t 6500:4500 &
@@ -53,8 +53,8 @@ xfce4-panel -d &
 xfce4-power-manager
 /usr/bin/start-pulseaudio-x11 &
 xautolock -locker blurlock -time 3 -corners 0-00 &
-xset s off -dpms    # disbale screen blanking (already handled by blurlock)
-export QT_STYLE_OVERRIDE=GTK+   # use GTK theme for Qt-Apps
-xhost +local:   # allow local containers to access X
-xset r rate 200 30  # key auto-repeat   # key auto-repeat
+xset s off -dpms                         # disbale screen blanking (already handled by blurlock)
+export QT_STYLE_OVERRIDE=GTK+            # use GTK theme for Qt-Apps
+xhost +local:                            # allow local containers to access X
+xset r rate 200 30                       # key auto-repeat   # key auto-repeat
 #################
