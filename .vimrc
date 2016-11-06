@@ -34,7 +34,7 @@ hi SpecialKey ctermfg=66 guifg=#E06C65
 " comma as leader
 let mapleader=","
 
-"disable the damn arrow keys
+" disable the damn arrow keys
 noremap <Up>    <Nop>
 noremap <Down>  <Nop>
 noremap <Left>  <Nop>
@@ -54,12 +54,6 @@ nnoremap <esc>^[ <esc>^[
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
-
-" move in insert mode
-inoremap <C-h> <C-o>h
-inoremap <C-j> <C-o>gj
-inoremap <C-k> <C-o>gk
-inoremap <C-l> <C-o>a
 """"""""""""
 
 """""""""""
