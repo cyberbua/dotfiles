@@ -2,7 +2,8 @@
 spawndrop() {
     bspc rule -a Termite -o state=floating
     termite --geometry=1537x486 &
-    sleep 0.5
+    sleep 0.2
+    bspc node --move 0 -272
     bspc query -N -n focused > /tmp/drop
 }
 
