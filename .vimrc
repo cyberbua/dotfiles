@@ -18,6 +18,7 @@ set timeoutlen=1000 ttimeoutlen=0
 set clipboard=unnamedplus
 set showtabline=2
 set laststatus=2
+set autoread
 
 " Indentation
 set tabstop=4
