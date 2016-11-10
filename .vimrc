@@ -48,6 +48,9 @@ noremap <C-l> gt
 " search using space
 map <space> /
 
+" Q to run the q macro
+noremap Q @q
+
 " Clear highlighting on escape in normal mode
 nnoremap <silent> <esc> :nohlsearch<return><esc>
 nnoremap <esc>^[ <esc>^[
