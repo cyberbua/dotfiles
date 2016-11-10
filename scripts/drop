@@ -13,11 +13,11 @@ drop() {
         bspc node $(cat /tmp/drop) --to-desktop focused
         bspc node $(cat /tmp/drop) --focus
     else
-        bspc node $(cat /tmp/drop).!hidden -g hidden=on
+        bspc node $(cat /tmp/drop).!hidden.floating -g hidden=on
     fi
 }
 
-if [[ -f /tmp/drop ]] && bspc query -N -n $(cat /tmp/drop); then
+if [[ -f /tmp/drop ]] && bspc query -N -n $(cat /tmp/drop).floating; then
     drop
 else
     spawndrop
