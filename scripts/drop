@@ -1,7 +1,7 @@
 #!/bin/bash
 spawndrop() {
     bspc rule -a Termite -o state=floating
-    (termite --geometry=1520x480+200+23; rm /tmp/drop) &
+    (termite --geometry=1522x482+199+23; rm /tmp/drop) &
     sleep 0.2
     bspc query -N -n focused > /tmp/drop
 }
