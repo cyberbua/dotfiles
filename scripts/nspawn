@@ -4,77 +4,80 @@
 # security hardening (network especially)
 
 pack() {
-	tar -cpC $1/..  ${1##*/} ${1##*/}.nspawn | $(command -v pigz || command -v gzip) > ${1##*/}.tgz
-	# change owner of archive if script was issued by a normal user via sudo
-	[[ -n "$SUDO_USER" ]] && chown $SUDO_USER ${1##*/}.tgz
-	exit
+    tar -cpC $1/..  ${1##*/} ${1##*/}.nspawn | $(command -v pigz || command -v gzip) > ${1##*/}.tgz
+    # change owner of archive if script was issued by a normal user via sudo
+    [[ -n "$SUDO_USER" ]] && chown $SUDO_USER ${1##*/}.tgz
+    exit
 }
 
 unpack() {
-	tar -xpf $1
-	exit
+    tar -xpf $1
+    exit
 }
 
 install() {
-	echo '[nspawn] installing...'
-	IGNORE="linux reiserfsprogs xfsprogs jfsutils cryptsetup lvm2 device-mapper usbutils mdadm pciutils licenses s-nail gettext netctl dhcpcd texinfo pcmciautils man-db perl"
-	PKG="$(join -v 1 <(pacman -Sgq base | sort) <(echo $IGNORE | tr " " "\n" | sort))"
-	ADDPKG="sudo bash-completion"
-	pacstrap -cd $1 $PKG $ADDPKG --needed --assume-installed perl && touch $1/installed
+    echo '[nspawn] installing...'
+    IGNORE="linux reiserfsprogs xfsprogs jfsutils cryptsetup lvm2 device-mapper usbutils mdadm pciutils licenses s-nail gettext netctl dhcpcd texinfo pcmciautils man-db perl"
+    PKG="$(join -v 1 <(pacman -Sgq base | sort) <(echo $IGNORE | tr " " "\n" | sort))"
+    ADDPKG="sudo bash-completion"
+    pacstrap -cd $1 $PKG $ADDPKG --needed --assume-installed perl && touch $1/installed
 }
 
 configure() {
-	echo '[nspawn] configuring...'
+    echo '[nspawn] configuring...'
 
-	# this var hold all config commands that have to run in a chroot
-	CHROOTCMD=""
+    # this var hold all config commands that have to run in a chroot
+    CHROOTCMD=""
 
-	# create config file
-	echo -e "# See 'man systemd.nspawn' for all available options.\n
+    # create config file
+    echo -e "# See 'man systemd.nspawn' for all available options.\n
 [Exec]
 Boot=yes
-Environment=\"DISPLAY=$DISPLAY\"
+#Environment=\"DISPLAY=$DISPLAY\"
 
 [Files]
 BindReadOnly=/var/cache/pacman/pkg
-Bind=/tmp/.X11-unix
+#Bind=/tmp/.X11-unix
 
 [Network]
 Private=no
 VirtualEthernet=no" > $1.nspawn
 
-	# set max journal size
-	grep -q "^SystemMaxUse" $1/etc/systemd/journald.conf ||
-		echo "SystemMaxUse=50M" >> $1/etc/systemd/journald.conf
+    # set max journal size
+    grep -q "^SystemMaxUse" $1/etc/systemd/journald.conf ||
+        echo "SystemMaxUse=50M" >> $1/etc/systemd/journald.conf
 
-	# set pacman Color and VerbosePkgLists Options
-	sed -i '/^#Color/s/^#//' $1/etc/pacman.conf
-	sed -i '/^#VerbosePkgLists/s/^#//' $1/etc/pacman.conf
+    # set pacman Color and VerbosePkgLists Options
+    sed -i '/^#Color/s/^#//' $1/etc/pacman.conf
+    sed -i '/^#VerbosePkgLists/s/^#//' $1/etc/pacman.conf
 
-	# allow %wheel to run sudo
-	sed -i '/^# %wheel ALL=(ALL) ALL$/s/^# //' $1/etc/sudoers
+    # don't extract unnecessary files
+    sed -i '/^#NoExtract.*/ a NoExtract = usr/share/locale/[a-d,f-k,m-z]*' $1/etc/pacman.conf
 
-	# allow login from all ttys
-	sed -i '/ pam_securetty\.so$/s/^/#/' $1/etc/pam.d/login
+    # allow %wheel to run sudo
+    sed -i '/^# %wheel ALL=(ALL) ALL$/s/^# //' $1/etc/sudoers
 
-	# set locale
-	sed -i '/^#en_US.UTF-8 UTF-8/s/^#//' $1/etc/locale.gen
-	echo 'LANG=en_US.UTF-8' > $1/etc/locale.conf
-	CHROOTCMD+="locale-gen;"
+    # allow login from all ttys
+    sed -i '/ pam_securetty\.so$/s/^/#/' $1/etc/pam.d/login
 
-	# create user account (mainly used for compiling)
-	CHROOTCMD+="useradd -m -G wheel -s /bin/bash user;"
-	CHROOTCMD+="gpasswd -a user wheel;"
+    # set locale
+    sed -i '/^#en_US.UTF-8 UTF-8/s/^#//' $1/etc/locale.gen
+    echo 'LANG=en_US.UTF-8' > $1/etc/locale.conf
+    CHROOTCMD+="locale-gen;"
 
-	# chroot and run all commands that need to run natively
-	systemd-nspawn --settings=off --directory=$1 sh -c "$CHROOTCMD"
+    # create user account (mainly used for compiling)
+    CHROOTCMD+="useradd -m -G wheel -s /bin/bash user;"
+    CHROOTCMD+="gpasswd -a user wheel;"
 
-	touch $1/configured
+    # chroot and run all commands that need to run natively
+    systemd-nspawn --settings=off --directory=$1 sh -c "$CHROOTCMD"
+
+    touch $1/configured
 }
 
 spawn() {
-	echo '[nspawn] starting...'
-	systemd-nspawn --settings=trusted --directory=$1
+    echo '[nspawn] starting...'
+    systemd-nspawn --settings=trusted --directory=$1
 }
 
 
@@ -88,15 +91,15 @@ spawn() {
 # since the setting=trusted option must be used, the .nspawn file doesn't override the defaults.
 # The only unwanted default is removed here
 [[ -f /etc/systemd/system/systemd-nspawn@.service ]] ||
-	sed 's/--network-veth //;s/-U //;s/override/trusted/' /lib/systemd/system/systemd-nspawn@.service > \
-	/etc/systemd/system/systemd-nspawn@.service
+    sed 's/--network-veth //;s/-U //;s/override/trusted/' /lib/systemd/system/systemd-nspawn@.service > \
+    /etc/systemd/system/systemd-nspawn@.service
 
 
 if [[ -f $1/installed ]] && [[ -f $1/configured ]] && [[ -f $1.nspawn ]]; then
-	spawn $1
+    spawn $1
 else
-	mkdir -p $1 &&
-	([[ -f $1/installed ]] || install $1) &&
-	(([[ -f $1/configured ]] && [[ -f $1.nspawn ]]) || configure $1) &&
-	spawn $1
+    mkdir -p $1 &&
+    ([[ -f $1/installed ]] || install $1) &&
+    (([[ -f $1/configured ]] && [[ -f $1.nspawn ]]) || configure $1) &&
+    spawn $1
 fi
