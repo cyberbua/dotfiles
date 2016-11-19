@@ -9,7 +9,6 @@ set linebreak
 set hlsearch
 set incsearch
 set scrolloff=8
-set autoindent
 set shiftwidth=4
 set guioptions-=m  "menu bar
 set guioptions-=T  "toolbar
@@ -25,6 +24,8 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+set autoindent
+
 set list listchars=trail:•
 hi SpecialKey ctermfg=66 guifg=#E06C65
 """""""""""
@@ -71,6 +72,7 @@ xmap ga <Plug>(EasyAlign)
 
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
 Plug 'jiangmiao/auto-pairs'
 Plug 'rakr/vim-one'
 
