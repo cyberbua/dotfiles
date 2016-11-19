@@ -79,6 +79,9 @@ alias -r ssh='TERM=xterm-256color ssh'
 
 # Use truecolor in tmux if possible TODO
 [[ "$COLORTERM" == truecolor ]] && alias -r tmux="env TERM=xterm-256color tmux"
+
+# thefuck - Magnificent app which corrects your previous console command
+eval "$(thefuck --alias)"
 ##################
 
 
