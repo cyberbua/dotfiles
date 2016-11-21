@@ -17,8 +17,12 @@ set timeoutlen=1000 ttimeoutlen=0
 set clipboard=unnamedplus
 set showtabline=2
 set laststatus=2
-set autoread
 set cursorline
+set t_ut=   " fix background not redrawing
+
+" autoread on file change
+set autoread
+au CursorHold,CursorHoldI,InsertEnter * checktime
 
 " Indentation
 set tabstop=4
@@ -76,6 +80,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'jiangmiao/auto-pairs'
 Plug 'rakr/vim-one'
+Plug 'airblade/vim-gitgutter'
 
 Plug 'scrooloose/nerdtree'
 map <leader>t :NERDTreeToggle %<CR>
