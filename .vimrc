@@ -18,6 +18,7 @@ set clipboard=unnamedplus
 set showtabline=2
 set laststatus=2
 set autoread
+set cursorline
 
 " Indentation
 set tabstop=4
@@ -103,7 +104,8 @@ endif
 syntax on
 set background=dark
 colorscheme one
-hi MatchParen ctermfg=16 ctermbg=168 guifg=#e06c75 guibg=#282c34
+highlight MatchParen ctermfg=16 ctermbg=168 guifg=#E06C75 guibg=#282C34
+highlight CursorLine cterm=none term=none ctermbg=16 guibg=#2C323C
 """""""""
 
 """"""""""""
