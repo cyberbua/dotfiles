@@ -16,7 +16,7 @@ set timeoutlen=1000 ttimeoutlen=0
 set clipboard=unnamedplus
 set showtabline=2
 set laststatus=2
-set cursorline
+" set cursorline
 set t_ut=   " fix background not redrawing
 set wildmenu
 set wildmode=full
