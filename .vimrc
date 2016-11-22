@@ -1,8 +1,7 @@
 """""""""""
 " Options "
 """""""""""
-set ignorecase
-set smartcase
+set ignorecase smartcase
 set number
 set wrap
 set linebreak
@@ -19,6 +18,16 @@ set showtabline=2
 set laststatus=2
 set cursorline
 set t_ut=   " fix background not redrawing
+set wildmenu
+set wildmode=full
+set completeopt=menuone,preview
+set diffopt=filler,vertical
+set virtualedit=block
+
+" keep indentation on linebreaks
+let &showbreak = '↳ '
+set breakindent
+set breakindentopt=sbr
 
 " autoread on file change
 set autoread
@@ -31,7 +40,7 @@ set softtabstop=4
 set expandtab
 set autoindent
 
-set list listchars=trail:•
+set list listchars=trail:•,tab:\|\ ,
 hi SpecialKey ctermfg=66 guifg=#E06C65
 """""""""""
 
@@ -46,6 +55,10 @@ noremap <Up>    <Nop>
 noremap <Down>  <Nop>
 noremap <Left>  <Nop>
 noremap <Right> <Nop>
+
+" moving lines
+nnoremap <silent> <C-k> :move-2<cr>
+nnoremap <silent> <C-j> :move+<cr>
 
 " tab navigation
 noremap <C-h> gT
@@ -82,6 +95,14 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'rakr/vim-one'
 Plug 'airblade/vim-gitgutter'
 
+" linter
+Plug 'vim-syntastic/syntastic'
+let g:syntastic_error_symbol = '●'
+let g:syntastic_style_error_symbol = '●'
+let g:syntastic_warning_symbol = '●'
+let g:syntastic_style_warning_symbol = '●'
+
+
 Plug 'scrooloose/nerdtree'
 map <leader>t :NERDTreeToggle %<CR>
 
@@ -99,10 +120,10 @@ call plug#end()
 """""""""
 " Theme "
 """""""""
-if (has("nvim"))
+if has("nvim")
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
-if (has("termguicolors"))
+if has("termguicolors")
     set termguicolors
 endif
 
