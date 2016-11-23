@@ -1,24 +1,24 @@
 #!/bin/bash
 
 # change working directory 
-cd $(dirname $1)
+cd "$(dirname "$1")" || exit 1
 
 # save basnmae without extension
-BASE=$(basename $1)
+BASE=$(basename "$1")
 DOCNAME="${BASE%.*}"
 
 # recompile pdf if .tex files change
 mkpdf() {
     while inotifywait -qq --recursive -e modify -e create -e delete -e move --includei ".*\.tex$|.*\.bib$" .; do
-       rubber -d -m xelatex $DOCNAME
+       rubber -d -m xelatex "$DOCNAME"
     done
 }
 
 kill_mkpdf() {
     # when evince exits, kill mkpdf and clean directory
-    kill $mkpdf_pid
-    rubber --clean $DOCNAME
-    [[ -f $DOCNAME.ent ]] && rm $DOCNAME.ent
+    kill "$mkpdf_pid"
+    rubber --clean "$DOCNAME"
+    [[ -f $DOCNAME.ent ]] && rm "$DOCNAME".ent
     exit 0
 
 }
@@ -33,7 +33,7 @@ ctrl_c() {
 mkpdf & mkpdf_pid=$!
 
 # starts evince pdf reader
-evince $DOCNAME.pdf &> /dev/null
+evince "$DOCNAME".pdf &> /dev/null
 
 # kill everything when evince dies
 kill_mkpdf

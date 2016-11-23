@@ -7,17 +7,17 @@ spawndrop() {
 }
 
 drop() {
-    if bspc query -N -n $NODEID.hidden; then
-        bspc node $NODEID.hidden -g hidden=off
-        bspc node $NODEID --to-desktop focused
-        bspc node $NODEID --focus
+    if bspc query -N -n "$NODEID".hidden; then
+        bspc node "$NODEID".hidden -g hidden=off
+        bspc node "$NODEID" --to-desktop focused
+        bspc node "$NODEID" --focus
     else
-        bspc node $NODEID.!hidden.floating -g hidden=on
+        bspc node "$NODEID".!hidden.floating -g hidden=on
     fi
 }
 
 readonly NODEID=$(cat /tmp/drop)
-if [[ -f /tmp/drop ]] && bspc query -N -n $NODEID.floating; then
+if [[ -f /tmp/drop ]] && bspc query -N -n "$NODEID".floating; then
     drop
 else
     spawndrop
