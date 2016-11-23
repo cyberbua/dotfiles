@@ -56,10 +56,6 @@ noremap <Down>  <Nop>
 noremap <Left>  <Nop>
 noremap <Right> <Nop>
 
-" moving lines
-nnoremap <silent> <C-k> :move-2<cr>
-nnoremap <silent> <C-j> :move+<cr>
-
 " tab navigation
 noremap <C-h> gT
 noremap <C-l> gt
@@ -101,13 +97,16 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'rakr/vim-one'
 Plug 'airblade/vim-gitgutter'
 
+" move lines with <C-k>/<C-j>
+Plug 'matze/vim-move'
+let g:move_key_modifier = 'C'
+
 " linter
 Plug 'vim-syntastic/syntastic'
 let g:syntastic_error_symbol = '●'
 let g:syntastic_style_error_symbol = '●'
 let g:syntastic_warning_symbol = '●'
 let g:syntastic_style_warning_symbol = '●'
-
 
 Plug 'scrooloose/nerdtree'
 map <leader>t :NERDTreeToggle %<CR>
