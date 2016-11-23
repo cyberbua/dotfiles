@@ -77,6 +77,12 @@ nnoremap <esc>^[ <esc>^[
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
+
+" save/quit
+inoremap <C-s>  <C-O>:update<cr>
+nnoremap <C-s>  :update<cr>
+inoremap <C-Q>  <esc>:q<cr>
+nnoremap <C-Q>  :q<cr>
 """"""""""""
 
 """""""""""

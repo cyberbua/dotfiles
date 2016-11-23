@@ -79,6 +79,9 @@ alias -r ssh='TERM=xterm-256color ssh'
 
 # Use truecolor in tmux if possible TODO
 [[ "$COLORTERM" == truecolor ]] && alias -r tmux="env TERM=xterm-256color tmux"
+
+# Disable terminal flow controls in vim (to be able to use C-s/C-q)
+vim() STTY=-ixon command vim "$@"
 ##################
 
 
