@@ -118,8 +118,12 @@ super + c
     bspc rule -a Xfce4-terminal -o state=floating; xfce4-terminal --geometry=64x24 -x rlwrap -H $HOME/.cache/maxima_history -s 1000 maxima
 
 # open file browser
-super + {e,n}
-    {thunar,nautilus -w}
+super + e
+    thunar
+
+# nautilus for fuzzy file search
+super + n
+    bspc rule -a Nautilus -o state=floating; nautilus
 
 # lock screen, lock and suspend
 super + {_,alt +} space
