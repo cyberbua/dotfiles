@@ -1,5 +1,5 @@
-usercmd=(Ss Si Sg Qs Qo Ql Qk Qc Qd Qe Qem Qm Qi Qkk Qu Qdt)
-aurcmd=(Ssa Sa Sia Syua Sua)
+usercmd=(Ss Si Sg Sw Qs Qo Ql Qk Qc Qd Qe Qem Qm Qi Qkk Qu Qdt)
+aurcmd=(Ssa Sa Sia Syua Sua Swa)
 sudocmd=(S Syu Rns Syy Syyu)
 
 for c in $usercmd; do; alias $c="pacman -$c"; done
