@@ -50,11 +50,6 @@ alias -r mkdir='mkdir -p'
 alias -r dd='dd status=progress'
 alias -r lb='lsblk -o NAME,LABEL,SIZE,FSTYPE,MOUNTPOINT'
 
-alias -r S='pacaur -S'
-alias -r Ss='pacaur -Ss'
-alias -r Syu='pacaur -Syu'
-alias -r Rns='pacaur -Rns'
-
 alias -r cal='cal -m3'
 alias -r t='tree -C'
 alias -r wanip='curl ipinfo.io/ip'
