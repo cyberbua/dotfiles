@@ -1,39 +1,43 @@
 #!/bin/bash
 
+cleanup() {
+    # disable screen timeout
+    xset s off
+
+    # delete lockfile
+    [[ -f /tmp/blurlock.lock ]] && rm /tmp/blurlock.lock
+}
+
+showinfo() {
+    # use notify-send to show basic status info
+    while [ -f /tmp/blurlock.lock ]; do 
+        echo hallo
+        notify-send -t 4900 "$(date "+%F %R")" "$(cat /sys/class/power_supply/BAT1/capacity)%, $(cat /sys/class/power_supply/BAT1/status)"
+        sleep 5
+    done
+}
+
 # exit if already running
-if [ -f /tmp/blurlock.lock  ]; then
-        exit
+if [ -f /tmp/blurlock.lock ]; then
+    echo "blurlock is already running! (if not, delete /tmp/blurlock.lock)"
+    exit 1
 fi
 
 # create lockfile
 touch /tmp/blurlock.lock
 
-# take screenshot
-#scrot /tmp/scrot.png
-
-# apply effect
-#convert /tmp/scrot.png -scale 5% -scale %2000 /tmp/scrot.png
-#xwobf /tmp/scrot.png
-RES=$(xrandr --current | grep '*' | uniq | awk '{print $1}')
-ffmpeg -loglevel quiet -f x11grab -video_size $RES -y -i $DISPLAY -filter_complex "boxblur=8:1,boxblur=8:1" -vframes 1 /tmp/scrot.png
+# take screenshot and blur it
+RES=$(xrandr --current | grep '\*' | uniq | awk '{print $1}')
+ffmpeg -loglevel quiet -f x11grab -video_size "$RES" -y -i "$DISPLAY" -filter_complex "boxblur=8:1,boxblur=8:1" -vframes 1 /tmp/scrot.png
 
 # set screen timeout to 30 sec
 xset s 30
 
-# use notify-send to show basic status info
-while [ -f /tmp/blurlock.lock ]
-do 
-	sleep 1
-	notify-send -t 4900 "$(date "+%F %R")" \
-	"$(cat /sys/class/power_supply/BAT1/capacity)%, $(cat /sys/class/power_supply/BAT1/status)"
-	sleep 4
-done &
+# show some info until unlock
+showinfo &
 
 # run i3lock
-i3lock -n -e -f -i /tmp/scrot.png
+i3lock -n -e -f -i /tmp/scrot.png || (cleanup; bspc quit 1)
 
-# disable screen timeout
-xset s off
-
-# delete lockfile
-rm /tmp/blurlock.lock
+# finally cleanup
+cleanup
