@@ -93,6 +93,7 @@ xmap ga <Plug>(EasyAlign)
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'rakr/vim-one'
 Plug 'airblade/vim-gitgutter'
