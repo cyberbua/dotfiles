@@ -19,7 +19,7 @@ set laststatus=2
 " set cursorline
 set t_ut=   " fix background not redrawing
 set wildmenu
-set wildmode=full
+set wildmode=longest:full,full
 set completeopt=menuone,preview
 set diffopt=filler,vertical
 set virtualedit=block
