@@ -33,3 +33,5 @@ color12 = #7BC9FF
 color13 = #CF89DB
 color14 = #34E2E2
 color15 = #EEEEEC
+
+# vim: ft=dosini cms=#%s
