@@ -111,7 +111,7 @@ super + asciicircum
 
 # open application launcher
 super + d
-    xfce4-popup-whiskermenu
+    rofi -show run
 
 # maxima in floating terminal
 super + c
@@ -150,5 +150,12 @@ super + p
     xfce4-display-settings --minimal
 
 # mute/unmute sound
-super + {m,u}
-    MODE="{_,un}mute"; amixer -c1 set Master $MODE; amixer -c1 set Speaker $MODE
+super + m
+    amixer -q sset Master toggle
+
+# volume keys
+XF86AudioRaiseVolume
+    amixer -q sset Master 2%+
+
+XF86AudioLowerVolume
+    amixer -q sset Master 2%-
