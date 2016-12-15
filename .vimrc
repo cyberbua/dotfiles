@@ -96,6 +96,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'rakr/vim-one'
+
+" show git diff in gutter
 Plug 'airblade/vim-gitgutter'
 
 " move lines with <C-k>/<C-j>
@@ -116,11 +118,9 @@ Plug 'vim-airline/vim-airline'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-let g:vim_markdown_folding_disabled = 1
+" language support collection
+Plug 'sheerun/vim-polyglot'
 
-Plug 'leafgarland/typescript-vim'
 call plug#end()
 """""""""""
 
