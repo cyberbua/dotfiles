@@ -24,7 +24,7 @@ super + s
 
 # slelect last window on desktop
 alt + Tab
-    bspc node --focus last.local
+    bspc node --focus next.local
 
 # move focus to seleted direction
 super + {h,j,k,l}
