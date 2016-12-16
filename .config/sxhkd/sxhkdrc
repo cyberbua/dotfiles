@@ -154,8 +154,9 @@ super + m
     amixer -q sset Master toggle
 
 # volume keys
-XF86AudioRaiseVolume
-    amixer -q sset Master 2%+
+{XF86AudioRaiseVolume, XF86AudioLowerVolume}
+    amixer -q sset Master 2%{+,-}
 
-XF86AudioLowerVolume
-    amixer -q sset Master 2%-
+# brightness keys
+{XF86MonBrightnessUp, XF86MonBrightnessDown}
+    xbacklight -{inc,dec} 10
