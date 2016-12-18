@@ -68,10 +68,10 @@ label-mounted = %mountpoint%: %percentage_free%
 [module/bspwm]
 type = internal/bspwm
 ws-icon-default = x
+enable-scroll = false
 
 label-focused = %index%
 label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
 label-focused-padding = 1
 
 label-occupied = %index%
