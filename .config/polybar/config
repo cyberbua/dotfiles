@@ -88,7 +88,7 @@ label-empty-padding = 1
 [module/pacman]
 type = custom/script
 exec = checkupdates | wc -l
-interval = 43200
+interval = 21600
 label =  %output%
 
 [module/backlight]
