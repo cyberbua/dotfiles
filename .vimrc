@@ -137,6 +137,9 @@ endif
 syntax on
 set background=dark
 colorscheme one
+set t_8b=[48;2;%lu;%lu;%lum
+set t_8f=[38;2;%lu;%lu;%lum
+
 highlight MatchParen ctermfg=16 ctermbg=168 guifg=#E06C75 guibg=#282C34
 highlight CursorLine cterm=none term=none ctermbg=16 guibg=#2C323C
 highlight IncSearch ctermfg=232 ctermbg=166 guibg=#000000 guifg=#df5f00
