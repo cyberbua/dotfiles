@@ -49,7 +49,7 @@ font-0 = RobotoMono:size=10;0
 font-1 = MaterialIcons-Regularsize=14;0
 
 modules-left = bspwm xwindow
-modules-center = date time pacman
+modules-center = date time updates
 modules-right = backlight volume filesystem memory cpu battery temperature
 
 tray-position = right
@@ -85,10 +85,11 @@ label-empty = %index%
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 1
 
-[module/pacman]
+[module/updates]
 type = custom/script
-exec = checkupdates | wc -l
-interval = 21600
+exec = ~/.config/polybar/updates.sh
+interval = 5
+click-left = ~/.config/polybar/updates.sh now
 label =  %output%
 
 [module/backlight]
