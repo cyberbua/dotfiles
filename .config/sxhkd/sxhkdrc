@@ -111,7 +111,7 @@ super + asciicircum
 
 # open application launcher
 super + d
-    rofi -show run
+    rofi -show drun
 
 # maxima in floating terminal
 super + c
