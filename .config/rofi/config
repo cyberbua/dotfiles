@@ -1,0 +1,17 @@
+rofi.hide-scrollbar:   true
+rofi.bw:               0
+rofi.lines:            8
+rofi.width:            25
+rofi.color-enabled:    true
+rofi.separator-style:  none
+rofi.kb-row-up:        Up,Alt+k,Shift+Tab,Shift+ISO_Left_Tab
+rofi.kb-row-down:      Down,Alt+j,Tab,ISO_Left_Tab
+rofi.kb-mode-next:     Alt+l
+rofi.kb-mode-previous: Alt+h
+! rofi state:         'bg'  'fg'  'bgalt'  'hlbg'  'hlfg'
+rofi.color-normal:     argb:00222222, #9e9f9a, argb:00101011, #356cae, #f8f8f2
+rofi.color-urgent:     argb:00222222, #9e9f9a, argb:00101011, #356cae, #f8f8f2
+rofi.color-active:     argb:00222222, #9e9f9a, argb:00101011, #356cae, #a6e22a
+rofi.color-window:     argb:ce222222, #111111, #000000
+
+! vim:ft=xdefaults
