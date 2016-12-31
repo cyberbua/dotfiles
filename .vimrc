@@ -79,6 +79,10 @@ inoremap <C-s>  <C-O>:update<cr>
 nnoremap <C-s>  :update<cr>
 inoremap <C-Q>  <esc>:q<cr>
 nnoremap <C-Q>  :q<cr>
+
+" dont save to clipboard when deleting with x
+nnoremap x "_x
+vnoremap x "_x
 """"""""""""
 
 """""""""""
