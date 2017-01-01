@@ -36,4 +36,5 @@ make
 evince -- *.pdf &> /dev/null
 
 # kill everything when evince dies
+pkill inotifywait
 kill_mkpdf
