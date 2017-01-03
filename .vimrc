@@ -116,7 +116,8 @@ let g:syntastic_warning_symbol = '⏺'
 let g:syntastic_style_warning_symbol = '⏺'
 
 Plug 'scrooloose/nerdtree'
-map <leader>t :NERDTreeToggle %<CR>
+Plug 'jistr/vim-nerdtree-tabs'
+map <leader>n :NERDTreeTabsToggle<CR>
 
 Plug 'vim-airline/vim-airline'
 let g:airline_powerline_fonts = 1
