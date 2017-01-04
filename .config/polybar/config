@@ -50,7 +50,7 @@ font-1 = MaterialIcons-Regularsize=14;0
 
 modules-left = bspwm xwindow
 modules-center = date time updates
-modules-right = backlight volume filesystem memory cpu battery temperature
+modules-right = backlight volume filesystem memory cpu battery temperature network
 
 tray-position = right
 tray-padding = 2
@@ -90,7 +90,7 @@ type = custom/script
 exec = ~/.config/polybar/updates.sh
 interval = 5
 click-left = ~/.config/polybar/updates.sh now
-label =  %output%
+label =  %output:0:3%
 
 [module/backlight]
 type = internal/backlight
@@ -105,7 +105,7 @@ ramp-2 = " "
 type = internal/cpu
 interval = 2
 format-prefix = " "
-label = %percentage%
+label = %percentage:2%
 
 [module/memory]
 type = internal/memory
@@ -113,46 +113,20 @@ interval = 2
 format-prefix = " "
 label = %gb_used%
 
-[module/wifi]
+[module/network]
 type = internal/network
 interface = wlp2s0
-interval = 3.0
+interval = 2.0
 format-connected = <label-connected>
-label-connected = " %signal%  %downspeed%  %upspeed% "
-; format-connected = <ramp-signal> <label-connected>
-; format-connected-underline = #9f78e1
-; format-disconnected-underline = ${self.format-connected-underline}
-
-; label-connected = %essid%
-; label-disconnected = %ifname% disconnected
-; label-disconnected-foreground = ${colors.foreground-alt}
-
-; ramp-signal-0 = 
-; ramp-signal-1 = 
-; ramp-signal-2 = 
-; ramp-signal-3 = 
-; ramp-signal-4 = 
-; ramp-signal-foreground = ${colors.foreground-alt}
-
-[module/eth]
-type = internal/network
-interface = 
-interval = 3.0
-
-format-connected-underline = #55aa55
-format-connected-prefix = " "
-format-connected-foreground-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
-
-format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = %ifname% disconnected
-label-disconnected-foreground = ${colors.foreground-alt}
+format-connected-prefix = " "
+format-packetloss-underline = #ff0000
+label-connected = "%local_ip%"
+; label-connected = "%downspeed% %upspeed% %local_ip%"
 
 [module/date]
 type = internal/date
 interval = 5
 date = "%a %d.%m"
-
 format-prefix = " "
 label = %date%
 
@@ -160,7 +134,6 @@ label = %date%
 type = internal/date
 interval = 3
 time = %H:%M
-
 format-prefix = " "
 label = %time%
 
@@ -176,8 +149,8 @@ battery = BAT1
 adapter = ACAD
 ; never be full:
 full-at = 101
-
 format-charging-prefix = " "
+format-full-prefix = " "
 format-discharging-prefix = " "
 
 [module/temperature]
