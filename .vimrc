@@ -110,10 +110,10 @@ let g:move_key_modifier = 'C'
 
 " linter
 Plug 'vim-syntastic/syntastic'
-let g:syntastic_error_symbol = '⏺'
-let g:syntastic_style_error_symbol = '⏺'
-let g:syntastic_warning_symbol = '⏺'
-let g:syntastic_style_warning_symbol = '⏺'
+let g:syntastic_error_symbol = '✹'
+let g:syntastic_style_error_symbol = '✹'
+let g:syntastic_warning_symbol = '✹'
+let g:syntastic_style_warning_symbol = '✹'
 
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
