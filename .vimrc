@@ -132,6 +132,10 @@ Plug 'sheerun/vim-polyglot'
 " fuzzy file finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
+nmap <leader>f :Files<CR>
+nmap <leader>g :GFiles<CR>
+nmap <leader>l :Lines<CR>
+nmap <leader>b :Buffers<CR>
 
 call plug#end()
 """""""""""
