@@ -54,6 +54,7 @@ alias -r cal='cal -m3'
 alias -r t='tree -C'
 alias -r wanip='curl ipinfo.io/ip'
 alias -r lanip='ip addr show wlp2s0 | /usr/bin/grep -Po "inet \K[\d.]+"'
+alias -r v='nvim'
 
 alias -r pastebin='curl -F c=@- https://ptpb.pw'
 alias -r pastefile='curl -F c=@- https://ptpb.pw <'
