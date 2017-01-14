@@ -40,6 +40,9 @@ set softtabstop=4
 set expandtab
 set autoindent
 
+" only hide buffer when switching
+set hidden
+
 set list listchars=trail:•,tab:\|\ ,
 hi SpecialKey ctermfg=66 guifg=#E06C65
 """""""""""
@@ -56,9 +59,9 @@ noremap <Down>  <Nop>
 noremap <Left>  <Nop>
 noremap <Right> <Nop>
 
-" tab navigation
-noremap <C-h> gT
-noremap <C-l> gt
+" buffer navigation
+noremap <C-l> :bnext<CR>
+noremap <C-h> :bprevious<CR>
 
 " search using space
 map <space> /
@@ -116,8 +119,7 @@ let g:syntastic_warning_symbol = '✹'
 let g:syntastic_style_warning_symbol = '✹'
 
 Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
-map <leader>n :NERDTreeTabsToggle<CR>
+map <leader>n :NERDTreeToggle<CR>
 
 Plug 'vim-airline/vim-airline'
 let g:airline_powerline_fonts = 1
@@ -125,6 +127,10 @@ let g:airline#extensions#tabline#enabled = 1
 
 " language support collection
 Plug 'sheerun/vim-polyglot'
+
+" fuzzy file finder
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 """""""""""
