@@ -12,6 +12,7 @@ set shiftwidth=4
 set guioptions-=m  "menu bar
 set guioptions-=T  "toolbar
 set guioptions-=r  "scrollbar
+set mouse=
 set timeoutlen=1000 ttimeoutlen=0
 set clipboard=unnamedplus
 set showtabline=2
