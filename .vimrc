@@ -44,6 +44,11 @@ set autoindent
 " only hide buffer when switching
 set hidden
 
+" preview for s/foo/bar
+if exists('&inccommand')
+    set inccommand=nosplit
+endif
+
 set list listchars=trail:•,tab:\|\ ,
 hi SpecialKey ctermfg=66 guifg=#E06C65
 """""""""""
