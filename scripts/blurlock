@@ -28,7 +28,7 @@ touch /tmp/blurlock.lock
 
 # take screenshot and blur it
 RES=$(xdpyinfo | awk '/dimensions/{print $2}')
-ffmpeg -loglevel quiet -f x11grab -video_size "$RES" -y -i "$DISPLAY" -filter_complex "boxblur=128:1,boxblur=128:1" -vframes 1 /tmp/scrot.png
+ffmpeg -loglevel quiet -f x11grab -video_size "$RES" -y -i "$DISPLAY" -filter_complex "boxblur=20:1,boxblur=20:1" -vframes 1 /tmp/scrot.png
 
 # set screen timeout to 30 sec
 xset s 30
