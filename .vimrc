@@ -106,7 +106,11 @@ xmap ga <Plug>(EasyAlign)
 
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
+
 Plug 'tpope/vim-fugitive'
+nnoremap <leader>gr :Gread<CR>
+nnoremap <leader>gd :Gvdiff<CR>
+
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'rakr/vim-one'
