@@ -40,6 +40,7 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set autoindent
+set lazyredraw
 
 " only hide buffer when switching
 set hidden
