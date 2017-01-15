@@ -142,6 +142,9 @@ nmap <leader>g :GFiles<CR>
 nmap <leader>l :Lines<CR>
 nmap <leader>b :Buffers<CR>
 
+" colorize rgb hex codes
+Plug 'lilydjwg/colorizer'
+
 call plug#end()
 """""""""""
 
