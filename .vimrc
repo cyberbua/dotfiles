@@ -69,6 +69,7 @@ noremap <Right> <Nop>
 " buffer navigation
 noremap <C-l> :bnext<CR>
 noremap <C-h> :bprevious<CR>
+noremap <Tab> :b#<CR>
 
 " search using space
 map <space> /
