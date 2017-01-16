@@ -110,6 +110,8 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 nnoremap <leader>gr :Gread<CR>
 nnoremap <leader>gd :Gvdiff<CR>
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gc :Gcommit<CR>
 
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
@@ -143,7 +145,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 nmap <leader>f :Files<CR>
-nmap <leader>g :GFiles<CR>
+nmap <leader>F :GFiles<CR>
 nmap <leader>l :Lines<CR>
 nmap <leader>b :Buffers<CR>
 
