@@ -152,7 +152,16 @@ nmap <leader>b :Buffers<CR>
 
 " colorize rgb hex codes
 Plug 'lilydjwg/colorizer'
-let g:colorizer_maxlines = 1000
+let g:colorizer_maxlines = 500
+function s:togglecolorizer()
+    if g:colorizer_maxlines <= line('$')
+        let g:colorizer_maxlines = 20000
+    elseif g:colorizer_maxlines >= line('$')
+        let g:colorizer_maxlines = 1
+    endif
+    bufdo e
+endfunc
+nmap <leader>c :call <sid>togglecolorizer()<CR>
 
 call plug#end()
 """""""""""
