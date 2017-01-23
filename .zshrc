@@ -75,9 +75,6 @@ alias -r ssh='TERM=xterm-256color ssh'
 
 # Use truecolor in tmux if possible TODO
 [[ "$COLORTERM" == truecolor ]] && alias -r tmux="env TERM=xterm-256color tmux"
-
-# Disable terminal flow controls in vim (to be able to use C-s/C-q)
-vim() STTY=-ixon command vim "$@"
 ##################
 
 
@@ -138,8 +135,8 @@ if [[ $TERM == xterm-termite ]]; then
     __vte_osc7
 fi
 
-# restore Ctrl-s after command exits
-ttyctl -f
+# disable flow control (Ctrl-S, Ctrl-Q)
+stty -ixon
 ##################
 
 # warn me if more than one user is logged in
