@@ -22,7 +22,7 @@ bspc config presel_feedback_color   "#00A2FF"
 
 # RULES
 bspc rule -a Firefox locked=on
-bspc rule -a Xfce4-mixer state=floating
+bspc rule -a Pavucontrol state=floating
 bspc rule -a TelegramDesktop state=floating
 bspc rule -a Simplescreenrecorder state=floating
 bspc rule -a Xfce4-panel state=floating
