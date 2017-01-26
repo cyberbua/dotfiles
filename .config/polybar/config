@@ -8,9 +8,9 @@
 ;=====================================================
 
 [colors]
-background = #222
-background-alt = #444
-foreground-alt = #55
+background = #2F343F
+background-alt = #3A404D
+foreground-alt = #616B82
 primary = #ffb52a
 foreground = #dfdfdf
 secondary = #e60053
@@ -43,7 +43,7 @@ module-margin-left = 1
 module-margin-right = 2
 
 font-0 = RobotoMono:size=10;0
-font-1 = MaterialIcons-Regularsize=14;0
+font-1 = MaterialIcons-Regularsize=12;0
 
 modules-left = bspwm xwindow
 modules-center = date time updates
