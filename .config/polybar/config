@@ -10,9 +10,9 @@
 [colors]
 background = #222
 background-alt = #444
-foreground = #dfdfdf
 foreground-alt = #55
 primary = #ffb52a
+foreground = #dfdfdf
 secondary = #e60053
 alert = #bd2c40
 
@@ -34,9 +34,6 @@ foreground = ${colors.foreground}
 
 overline-size = 2
 overline-color = #f00
-
-border-bottom = 2
-border-bottom-color = ${colors.background}
 
 spacing = 0
 padding-left = 0
@@ -63,7 +60,8 @@ label = %title:0:30:...%
 type = internal/fs
 interval = 25
 mount-0 = /
-label-mounted =  %used%
+format-mounted-prefix = " "
+label-mounted = %used%
 
 [module/bspwm]
 type = internal/bspwm
@@ -90,13 +88,13 @@ type = custom/script
 exec = ~/.config/polybar/updates.sh
 interval = 5
 click-left = ~/.config/polybar/updates.sh now
-label =  %output:0:3%
+format-prefix = " "
+label = %output:0:3%
 
 [module/backlight]
 type = internal/backlight
 card = intel_backlight
 format = <ramp> <label>
-label = %percentage%
 ramp-0 = " "
 ramp-1 = " "
 ramp-2 = " "
@@ -105,7 +103,6 @@ ramp-2 = " "
 type = internal/cpu
 interval = 2
 format-prefix = " "
-label = %percentage:2%
 
 [module/memory]
 type = internal/memory
@@ -139,9 +136,8 @@ label = %time%
 
 [module/volume]
 type = internal/volume
-label-volume =  %percentage%
-label-volume-foreground = ${root.foreground}
-label-muted =  %percentage%
+format-volume-prefix = " "
+format-muted-prefix = " "
 
 [module/battery]
 type = internal/battery
