@@ -157,6 +157,10 @@ super + m
 {XF86AudioRaiseVolume, XF86AudioLowerVolume}
     amixer -q sset Master 2%{+,-}
 
-# brightness keys
+# brightness small steps
 {XF86MonBrightnessUp, XF86MonBrightnessDown}
-    xbacklight -{inc,dec} 10
+    xbacklight -{inc,dec} 5
+
+# brightness big steps
+ctrl + {XF86MonBrightnessUp, XF86MonBrightnessDown}
+    xbacklight -{inc,dec} 40
