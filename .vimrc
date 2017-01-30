@@ -193,8 +193,8 @@ highlight IncSearch ctermfg=232 ctermbg=166 guibg=#000000 guifg=#df5f00
 set spellfile=~/.vim/spell/custom.utf-8.add
 set spelllang=de,en
 set complete+=kspell
-autocmd FileType latex,tex,plaintex,md,markdown setlocal spell
+autocmd FileType latex,tex,plaintex,md,markdown,gitcommit setlocal spell
 
 " dont check acronyms | single char words | words with numbers
-autocmd FileType latex,tex,plaintex,md,markdown syn match NoSpell '\<\S\+\u\+\S*\>\|\<\S\>\|\<\S*\d\+\S*\>' contains=@NoSpell
+autocmd FileType latex,tex,plaintex,md,markdown,gitcommit syn match NoSpell '\<\S\+\u\+\S*\>\|\<\S\>\|\<\S*\d\+\S*\>' contains=@NoSpell
 """"""""""""
