@@ -54,7 +54,9 @@ alias -r cal='cal -m3'
 alias -r t='tree -C'
 alias -r wanip='curl ipinfo.io/ip'
 alias -r lanip='ip addr show wlp2s0 | /usr/bin/grep -Po "inet \K[\d.]+"'
+
 alias -r v='nvim'
+alias -r sv='sudoedit'
 
 alias -r pastebin='curl -F c=@- https://ptpb.pw'
 alias -r pastefile='curl -F c=@- https://ptpb.pw <'
@@ -117,7 +119,7 @@ bindkey '\ei' fzf-locate-widget
 # auto reload completion for new programs
 zstyle ':completion:*' rehash true
 
-export EDITOR='vim'
+export EDITOR='nvim'
 export PKGDEST="/var/cache/pacman/pkg/aur"
 export KEYTIMEOUT=1
 
@@ -127,11 +129,10 @@ setopt dotglob
 setopt AUTO_PUSHD
 setopt PUSHD_TO_HOME
 
-# [[ -n $COLORTERM ]] && export TERM=xterm-256color
-
 # set current dir for termite
 if [[ $TERM == xterm-termite ]]; then
-    . /etc/profile.d/vte.sh
+    export TERM=xterm-256color
+    source /etc/profile.d/vte.sh
     __vte_osc7
 fi
 
