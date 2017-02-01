@@ -94,6 +94,15 @@ nnoremap <C-Q>  :q<cr>
 " dont save to clipboard when deleting with x
 nnoremap x "_x
 vnoremap x "_x
+
+if has('nvim')
+    " terminal split with <A-^>
+    nnoremap <A-^> :above 15sp term://$SHELL<cr>i
+    " exit terminal insert mode with <Esc>
+    tnoremap <Esc> <C-\><C-n>
+    " close terminal when shell exits
+    autocmd TermClose *:$SHELL,*:\$SHELL call feedkeys("\<CR>")
+endif
 """"""""""""
 
 """""""""""
