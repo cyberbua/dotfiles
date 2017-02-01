@@ -95,7 +95,18 @@ nnoremap <C-Q>  :q<cr>
 nnoremap x "_x
 vnoremap x "_x
 
+" window movement
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+
 if has('nvim')
+    " window movement in terminal
+    tnoremap <A-h> <C-\><C-n><C-w>h
+    tnoremap <A-j> <C-\><C-n><C-w>j
+    tnoremap <A-k> <C-\><C-n><C-w>k
+    tnoremap <A-l> <C-\><C-n><C-w>l
     " terminal split with <A-^>
     nnoremap <A-^> :above 15sp term://$SHELL<cr>i
     " exit terminal insert mode with <Esc>
