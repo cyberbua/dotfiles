@@ -122,6 +122,7 @@ zstyle ':completion:*' rehash true
 export EDITOR='nvim'
 export PKGDEST="/var/cache/pacman/pkg/aur"
 export KEYTIMEOUT=1
+export PYTHONPATH=.
 
 setopt APPEND_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
