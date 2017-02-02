@@ -112,7 +112,7 @@ if has('nvim')
     " exit terminal insert mode with <Esc>
     tnoremap <Esc> <C-\><C-n>
     " close terminal when shell exits
-    autocmd TermClose *:$SHELL,*:\$SHELL call feedkeys("\<CR>")
+    autocmd TermClose *:$SHELL,*:\$SHELL call feedkeys("\<CR>:\<BS>")
 endif
 """"""""""""
 
