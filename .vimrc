@@ -146,12 +146,11 @@ Plug 'matze/vim-move'
 let g:move_key_modifier = 'C'
 
 " linter
-Plug 'vim-syntastic/syntastic'
-let g:syntastic_error_symbol = '✹'
-let g:syntastic_style_error_symbol = '✹'
-let g:syntastic_warning_symbol = '✹'
-let g:syntastic_style_warning_symbol = '✹'
-let g:syntastic_tex_checkers = [""]
+Plug 'w0rp/ale'
+let g:ale_sign_error = '✹'
+let g:ale_sign_warning = '✹'
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
 
 Plug 'scrooloose/nerdtree'
 map <leader>n :NERDTreeToggle<CR>
