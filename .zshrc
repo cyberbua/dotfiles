@@ -72,9 +72,6 @@ alias -r histclean='tac ~/.zsh_history | sort -t ";" -k 2 -u | sort -o ~/.zsh_hi
 # commit all changes with generic commit message for minor changes
 alias -r commit='git commit -am "unimportant changes"'
 
-# user other TERM over ssh
-alias -r ssh='TERM=xterm-256color ssh'
-
 # Use truecolor in tmux if possible TODO
 [[ "$COLORTERM" == truecolor ]] && alias -r tmux="env TERM=xterm-256color tmux"
 ##################
