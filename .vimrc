@@ -24,6 +24,8 @@ set wildmode=longest:full,full
 set completeopt=menuone,preview
 set diffopt=filler,vertical
 set virtualedit=block
+set lazyredraw
+set nostartofline
 
 " keep indentation on linebreaks
 let &showbreak = '↳ '
@@ -40,7 +42,6 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set autoindent
-set lazyredraw
 
 " only hide buffer when switching
 set hidden
