@@ -130,8 +130,8 @@ if has('nvim')
     tnoremap <A-l> <C-\><C-n><C-w>l
     " terminal split with <A-^>
     nnoremap <A-^> :above 15sp term://$SHELL<cr>i
-    " exit terminal insert mode with <Esc>
     tnoremap <C-b><Esc> <C-\><C-n>
+    " exit terminal insert mode with <Esc>
     " close terminal when shell exits
     autocmd TermClose *:$SHELL,*:\$SHELL call feedkeys("\<CR>:\<BS>")
 endif
@@ -154,6 +154,7 @@ nnoremap <leader>gr :Gread<CR>
 nnoremap <leader>gd :Gvdiff<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gb :Gblame<CR>
 
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
