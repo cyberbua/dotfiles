@@ -83,8 +83,17 @@ nnoremap <silent> <esc> :nohlsearch<return><esc>
 nnoremap <esc>^[ <esc>^[
 
 " Treat long lines as break lines (useful when moving around in them)
-map j gj
-map k gk
+noremap j gj
+noremap k gk
+
+" Remap H and L (top, bottom of screen to left and right end of line)
+nnoremap H ^
+nnoremap L $
+vnoremap H ^
+vnoremap L g_
+
+" Y to yank without <cr> (thats what yy is for)
+nnoremap Y y$
 
 " save/quit
 inoremap <C-s>  <C-O>:update<cr>
@@ -92,9 +101,20 @@ nnoremap <C-s>  :update<cr>
 inoremap <C-Q>  <esc>:q<cr>
 nnoremap <C-Q>  :q<cr>
 
-" dont save to clipboard when deleting with x
-nnoremap x "_x
-vnoremap x "_x
+" don't yank to default clipboard
+noremap x "xx
+noremap c "cc
+nnoremap C "cc
+
+" don't override register when pasting over something
+vnoremap p "_dP
+
+" keep visual selection when shifting
+xnoremap <  <gv
+xnoremap > >gv
+
+" Make . work with visually selected lines
+xnoremap . :norm.<CR>
 
 " window movement
 nnoremap <A-h> <C-w>h
@@ -115,7 +135,10 @@ if has('nvim')
     " close terminal when shell exits
     autocmd TermClose *:$SHELL,*:\$SHELL call feedkeys("\<CR>:\<BS>")
 endif
-""""""""""""
+
+" auto resize windows
+autocmd VimResized * :wincmd =
+"""""""""""""
 
 """""""""""
 " Plugins "
