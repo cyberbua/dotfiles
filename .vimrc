@@ -135,9 +135,6 @@ if has('nvim')
     " close terminal when shell exits
     autocmd TermClose *:$SHELL,*:\$SHELL call feedkeys("\<CR>:\<BS>")
 endif
-
-" auto resize windows
-autocmd VimResized * :wincmd =
 """""""""""""
 
 """""""""""
