@@ -104,7 +104,7 @@ nnoremap <C-Q>  :q<cr>
 " don't yank to default clipboard
 noremap x "xx
 noremap c "cc
-nnoremap C "cc
+nnoremap C "cC
 
 " don't override register when pasting over something
 vnoremap p "_dP
