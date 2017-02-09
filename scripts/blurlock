@@ -37,7 +37,7 @@ xset s 30
 showinfo &
 
 # run i3lock
-i3lock -n -e -f -i /tmp/scrot.png || (cleanup; bspc quit 1)
+i3lock -n -e -f -i /tmp/scrot.png || slock || (cleanup; bspc quit 1)
 
 # finally cleanup
 cleanup
