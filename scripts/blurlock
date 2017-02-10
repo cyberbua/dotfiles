@@ -1,5 +1,18 @@
 #!/bin/bash
 
+# dependencies:
+# i3lock
+# ffmpeg
+# xdotool
+# slock (only for redundancy)
+# libnotify
+
+# exit if already running
+if [ -f /tmp/blurlock.lock ]; then
+    echo "blurlock is already running! (if not, delete /tmp/blurlock.lock)"
+    exit 1
+fi
+
 cleanup() {
     # disable screen timeout
     xset s off
@@ -11,20 +24,14 @@ cleanup() {
 showinfo() {
     # use notify-send to show basic status info
     while [ -f /tmp/blurlock.lock ]; do 
-        echo hallo
         notify-send -t 4900 "$(date "+%F %R")" "$(cat /sys/class/power_supply/BAT1/capacity)%, $(cat /sys/class/power_supply/BAT1/status)"
         sleep 5
     done
 }
 
-# exit if already running
-if [ -f /tmp/blurlock.lock ]; then
-    echo "blurlock is already running! (if not, delete /tmp/blurlock.lock)"
-    exit 1
-fi
-
 # create lockfile
 touch /tmp/blurlock.lock
+date >> /tmp/blurlock.log
 
 # take screenshot and blur it
 RES=$(xdpyinfo | awk '/dimensions/{print $2}')
@@ -36,8 +43,15 @@ xset s 30
 # show some info until unlock
 showinfo &
 
-# run i3lock
-i3lock -n -e -f -i /tmp/scrot.png || slock || (cleanup; bspc quit 1)
+# allow ungrabbing pointer & screen
+setxkbmap -option grab:break_actions
+# ungrab pointer and screen (allows locking even when in virtualbox or rofi/dmenu)
+xdotool key XF86Ungrab
+# forbid ungrabbing pointer & screen (to prevent lockscreen bypass via ctrl + alt + KP_MULTIPLY)
+setxkbmap -option -option "$(setxkbmap -query | sed -n 's/options:\s*\(grab:[^:]*,\)\?\|,grab:[^,]*//gp')"
+
+# run i3lock; if it fails, run slock; if that one also fails, logout
+(i3lock -n -e -f -i /tmp/scrot.png || slock || (cleanup; kill -9 -1)) >> /tmp/blurlock.log
 
 # finally cleanup
 cleanup
