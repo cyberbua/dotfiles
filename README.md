@@ -6,6 +6,10 @@
 - **Terminal:** [termite](https://github.com/thestinger/termite)
 - **Shell:** Zsh
     - bits and pieces of [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
+- Theme and fonts
+    - **GTK Theme:** Arc Darker
+    - **icon theme:** Ultra Flat
+    - **fonts:** Roboto & [Roboto Mono for Powerline](https://github.com/powerline/fonts/tree/master/RobotoMono)
 - **Editor:** Neovim
 - **Firefox**
     - [Arc Darker Theme](https://github.com/horst3180/arc-firefox-theme)
