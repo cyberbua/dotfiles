@@ -28,4 +28,5 @@ sudo dd bs=4M if=/dev/sdX | gzip > /path/to/file.img.gz # create gzipped image
 gzip -dc file.img.gz | sudo dd bs=4M of=/dev/sdX        # flash gzipped image
 feh --bg-scale file.png                                 # set picture as wallpaper
 VBoxManage modifyhd --compact hdd.vdi                   # compact/shrink virtualbox hdd
+python -c 'import crypt,getpass; print(crypt.crypt(getpass.getpass(), crypt.mksalt(crypt.METHOD_SHA512)))' # password hash in crypt format
 # vim:ft=sh
