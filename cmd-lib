@@ -1,0 +1,31 @@
+# This is a collection of useful commands for use with fzf
+
+# SSH
+ssh-keygen -t ed25519 -oa 100     # generate secure ed25519 key
+ssh-keygen -t rsa -b 4096 -oa 100 # generate secure rsa 4096 key
+
+# nmap
+nmap -v -p 22 --open -sV 10.0.1.0/24 # search for devices with open port 22
+
+# git
+git log --graph --pretty=oneline --abbrev-commit # show git commit log
+
+# lsof
+lsof -i tcp:8000 # list processes using port
+lsof /path/file  # list processes which opened a specific file
+lsof -c ssh      # list open files of a process
+
+# mount
+udisksctl loop-setup -rf file.iso   # setup iso/img as loop device
+udisksctl loop-delete -b /dev/loopX # destroy/unbind loop device
+udisksctl mount -b /dev/sdx         # mount block device
+udisksctl unmount -b /dev/sdx       # unmount block device
+
+# misc
+python -m http.server 8080                              # http file server in current directory
+tmux has-session && exec tmux attach || exec tmux       # tmux attach or create session
+sudo dd bs=4M if=/dev/sdX | gzip > /path/to/file.img.gz # create gzipped image
+gzip -dc file.img.gz | sudo dd bs=4M of=/dev/sdX        # flash gzipped image
+feh --bg-scale file.png                                 # set picture as wallpaper
+VBoxManage modifyhd --compact hdd.vdi                   # compact/shrink virtualbox hdd
+# vim:ft=sh

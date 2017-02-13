@@ -107,6 +107,17 @@ fzf-locate-widget() {
 }
 zle     -N    fzf-locate-widget
 bindkey '\ei' fzf-locate-widget
+
+# ALT-R - Browse a library of commands
+fzf-cmd-lib() {
+    local selected
+    if selected=$(sed -e '/^#/ d' -e '/^$/d' ~/cmd-lib | fzf | sed 's/ *#.*$//'); then
+        LBUFFER=$selected
+    fi
+    zle redisplay
+}
+zle     -N    fzf-cmd-lib
+bindkey '\er' fzf-cmd-lib
 ################
 
 
