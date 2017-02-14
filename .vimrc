@@ -208,6 +208,7 @@ nmap <leader>c :call <sid>togglecolorizer()<CR>
 " autocomplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_ignore_case = 1
 
 " snippets
 Plug 'SirVer/ultisnips'
