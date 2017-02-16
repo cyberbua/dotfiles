@@ -215,6 +215,8 @@ Plug 'SirVer/ultisnips'
 let g:UltiSnipsExpandTrigger="<C-l>"
 Plug 'honza/vim-snippets'
 
+Plug 'ryanoasis/vim-devicons'
+
 call plug#end()
 """""""""""
 
