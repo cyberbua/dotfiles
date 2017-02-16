@@ -8,7 +8,6 @@ set linebreak
 set hlsearch
 set incsearch
 set scrolloff=8
-set shiftwidth=4
 set guioptions-=m  "menu bar
 set guioptions-=T  "toolbar
 set guioptions-=r  "scrollbar
