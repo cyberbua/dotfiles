@@ -1,5 +1,5 @@
 [options]
-font = Roboto Mono for Powerline 10
+font = RobotoMono Nerd Font 10
 scrollback_lines = 10000
 audible_bell = false
 allow_bold = true
