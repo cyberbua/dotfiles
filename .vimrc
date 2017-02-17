@@ -95,10 +95,17 @@ vnoremap L g_
 nnoremap Y y$
 
 " save/quit
-inoremap <C-s>  <C-O>:update<cr>
 nnoremap <C-s>  :update<cr>
-inoremap <C-Q>  <esc>:q<cr>
-nnoremap <C-Q>  :q<cr>
+" nnoremap <C-Q>  :q<cr>
+
+function! s:closeorquit()
+    if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) > 1
+        bdelete
+    else
+        quit
+    endif
+endfunc
+nnoremap <silent> <C-Q> :call <sid>closeorquit()<CR>
 
 " don't yank to default clipboard
 noremap x "xx
@@ -200,7 +207,7 @@ function! s:togglecolorizer()
     elseif g:colorizer_maxlines >= line('$')
         let g:colorizer_maxlines = 1
     endif
-    e
+    edit
 endfunc
 nmap <leader>c :call <sid>togglecolorizer()<CR>
 
