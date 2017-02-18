@@ -41,6 +41,7 @@ bspc desktop 2 -l monocle
 setxkbmap -option 'caps:ctrl_modifier'   # caps = ctrl
 xcape -e 'Caps_Lock=Escape'              # ctrl = esc when tapped on its own
 xsetroot -cursor_name left_ptr           # set the default mouse cursor
+xmodmap -e "keycode 135 = Multi_key"
 feh --bg-scale ~/.config/bspwm/wallpaper # set the wallpaper
 sxhkd &                                  # start the hotkey daemon
 nm-applet &
