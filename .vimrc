@@ -25,6 +25,7 @@ set diffopt=filler,vertical
 set virtualedit=block
 set lazyredraw
 set nostartofline
+set showcmd
 
 " keep indentation on linebreaks
 let &showbreak = '↳ '
