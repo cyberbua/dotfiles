@@ -95,6 +95,7 @@ source $ZSH/custom/plugins/fzf/key-bindings.zsh
 source $ZSH/custom/plugins/fzf/completion.zsh
 
 export FZF_CTRL_R_OPTS='-e'
+export FZF_DEFAULT_OPTS='--height 40% --reverse'
 bindkey '^F' fzf-file-widget
 
 # ALT-I - Paste the selected entry from locate output into the command line
