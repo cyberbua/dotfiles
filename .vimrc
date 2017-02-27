@@ -26,6 +26,8 @@ set virtualedit=block
 set lazyredraw
 set nostartofline
 set showcmd
+set pumheight=15
+set synmaxcol=250
 
 " keep indentation on linebreaks
 let &showbreak = '↳ '
