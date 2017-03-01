@@ -6,6 +6,7 @@ ssh-keygen -t rsa -b 4096 -oa 100 # generate secure rsa 4096 key
 
 # nmap
 nmap -v -p 22 --open -sV 10.0.1.0/24 # search for devices with open port 22
+nmap -sP 10.0.1.0/24                 # quick device scan
 
 # git
 git log --graph --pretty=oneline --abbrev-commit # show git commit log
