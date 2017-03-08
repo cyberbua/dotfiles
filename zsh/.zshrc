@@ -51,7 +51,7 @@ alias -r dd='dd status=progress'
 alias -r lb='lsblk -o NAME,LABEL,SIZE,FSTYPE,MOUNTPOINT'
 
 alias -r cal='cal -m3'
-alias -r t='tree -C'
+alias -r t='tree -Ca'
 alias -r wanip='curl ipinfo.io/ip'
 alias -r lanip='ip addr show wlp2s0 | /usr/bin/grep -Po "inet \K[\d.]+"'
 

@@ -1,7 +1,0 @@
-"3.14.0 (created: 2016/06/07 23:58:16)
-
-noremap <C-L> gt
-noremap <C-h> gT
-source! /home/hassan/.vimperatorrc.local
-
-" vim: set ft=vimperator:
