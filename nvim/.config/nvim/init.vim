@@ -123,7 +123,7 @@ nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
 " indent everything
-nnoremap <leader>i migg=G`i`
+nnoremap <leader>i migg=G`i
 
 if has('nvim')
     " window movement in terminal
