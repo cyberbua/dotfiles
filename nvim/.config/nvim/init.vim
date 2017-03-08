@@ -119,7 +119,7 @@ nnoremap C "cC
 vnoremap p "_dP
 
 " keep visual selection when shifting
-xnoremap <  <gv
+xnoremap < <gv
 xnoremap > >gv
 
 " Make . work with visually selected lines
@@ -142,8 +142,8 @@ if has('nvim')
     tnoremap <A-l> <C-\><C-n><C-w>l
     " terminal split with <A-^>
     nnoremap <A-^> :above 15sp term://$SHELL<cr>i
-    tnoremap <Esc> <C-\><C-n>
     " exit terminal insert mode with <Esc>
+    tnoremap <Esc> <C-\><C-n>
     " close terminal when shell exits
     autocmd TermClose *:$SHELL,*:\$SHELL call feedkeys("\<CR>:\<BS>")
 endif
@@ -258,7 +258,7 @@ highlight PmenuSel ctermfg=242 ctermbg=17 gui=bold guibg=#3e4452
 """"""""""""
 " spelling "
 """"""""""""
-set spellfile=~/.vim/spell/custom.utf-8.add
+set spellfile=~/.config/nvim/spell/custom.utf-8.add
 set spelllang=de,en
 set complete+=kspell
 autocmd FileType latex,tex,plaintex,md,markdown,gitcommit setlocal spell
