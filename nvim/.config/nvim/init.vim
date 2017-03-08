@@ -142,7 +142,7 @@ if has('nvim')
     tnoremap <A-l> <C-\><C-n><C-w>l
     " terminal split with <A-^>
     nnoremap <A-^> :above 15sp term://$SHELL<cr>i
-    tnoremap <C-b><Esc> <C-\><C-n>
+    tnoremap <Esc> <C-\><C-n>
     " exit terminal insert mode with <Esc>
     " close terminal when shell exits
     autocmd TermClose *:$SHELL,*:\$SHELL call feedkeys("\<CR>:\<BS>")
