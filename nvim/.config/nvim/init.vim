@@ -27,7 +27,7 @@ set lazyredraw
 set nostartofline
 set showcmd
 set pumheight=15
-set synmaxcol=250
+set synmaxcol=2048
 
 " keep indentation on linebreaks
 let &showbreak = '↳ '
@@ -141,7 +141,7 @@ if has('nvim')
     tnoremap <A-k> <C-\><C-n><C-w>k
     tnoremap <A-l> <C-\><C-n><C-w>l
     " terminal split with <A-^>
-    nnoremap <A-^> :above 15sp term://$SHELL<cr>i
+    nnoremap <A-^> :above 20sp term://$SHELL<cr>i
     " exit terminal insert mode with <Esc>
     tnoremap <Esc> <C-\><C-n>
     " close terminal when shell exits
@@ -161,6 +161,7 @@ xmap ga <Plug>(EasyAlign)
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 
+Plug 'jreybert/vimagit'
 Plug 'tpope/vim-fugitive'
 nnoremap <leader>gr :Gread<CR>
 nnoremap <leader>gd :Gvdiff<CR>
