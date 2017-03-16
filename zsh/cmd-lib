@@ -11,6 +11,8 @@ nmap -sP 10.0.1.0/24                 # quick device scan
 # git
 git log --graph --pretty=oneline --abbrev-commit # show git commit log
 git fsck --lost-found                            # show dangling commits
+git show COMMIT                                  # show what changes a commit made
+git update-index --assume-unchanged file         # ignore changes of tracked file
 
 # lsof
 lsof -i tcp:8000 # list processes using port
