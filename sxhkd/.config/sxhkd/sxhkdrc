@@ -19,7 +19,7 @@ super + {t,shift + t,f,a}
     bspc node --state "~{tiled,pseudo_tiled,floating,fullscreen}"
 
 # toggle window flags
-super + s
+super + shift + s
     bspc node --flag sticky
 
 # slelect last window on desktop
@@ -148,6 +148,10 @@ super + ctrl + Escape
 # display settings
 super + p
     xfce4-display-settings --minimal
+
+# display settings
+super + s
+    emacsclient -c
 
 # mute/unmute sound
 super + m
