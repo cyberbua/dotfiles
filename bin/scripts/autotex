@@ -26,11 +26,12 @@ ctrl_c() {
     kill_mkpdf
 }
 
+# make the pdf before launching evince
+make
+
 # start mkpdf() and save its PID
 mkpdf & mkpdf_pid=$!
 
-# make the pdf before launching evince
-make
 
 # starts evince pdf reader
 evince -- *.pdf &> /dev/null
