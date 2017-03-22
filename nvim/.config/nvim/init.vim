@@ -54,7 +54,6 @@ if exists('&inccommand')
 endif
 
 set list listchars=trail:•,tab:\|\ ,
-hi SpecialKey ctermfg=66 guifg=#E06C65
 """""""""""
 
 """"""""""""
@@ -253,7 +252,7 @@ highlight CursorLine cterm=none term=none ctermbg=16 guibg=#2C323C
 highlight IncSearch ctermfg=232 ctermbg=166 guibg=#000000 guifg=#df5f00
 highlight Pmenu ctermfg=0 ctermbg=16 guibg=#31363f
 highlight PmenuSel ctermfg=242 ctermbg=17 gui=bold guibg=#3e4452
-
+highlight ALEWarning gui=bold,underline guifg=#e06c75
 """""""""
 
 """"""""""""
