@@ -60,7 +60,7 @@ set list listchars=trail:•,tab:\|\ ,
 " Mappings "
 """"""""""""
 " comma as leader
-let mapleader=","
+let mapleader=" "
 
 " disable the damn arrow keys
 noremap <Up>    <Nop>
