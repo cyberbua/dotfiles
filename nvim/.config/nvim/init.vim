@@ -98,7 +98,7 @@ nnoremap Y y$
 
 " save/quit
 nnoremap <C-s>  :update<cr>
-" nnoremap <C-Q>  :q<cr>
+inoremap <C-s> <ESC>:update<cr>
 
 function! s:closeorquit()
     if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) > 1
@@ -192,6 +192,7 @@ map <leader>n :NERDTreeToggle<CR>
 Plug 'vim-airline/vim-airline'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 " language support collection
 Plug 'sheerun/vim-polyglot'
@@ -228,6 +229,11 @@ let g:UltiSnipsExpandTrigger="<C-l>"
 Plug 'honza/vim-snippets'
 
 Plug 'ryanoasis/vim-devicons'
+
+" built in dictionary and synonym lookup
+Plug 'beloglazov/vim-online-thesaurus'
+let g:online_thesaurus_map_keys = 0
+nnoremap <leader>d :OnlineThesaurusCurrentWord<CR>
 
 call plug#end()
 """""""""""
