@@ -61,7 +61,7 @@ alias -r sv='sudoedit'
 alias -r pastebin='curl -F c=@- https://ptpb.pw'
 alias -r pastefile='curl -F c=@- https://ptpb.pw <'
 
-alias -r share='ip addr; webfsd -Fdp 8000'
+alias -r share='ip addr; webfsd -Fdp 8080'
 alias -r clip='xclip -selection clipboard'
 
 alias -r qr='qrencode -t UTF8'
