@@ -133,10 +133,6 @@ super + {_,alt +} space
 super + alt + Escape
     bspc quit
 
-# Strg + Alt = AltGr
-ctrl + alt + {7,8,9,0}
-    xvkbd -xsendevent -text {'\{','[',']','\}'}
-
 # reload sxhkd configuration files:
 super + ctrl + Escape
     pkill -USR1 -x sxhkd
