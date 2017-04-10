@@ -27,10 +27,10 @@ for_window [instance="I3_FLOATING"] floating enable
 # keep windows with specific instance name on the scratchpad
 for_window [instance="I3_SCRATCHPAD"] move scratchpad
 
-exec ~/.config/xstart.sh
+exec --no-startup-id ~/.config/xstart.sh
 
 # always keep a terminal on the scratchpad
-exec "sh -c 'while termite --name I3_SCRATCHPAD; do :; done'"
+exec --no-startup-id "sh -c 'while termite --name I3_SCRATCHPAD; do :; done'"
 ##########
 
 
@@ -95,11 +95,11 @@ bindsym $mod+Shift+j move down 30 px
 bindsym $mod+Shift+k move up 30 px
 bindsym $mod+Shift+l move right 30 px
 
-# split in horizontal orientation
+# set split direction
 bindsym $mod+Ctrl+h split h
-
-# split in vertical orientation
-bindsym $mod+Ctrl+v split v
+bindsym $mod+Ctrl+l split h
+bindsym $mod+Ctrl+j split v
+bindsym $mod+Ctrl+k split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+a fullscreen toggle
