@@ -21,8 +21,16 @@ for_window [class="gnuplot_qt"] floating enable
 for_window [class="Gnuplot"] floating enable
 for_window [class="Gpick"] floating enable
 
-exec VBoxClient-all
+# float every window with the instance name "I3_FLOATING"
+for_window [instance="I3_FLOATING"] floating enable
+
+# keep windows with specific instance name on the scratchpad
+for_window [instance="I3_SCRATCHPAD"] move scratchpad
+
 exec ~/.config/xstart.sh
+
+# always keep a terminal on the scratchpad
+exec "sh -c 'while termite --name I3_SCRATCHPAD; do :; done'"
 ##########
 
 
@@ -36,13 +44,16 @@ bindsym $mod+Return exec termite
 bindsym $mod+d exec "rofi -modi window,drun -show drun"
 
 # show/hide scratchpad
-bindsym $mod+asciicircum scratchpad show
+bindsym $mod+asciicircum scratchpad show, resize set 1522 482, move position 199 24
 
 # run file manager
 bindsym $mod+e exec thunar
 
+# nautilus for fuzzy file search
+bindsym $mod+n exec "nautilus --name=I3_FLOATING"
+
 # display settings
-bindsym $mod+p exec "xfce4-display-settings --minimal"
+# bindsym $mod+p exec "xfce4-display-settings --minimal"
 
 # lockscreen
 bindsym $mod+space exec blurlock
@@ -79,10 +90,10 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+Shift+h move left 30 px
+bindsym $mod+Shift+j move down 30 px
+bindsym $mod+Shift+k move up 30 px
+bindsym $mod+Shift+l move right 30 px
 
 # split in horizontal orientation
 bindsym $mod+Ctrl+h split h
@@ -105,14 +116,14 @@ bindsym $mod+f floating toggle
 bindsym $mod+x focus mode_toggle
 
 # focus the parent container
-bindsym $mod+y focus parent
+bindsym $mod+p focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
 
 # switch to workspace
 bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
+bindsym $mod+2 workspace 2; layout tabbed
 bindsym $mod+3 workspace 3
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
@@ -146,16 +157,10 @@ bindsym $mod+Shift+e exec "i3-msg exit"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 20 px or 5 ppt
+        bindsym j resize grow height 20 px or 5 ppt
+        bindsym k resize shrink height 20 px or 5 ppt
+        bindsym l resize grow width 20 px or 5 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
