@@ -235,6 +235,11 @@ Plug 'beloglazov/vim-online-thesaurus'
 let g:online_thesaurus_map_keys = 0
 nnoremap <leader>d :OnlineThesaurusCurrentWord<CR>
 
+" extend vim's text objects
+Plug 'wellle/targets.vim'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-indent'
+
 call plug#end()
 """""""""""
 
