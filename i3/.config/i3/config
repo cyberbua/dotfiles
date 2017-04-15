@@ -5,7 +5,7 @@
 # set modifier key to windows
 set $mod Mod4
 
-# Font for window titles. Will also be used by the bar unless a different font
+# Font for window titles
 font pango:monospace 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -30,7 +30,7 @@ for_window [instance="I3_SCRATCHPAD"] move scratchpad
 exec --no-startup-id ~/.config/xstart.sh
 
 # always keep a terminal on the scratchpad
-exec --no-startup-id "sh -c 'while termite --name I3_SCRATCHPAD; do :; done'"
+exec --no-startup-id "while termite --name I3_SCRATCHPAD; do :; done"
 ##########
 
 
@@ -38,41 +38,41 @@ exec --no-startup-id "sh -c 'while termite --name I3_SCRATCHPAD; do :; done'"
 # app hotkeys #
 ###############
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec --no-startup-id termite
 
 # start rofi (a program launcher)
-bindsym $mod+d exec "rofi -modi window,drun -show drun"
+bindsym $mod+d exec --no-startup-id "rofi -modi window,drun -show drun"
 
 # show/hide scratchpad
 bindsym $mod+asciicircum scratchpad show, resize set 1522 482, move position 199 24
 
 # run file manager
-bindsym $mod+e exec thunar
+bindsym $mod+e exec --no-startup-id thunar
 
 # nautilus for fuzzy file search
-bindsym $mod+n exec "nautilus --name=I3_FLOATING"
+bindsym $mod+n exec --no-startup-id "nautilus --name=I3_FLOATING"
 
 # display settings
-# bindsym $mod+p exec "xfce4-display-settings --minimal"
+# bindsym $mod+p exec --no-startup-id "xfce4-display-settings --minimal"
 
 # lockscreen
-bindsym $mod+space exec blurlock
+bindsym $mod+space exec --no-startup-id blurlock
 
 # screenshots
-bindsym Print exec "xfce4-screenshooter --sync -f"
-bindsym $mod+Print exec "xfce4-screenshooter --sync -w"
-bindsym $mod+ctrl+Print exec "xfce4-screenshooter --sync -r"
+bindsym Print exec --no-startup-id "xfce4-screenshooter --sync -f"
+bindsym $mod+Print exec --no-startup-id "xfce4-screenshooter --sync -w"
+bindsym $mod+ctrl+Print exec --no-startup-id "xfce4-screenshooter --sync -r"
 
 # toggle sound mute
-bindsym $mod+m exec "amixer -q sset Master toggle"
+bindsym $mod+m exec --no-startup-id "amixer -q sset Master toggle"
 
 # handle volume keys
-bindsym XF86AudioRaiseVolume exec "amixer -q sset Master 2%+"
-bindsym XF86AudioLowerVolume exec "amixer -q sset Master 2%-"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -q sset Master 2%+"
+bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -q sset Master 2%-"
 
 # handle brightness keys
-bindsym XF86MonBrightnessUp exec "xbacklight -inc 5"
-bindsym XF86MonBrightnessDown exec "xbacklight -dec 5"
+bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 10"
+bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 10"
 ###############
 
 
