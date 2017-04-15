@@ -5,8 +5,8 @@
 set -o errexit
 
 mnt() {
-    if [[ "$(lsblk -no FSTYPE "$1")" == "crypto_LUKS" ]]; then
-
+    if [[ "$(lsblk -ndo FSTYPE "$1")" == "crypto_LUKS" ]]; then
+        # if LUKS encrypted device by device name
         DM=$(set -x; udisksctl unlock -b "$1") || exit 1
         DM=$(echo "$DM" | sed 's/.* //' | tr -d .)
         (set -x; udisksctl mount -b "$DM" $2)
@@ -19,18 +19,14 @@ mnt() {
 # save mount options in OPT
 [[ $# -eq 2 ]] && OPT="-o $2"
 
-# if first argument is block device
 if [[ -b "$1" ]]; then
+    # if first argument is block device
     mnt "$1" "$OPT"
-fi
-
-# if first argument is device under /dev/ (e.g. sdXY)
-if [[ -b /dev/"$1" ]]; then
+elif [[ -b /dev/"$1" ]]; then
+    # if first argument is device under /dev/ (e.g. sdXY)
     mnt /dev/"$1" "$OPT"
-fi
-
-# if first argument is label
-if [[ -b /dev/disk/by-label/"$1" ]]; then
+elif [[ -b /dev/disk/by-label/"$1" ]]; then
+    # if first argument is label
     mnt /dev/disk/by-label/"$1" "$OPT"
 fi
 
