@@ -31,5 +31,7 @@ elif [[ -b /dev/"$1" ]]; then
 elif [[ -b /dev/disk/by-label/"$1" ]]; then
     # if first argument is label
     umnt /dev/disk/by-label/"$1" "$OPT"
+else
+    lsblk -o NAME,LABEL,SIZE,FSTYPE,MOUNTPOINT
 fi
 
