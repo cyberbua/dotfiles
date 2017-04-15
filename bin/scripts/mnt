@@ -2,32 +2,38 @@
 # mount normal partition via: /dev/sdXY, sdXY, Label
 # mount image/ISO via path
 # mount LUKS via: /dev/sdXY, sdXY
+set -o errexit
 
 mnt() {
-	udisksctl mount -b $@
-	exit
+    if [[ "$(lsblk -no FSTYPE "$1")" == "crypto_LUKS" ]]; then
+
+        DM=$(set -x; udisksctl unlock -b "$1") || exit 1
+        DM=$(echo "$DM" | sed 's/.* //' | tr -d .)
+        (set -x; udisksctl mount -b "$DM" $2)
+
+    else
+        (set -x; udisksctl mount -b "$1" $2)
+    fi
 }
 
-mnt_luks() {
-	mnt $(udisksctl unlock -b $1 | sed 's/.* //' | tr -d .)
-}
+# save mount options in OPT
+[[ $# -eq 2 ]] && OPT="-o $2"
 
-# if luks blockdevice
-[ -b $1 ] && [ "$(lsblk -o FSTYPE $1 | tail -n1)" == "crypto_LUKS" ] && mnt_luks $1
+# if first argument is block device
+if [[ -b "$1" ]]; then
+    mnt "$1" "$OPT"
+fi
 
-# if luks blockdevice under /dev (e.g. sdXY)
-[ -b /dev/$1 ] && [ "$(lsblk -o FSTYPE /dev/$1 | tail -n1)" == "crypto_LUKS" ] && mnt_luks /dev/$1
+# if first argument is device under /dev/ (e.g. sdXY)
+if [[ -b /dev/"$1" ]]; then
+    mnt /dev/"$1" "$OPT"
+fi
 
-
-# if argument is a blockdevice
-[ -b $1 ] && mnt $@
-
-# if argument is device name under /dev (e.g. sdXY)
-[ -b /dev/$1 ] && mnt /dev/$@
-
-# if argument is label
-[ -b /dev/disk/by-label/$1 ] && mnt /dev/disk/by-label/$@
+# if first argument is label
+if [[ -b /dev/disk/by-label/"$1" ]]; then
+    mnt /dev/disk/by-label/"$1" "$OPT"
+fi
 
 # if regular file (ISO, img)
-# [ -f $1 ] && udisksctl mount -b $(udisksctl loop-setup -r -f $1 | sed 's/.* //' | tr -d .) && exit
+# [[ -f $1 ]] && udisksctl mount -b $(udisksctl loop-setup -r -f $1 | sed 's/.* //' | tr -d .) && exit
 
