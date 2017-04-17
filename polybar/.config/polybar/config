@@ -42,27 +42,39 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = RobotoMono:size=10;2
+font-0 = RobotoMonoNerdFont:weight=medium:size=10;2
 font-1 = MaterialIcons:size=12;4
 
-modules-left = bspwm i3
+modules-left = bspwm i3 backlight volume bitcoin
 modules-center = date time updates
-modules-right = backlight volume filesystem memory cpu battery temperature network
+modules-right = filesystem battery memory cpu temperature network
 
 tray-position = right
 tray-padding = 2
+
+
+[module/bitcoin]
+type = custom/script
+interval = 3600
+format = <label>
+format-prefix = " "
+tail = true
+exec = ~/.config/polybar/bitcoin.py
+
 
 [module/xwindow]
 type = internal/xwindow
 label = %title%
 label-maxlen = 45
 
+
 [module/filesystem]
 type = internal/fs
 interval = 25
 mount-0 = /
-format-mounted-prefix = " "
+format-mounted-prefix = " "
 label-mounted = %used%
+
 
 [module/bspwm]
 type = internal/bspwm
@@ -84,10 +96,11 @@ label-empty = %index%
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 1
 
+
 [module/i3]
 type = internal/i3
 label-mode = %mode%
-label-mode-background = #e60053
+label-mode-background = #e60000
 
 label-focused = %index%
 label-focused-background = ${colors.background-alt}
@@ -103,13 +116,15 @@ label-urgent = %index%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 1
 
+
 [module/updates]
 type = custom/script
 exec = ~/.config/polybar/updates.sh
 interval = 5
 click-left = ~/.config/polybar/updates.sh now
-format-prefix = " "
+format-prefix = " "
 label = %output:0:3%
+
 
 [module/backlight]
 type = internal/backlight
@@ -119,26 +134,28 @@ ramp-0 = " "
 ramp-1 = " "
 ramp-2 = " "
 
+
 [module/cpu]
 type = internal/cpu
-interval = 2
+interval = 1
 format-prefix = " "
+
 
 [module/memory]
 type = internal/memory
-interval = 2
+interval = 1
 format-prefix = " "
 label = %gb_used%
+
 
 [module/network]
 type = internal/network
 interface = wlp2s0
-interval = 2.0
+interval = 1.0
 format-connected = <label-connected>
-format-connected-prefix = " "
 format-packetloss-underline = #ff0000
-label-connected = "%local_ip%"
-; label-connected = "%downspeed% %upspeed% %local_ip%"
+label-connected = "%downspeed% %upspeed% %local_ip%"
+
 
 [module/date]
 type = internal/date
@@ -147,6 +164,7 @@ date = "%a %d.%m"
 format-prefix = " "
 label = %date%
 
+
 [module/time]
 type = internal/date
 interval = 3
@@ -154,10 +172,12 @@ time = %H:%M
 format-prefix = " "
 label = %time%
 
+
 [module/volume]
 type = internal/volume
 format-volume-prefix = " "
 format-muted-prefix = " "
+
 
 [module/battery]
 type = internal/battery
@@ -165,23 +185,32 @@ battery = BAT1
 adapter = ACAD
 ; never be full:
 full-at = 101
-format-charging-prefix = " "
-format-full-prefix = " "
-format-discharging-prefix = " "
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-charging = <label-charging>
+format-charging-prefix = " "
+format-full = <label-full>
+format-full-prefix = " "
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
 
 [module/temperature]
 type = internal/temperature
 thermal-zone = 1
-warn-temperature = 80
-
-format-prefix = " "
-format-warn-prefix = " "
-
-format = <label>
-format-warn = <label-warn>
-
-label = %temperature%
-label-warn = %temperature%
+warn-temperature = 75
+format = <ramp> <label>
+format-warn = <ramp> <label-warn>
 label-warn-foreground = ${colors.secondary}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
 
 ; vim:ft=dosini
