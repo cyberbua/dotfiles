@@ -55,11 +55,18 @@ tray-padding = 2
 
 [module/bitcoin]
 type = custom/script
-interval = 3600
-format = <label>
-format-prefix = " "
-tail = true
 exec = ~/.config/polybar/bitcoin.py
+interval = 1000
+format-prefix = " "
+; click-left = ~/.config/polybar/bitcoin.py
+
+
+[module/updates]
+type = custom/script
+exec = ~/.config/polybar/updates.sh
+interval = 5
+click-left = ~/.config/polybar/updates.sh now
+format-prefix = " "
 
 
 [module/xwindow]
@@ -115,15 +122,6 @@ label-visible-padding = 1
 label-urgent = %index%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 1
-
-
-[module/updates]
-type = custom/script
-exec = ~/.config/polybar/updates.sh
-interval = 5
-click-left = ~/.config/polybar/updates.sh now
-format-prefix = " "
-label = %output:0:3%
 
 
 [module/backlight]
