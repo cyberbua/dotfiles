@@ -1,27 +1,42 @@
 #!/bin/bash
 
+# print a number of seconds in H:M:S format
+format() {
+    if [ "$1" -gt 3599 ]; then
+        date -u -d @${1} +"%H:%M:%S"
+    elif [ "$1" -gt 59 ]; then
+        date -u -d @${1} +"%M:%S"
+    else
+        date -u -d @${1} +"%S"
+    fi
+
+}
+
 # split user input at every colon
 IFS=':' read -ra array <<< "$1"
 
 # calculate the number of secs
 case "${#array[@]}" in
-	1) 	secs=${array[0]}
-		format="%S"
-		;;
-	2)	secs=$(( ${array[0]} * 60 + ${array[1]} ))
-		format="%M:%S"
-		;;
-	3)	secs=$(( ${array[0]} * 3600 + ${array[1]} * 60  + ${array[2]} ))
-		format="%H:%M:%S"
-		;;
+    1)  secs=${array[0]}
+        format="%S"
+        ;;
+    2)  secs=$(( ${array[0]} * 60 + ${array[1]} ))
+        format="%M:%S"
+        ;;
+    3)  secs=$(( ${array[0]} * 3600 + ${array[1]} * 60  + ${array[2]} ))
+        format="%H:%M:%S"
+        ;;
 esac
 
+
 # run the countdown
-date1=$((`date +%s` + $secs));
-while [ "$date1" -ge `date +%s` ]; do
-	output="$(date -u --date @$(($date1 - `date +%s`)) +$format)"
-	# output either with echo or as specified in the second argument
-	[ -z "$2" ] && echo -en "$output\r"
-	[ -n "$2" ] && clear && echo -e "$3\n$output" | $2
-	sleep 0.1
+for (( i=secs; i>0; i--)); do
+    if [ -z "$2" ]; then
+        echo -en "$(format $i)\r"
+    elif [ "$2" == "--raw" ]; then
+        format $i
+    elif [ -n "$2" ]; then
+        clear && echo -e "$3\n$(format $i)" | $2
+    fi
+    sleep 1
 done
