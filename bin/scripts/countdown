@@ -30,7 +30,7 @@ esac
 
 
 # run the countdown
-for (( i=secs; i>0; i--)); do
+for (( i=secs; i>=0; i--)); do
     if [ -z "$2" ]; then
         echo -en "$(format $i)\r"
     elif [ "$2" == "--raw" ]; then
