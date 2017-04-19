@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # exit script on first error
-# set -o errexit
+set -o errexit
 
 # change to this scripts directory
 cd "$(dirname "$0")" || exit 1
