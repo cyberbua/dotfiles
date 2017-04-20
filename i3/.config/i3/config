@@ -80,8 +80,9 @@ bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 10"
 # i3 hotkeys #
 ##############
 
-# kill focused window
+# close/kill focused window
 bindsym $mod+q kill
+bindsym $mod+Shift+q exec "xdotool getwindowfocus windowkill"
 
 # change focus
 bindsym $mod+h focus left
