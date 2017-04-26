@@ -21,8 +21,13 @@ while [[ -p $1.pipe ]]; do
     fi
 done &
 
-# run the script periodically
-while [[ -p $1.pipe ]]; do
-    ./$1
-    sleep "$2"
-done
+
+if [ -n "$2" ]; then
+    # run the script periodically
+    while [[ -p $1.pipe ]]; do
+        ./$1
+        sleep "$2"
+    done
+else
+    wait
+fi
