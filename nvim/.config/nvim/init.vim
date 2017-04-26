@@ -222,6 +222,8 @@ nmap <leader>c :call <sid>togglecolorizer()<CR>
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_ignore_case = 1
+let g:deoplete#sources = {}
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " snippets
 Plug 'SirVer/ultisnips'
