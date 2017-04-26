@@ -16,22 +16,57 @@ mnt() {
     fi
 }
 
-# save mount options in OPT
-[[ $# -eq 2 ]] && OPT="-o $2"
+umnt() {
+    if [[ "$(lsblk -ndo TYPE "$1")" == "crypt" ]]; then
+        # if LUKS encrypted device by label
+        (set -x; udisksctl unmount -b "$1" $2) || exit 1
+        DEV=$(lsblk -pnslo NAME "$1" | tail -n2 | head -n1 )
+        (set -x; udisksctl lock -b "$DEV") || exit 1
 
-if [[ -b "$1" ]]; then
-    # if first argument is block device
-    mnt "$1" "$OPT"
-elif [[ -b /dev/"$1" ]]; then
-    # if first argument is device under /dev/ (e.g. sdXY)
-    mnt /dev/"$1" "$OPT"
-elif [[ -b /dev/disk/by-label/"$1" ]]; then
-    # if first argument is label
-    mnt /dev/disk/by-label/"$1" "$OPT"
-else
-    lsblk -o NAME,LABEL,SIZE,FSTYPE,MOUNTPOINT
+    elif [[ "$(lsblk -no TYPE "$1" | tail -n1)" == "crypt" ]]; then
+        # if LUKS encrypted devie by device name
+        DM=$(lsblk -prno NAME "$1" | tail -n1)
+        (set -x; udisksctl unmount -b "$DM" $2) || exit 1
+        (set -x; udisksctl lock -b "$1") || exit 1
+    else
+        (set -x; udisksctl unmount -b "$1" $2)
+    fi
+}
+
+if [[ $1 != "-u" ]]; then
+    # save mount options in OPT
+    [[ $# -eq 2 ]] && OPT="-o $2"
+
+    if [[ -b "$1" ]]; then
+        # if first argument is block device
+        mnt "$1" "$OPT"
+    elif [[ -b /dev/"$1" ]]; then
+        # if first argument is device under /dev/ (e.g. sdXY)
+        mnt /dev/"$1" "$OPT"
+    elif [[ -b /dev/disk/by-label/"$1" ]]; then
+        # if first argument is label
+        mnt /dev/disk/by-label/"$1" "$OPT"
+    else
+        lsblk -o NAME,LABEL,SIZE,FSTYPE,MOUNTPOINT
+    fi
+elif [[ $1 == "-u" ]]; then
+    shift
+    # save mount options in OPT
+    [[ $2 == "-f" ]] && OPT="-f"
+
+    if [[ -b "$1" ]]; then
+        # if first argument is block device
+        umnt "$1" "$OPT"
+    elif [[ -b /dev/"$1" ]]; then
+        # if first argument is device under /dev/ (e.g. sdXY)
+        umnt /dev/"$1" "$OPT"
+    elif [[ -b /dev/disk/by-label/"$1" ]]; then
+        # if first argument is label
+        umnt /dev/disk/by-label/"$1" "$OPT"
+    else
+        lsblk -o NAME,LABEL,SIZE,FSTYPE,MOUNTPOINT
+    fi
 fi
-
 # if regular file (ISO, img)
 # [[ -f $1 ]] && udisksctl mount -b $(udisksctl loop-setup -r -f $1 | sed 's/.* //' | tr -d .) && exit
 
