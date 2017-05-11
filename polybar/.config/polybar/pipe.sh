@@ -6,17 +6,22 @@ set -o errexit
 # change to this scripts directory
 cd "$(dirname "$0")" || exit 1
 
+# set pipe name
+PIPE=$1.pipe.$$
+
 # delete named pipe when script is terminated
-trap "rm -f $1.pipe" EXIT INT TERM
+trap "rm -f $PIPE" EXIT INT TERM
 
 # create pipe if it doesn't exist
-if [[ ! -p $1.pipe ]]; then
-    mkfifo "$1.pipe"
+if [[ ! -p $PIPE ]]; then
+    mkfifo "$PIPE"
+else
+    exit 1
 fi
 
 # read named pipe
-while [[ -p $1.pipe ]]; do
-    if read line < "$1.pipe"; then
+while [[ -p $PIPE ]]; do
+    if read line < "$PIPE"; then
         [[ -n "$line" ]] && echo "$line"
     fi
 done &
@@ -24,7 +29,7 @@ done &
 
 if [ -n "$2" ]; then
     # run the script periodically
-    while [[ -p $1.pipe ]]; do
+    while [[ -p $PIPE ]]; do
         ./$1
         sleep "$2"
     done
