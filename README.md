@@ -1,7 +1,7 @@
 # My Setup
 
 - **OS:** Arch Linux x86_64
-- **Window Manager:** bspwm
+- **Window Manager:** i3wm
 - **Bar:** [polybar](https://github.com/jaagr/polybar)
 - **Terminal:** [termite](https://github.com/thestinger/termite)
 - **Shell:** Zsh
@@ -9,7 +9,7 @@
 - Theme and fonts
     - **GTK Theme:** Arc Darker
     - **icon theme:** Ultra Flat
-    - **fonts:** Roboto & [Roboto Mono for Powerline](https://github.com/powerline/fonts/tree/master/RobotoMono)
+    - **fonts:** Roboto & [Roboto Mono Nerdfont](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/RobotoMono/complete)
 - **Editor:** Neovim
 - **Firefox**
     - [Arc Darker Theme](https://github.com/horst3180/arc-firefox-theme)
