@@ -55,18 +55,18 @@ tray-padding = 2
 
 [module/bitcoin]
 type = custom/script
-exec = ~/.config/polybar/pipe.sh bitcoin.py 1800
+exec = ~/.config/polybar/pipe.sh bitcoin.py 600
 tail = true
 format-prefix = " "
-click-left = ~/.config/polybar/bitcoin.py > ~/.config/polybar/bitcoin.py.pipe
+click-left = ~/.config/polybar/bitcoin.py > ~/.config/polybar/bitcoin.py.pipe.*
 
 
 [module/updates]
 type = custom/script
-exec = ~/.config/polybar/pipe.sh updates.sh 1800
+exec = ~/.config/polybar/pipe.sh updates.sh 7200
 tail = true
 format-prefix = " "
-click-left = ~/.config/polybar/updates.sh --now > ~/.config/polybar/updates.sh.pipe
+click-left = ~/.config/polybar/updates.sh --now > ~/.config/polybar/updates.sh.pipe.*
 
 
 [module/xwindow]
