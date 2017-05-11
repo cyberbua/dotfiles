@@ -74,8 +74,8 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -q sset Master 2%+"
 bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -q sset Master 2%-"
 
 # handle brightness keys
-bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 10"
-bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 10"
+bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 5"
+bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 5"
 ###############
 
 
