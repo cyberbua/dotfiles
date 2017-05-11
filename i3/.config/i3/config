@@ -27,6 +27,9 @@ for_window [instance="I3_FLOATING"] floating enable
 # keep windows with specific instance name on the scratchpad
 for_window [instance="I3_SCRATCHPAD"] move scratchpad
 
+# default layout
+workspace_layout stacking
+
 exec --no-startup-id ~/.config/xstart.sh
 
 # always keep a terminal on the scratchpad
