@@ -33,7 +33,7 @@ workspace_layout stacking
 exec --no-startup-id ~/.config/xstart.sh
 
 # always keep a terminal on the scratchpad
-exec --no-startup-id "while termite --name I3_SCRATCHPAD; do :; done"
+exec --no-startup-id "while pgrep i3; do termite --name I3_SCRATCHPAD; sleep 0.5; done"
 ##########
 
 
