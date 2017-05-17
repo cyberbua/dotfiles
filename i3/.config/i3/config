@@ -25,7 +25,7 @@ for_window [class="Gpick"] floating enable
 for_window [instance="I3_FLOATING"] floating enable
 
 # keep windows with specific instance name on the scratchpad
-for_window [instance="I3_SCRATCHPAD"] move scratchpad
+for_window [instance="I3_SCRATCHPAD"] move scratchpad, scratchpad show, resize set 1522 482, move position 199 24, scratchpad show
 
 # default layout
 workspace_layout stacking
@@ -33,7 +33,7 @@ workspace_layout stacking
 exec --no-startup-id ~/.config/xstart.sh
 
 # always keep a terminal on the scratchpad
-exec --no-startup-id "while pgrep i3; do termite --name I3_SCRATCHPAD; sleep 0.5; done"
+exec --no-startup-id "while pgrep i3; do termite --name I3_SCRATCHPAD; sleep 0.25; done"
 ##########
 
 
@@ -47,16 +47,13 @@ bindsym $mod+Return exec --no-startup-id termite
 bindsym $mod+d exec --no-startup-id "rofi -modi window,drun -show drun"
 
 # show/hide scratchpad
-bindsym $mod+asciicircum scratchpad show, resize set 1522 482, move position 199 24
+bindsym $mod+asciicircum scratchpad show
 
 # run file manager
 bindsym $mod+e exec --no-startup-id thunar
 
 # nautilus for fuzzy file search
 bindsym $mod+n exec --no-startup-id "nautilus --name=I3_FLOATING"
-
-# display settings
-# bindsym $mod+p exec --no-startup-id "xfce4-display-settings --minimal"
 
 # lockscreen
 bindsym $mod+space exec --no-startup-id blurlock
