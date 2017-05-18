@@ -16,7 +16,7 @@ COMPLETION_WAITING_DOTS="true"
 # Plugins
 plugins=(sudo systemd zsh-syntax-highlighting pacman)
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin/core_perl:/usr/bin:$HOME/scripts"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:$HOME/scripts"
 
 source $ZSH/oh-my-zsh.sh
 
