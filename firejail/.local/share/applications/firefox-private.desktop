@@ -1,8 +1,8 @@
 [Desktop Entry]
 Version=1.0
-Name=Firefox - Firejail
+Name=Firefox Private Session - Firejail
 Comment=Browse the Web
-Exec=/usr/bin/firejail firefox %u
+Exec=/usr/bin/firejail --private firefox --no-remote %u
 Icon=firefox
 Terminal=false
 Type=Application
@@ -10,12 +10,3 @@ MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xm
 StartupNotify=true
 Categories=Network;WebBrowser;
 Keywords=web;browser;internet;
-Actions=new-window;new-private-window;
-
-[Desktop Action new-window]
-Name=New Window
-Exec=/usr/bin/firejail firefox %u --new-window
-
-[Desktop Action new-private-window]
-Name=New Private Window
-Exec=/usr/bin/firejail firefox %u --private-window
