@@ -23,6 +23,6 @@ shell none
 tracelog
 # x11 xorg
 private-dev
-private-tmp
+# private-tmp
 noexec ${HOME}
 noexec /tmp
