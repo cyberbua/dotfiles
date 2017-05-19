@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=JDownloader - Firejail
+Icon=jdownloader
+Exec=firejail jdownloader
+Terminal=false
+Categories=Application;Network;
+StartupWMClass=jd-Main
