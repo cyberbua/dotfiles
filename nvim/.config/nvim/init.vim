@@ -28,6 +28,7 @@ set nostartofline
 set showcmd
 set pumheight=15
 set synmaxcol=2048
+set noshowmode
 
 " keep indentation on linebreaks
 let &showbreak = '↳ '
