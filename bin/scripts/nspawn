@@ -4,7 +4,7 @@
 # security hardening (network especially)
 
 pack() {
-    tar -cpC $1/..  ${1##*/} ${1##*/}.nspawn | $(command -v pigz || command -v gzip) > ${1##*/}.tgz
+    tar -cpC $1/..  $(basename $1) $(basename $1).nspawn | $(command -v pigz || command -v gzip) > $(basename $1).tgz
     # change owner of archive if script was issued by a normal user via sudo
     [[ -n "$SUDO_USER" ]] && chown $SUDO_USER ${1##*/}.tgz
     exit
