@@ -1,5 +1,5 @@
 xsetroot -cursor_name left_ptr           # set the default mouse cursor
-feh --bg-scale ~/.config/bspwm/wallpaper # set the wallpaper
+feh --bg-scale ~/.config/wallpaper       # set the wallpaper
 nm-applet &
 compton -b
 redshift -l 16:48 -t 6500:4500 &
