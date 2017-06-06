@@ -1,0 +1,32 @@
+#!/bin/bash
+# TODO: better timeout notation for sunset (s,m,h)
+
+PB="https://pb.hmohamad.at"
+
+clip() {
+    tee /dev/tty | sed -n -e 's/url: //p' | tr -d '\n' | xclip -selection clipboard
+}
+
+while [[ $# -ge 1 ]]; do
+    case $1 in
+        -p)
+            PRIVATE="-F p=1";;
+        -s)
+            SUNSET="-F sunset=$2"; shift;;
+        -d)
+            DELETE="$2"; break 2;;
+        *)
+            ARG=$1;;
+    esac
+    shift
+done
+
+if [[ $ARG =~ ^https?://.*$ ]]; then
+   curl -sS $PRIVATE $SUNSET -F c=@- $PB/u <<< "$ARG" | clip
+elif [[ -f $ARG ]]; then
+    curl -sS $PRIVATE $SUNSET -F c=@"$ARG" $PB | clip
+elif [[ -n $DELETE ]]; then
+    curl -X DELETE $DELETE
+else
+    curl -sS $PRIVATE $SUNSET -F c=@- $PB | clip
+fi
