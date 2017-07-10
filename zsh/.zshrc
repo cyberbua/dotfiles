@@ -49,6 +49,7 @@ alias -r rf='rm -rf'
 alias -r mkdir='mkdir -p'
 alias -r dd='dd status=progress'
 alias -r lb='lsblk -o NAME,LABEL,SIZE,FSTYPE,MOUNTPOINT'
+alias -r ip='ip -c'
 
 alias -r cal='cal -m3'
 alias -r t='tree -Ca'
