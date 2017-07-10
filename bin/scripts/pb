@@ -4,7 +4,11 @@
 PB="https://pb.hmohamad.at"
 
 clip() {
-    tee /dev/tty | sed -n -e 's/url: //p' | tr -d '\n' | xclip -selection clipboard
+    OUTPUT=$(cat)
+    URL=$(echo "$OUTPUT" | sed -n -e 's/url: //p')
+    echo -n $URL | qrencode --type=UTF8 --margin=2
+    echo -n $URL | xclip -selection clipboard
+    echo "$OUTPUT"
 }
 
 while [[ $# -ge 1 ]]; do
