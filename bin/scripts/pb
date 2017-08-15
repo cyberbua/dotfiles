@@ -30,7 +30,7 @@ if [[ $ARG =~ ^https?://.*$ ]]; then
 elif [[ -f $ARG ]]; then
     curl -sS $PRIVATE $SUNSET -F c=@"$ARG" $PB | clip
 elif [[ -n $DELETE ]]; then
-    curl -X DELETE $DELETE
+    curl -X DELETE $PB/$DELETE
 else
     curl -sS $PRIVATE $SUNSET -F c=@- $PB | clip
 fi
