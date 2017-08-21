@@ -4,30 +4,13 @@ import requests, json, sys
 from texttable import Texttable
 
 class Coin:
-    name = ""
-    symbol = ""
-    amount = 1
-    price_usd = 0
-    price_eur = 0
-    change_7d = ""
-    change_24h = ""
-    change_1h = ""
-
-    def __init__(self, name, amount):
-        self.name = name
-        self.amount = float(amount)
-        r = requests.get('https://api.coinmarketcap.com/v1/ticker/{}/?convert=EUR'.format(self.name))
-        data = json.loads(r.text)
-        self.symbol = data[0]['symbol']
-        self.price_eur = float(data[0]['price_eur'])
-        self.price_usd = float(data[0]['price_usd'])
-        self.change_7d = data[0]['percent_change_7d']
-        self.change_24h = data[0]['percent_change_24h']
-        self.change_1h = data[0]['percent_change_1h']
-
+    amount = 0
+    def __init__(self, data, amount):
+        self.__dict__ = data
+        self.amount = amount
 
     def holdings(self):
-        return self.amount * self.price_eur
+        return float(self.amount) * float(self.price_eur)
 
 def green(text):
     return '\033[0;32m' + text +'\033[0m'
@@ -36,9 +19,11 @@ def red(text):
     return '\033[0;31m' + text + '\033[0m'
 
 if __name__ == '__main__':
+
     coins = []
+    data = json.loads(requests.get('https://api.coinmarketcap.com/v1/ticker/?convert=EUR&limit=150').text)
     for arg in sys.argv[1:]:
-        coins.append(Coin(arg.split(':')[0], arg.split(':')[1]))
+        coins.append(Coin([coin for coin in data if coin['symbol'] == arg.split(':')[0] or coin['id'] == arg.split(':')[0]][0], arg.split(':')[1]))
 
     table = Texttable(100)
     table.set_deco(Texttable.VLINES | Texttable.BORDER | Texttable.HEADER)
@@ -53,15 +38,15 @@ if __name__ == '__main__':
         sum += coin.holdings()
 
     for coin in coins:
-        table.add_row([coin.symbol, coin.amount, coin.price_usd, coin.price_eur, coin.change_7d, coin.change_24h, coin.change_1h, coin.holdings(), coin.holdings()/sum*100])
+        table.add_row([coin.symbol, coin.amount, coin.price_usd, coin.price_eur, coin.percent_change_7d, coin.percent_change_24h, coin.percent_change_1h, coin.holdings(), coin.holdings()/sum*100])
 
     holdings_change_7d = 0
     holdings_change_24h = 0
     holdings_change_1h = 0
     for coin in coins:
-        holdings_change_7d += (coin.holdings()/sum) * float(coin.change_7d)
-        holdings_change_24h += (coin.holdings()/sum) * float(coin.change_24h)
-        holdings_change_1h += (coin.holdings()/sum) * float(coin.change_1h)
+        holdings_change_7d += (coin.holdings()/sum) * float(coin.percent_change_7d)
+        holdings_change_24h += (coin.holdings()/sum) * float(coin.percent_change_24h)
+        holdings_change_1h += (coin.holdings()/sum) * float(coin.percent_change_1h)
 
     if len(coins) > 1:
         table.add_row(["total", "", "", "", holdings_change_7d, holdings_change_24h, holdings_change_1h, sum, ""])
