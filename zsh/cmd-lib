@@ -26,6 +26,9 @@ udisksctl loop-delete -b /dev/loopX # destroy/unbind loop device
 udisksctl mount -b /dev/sdx         # mount block device
 udisksctl unmount -b /dev/sdx       # unmount block device
 
+# LUKS
+sudo cryptsetup -v --cipher aes-xts-plain64 --key-size 512 --hash sha512 --iter-time 5000 --use-random --verify-passphrase luksFormat /dev/sdX # format device with LUKS encryption
+
 # misc
 python -m http.server 8080                              # http file server in current directory
 tmux has-session && exec tmux attach || exec tmux       # tmux attach or create session
