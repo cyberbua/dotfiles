@@ -4,8 +4,8 @@ rofi.lines:            8
 rofi.width:            25
 rofi.color-enabled:    true
 rofi.separator-style:  none
-rofi.kb-row-up:        Up,Alt+k,Shift+Tab,Shift+ISO_Left_Tab
-rofi.kb-row-down:      Down,Alt+j,Tab,ISO_Left_Tab
+rofi.kb-row-up:        Up,Alt+k
+rofi.kb-row-down:      Down,Alt+j
 rofi.kb-mode-next:     Alt+l
 rofi.kb-mode-previous: Alt+h
 ! rofi state:         'bg'  'fg'  'bgalt'  'hlbg'  'hlfg'
