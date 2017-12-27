@@ -185,7 +185,7 @@ Plug 'w0rp/ale'
 let g:ale_sign_error = '✹'
 let g:ale_sign_warning = '✹'
 let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_text_changed = 1
 
 Plug 'scrooloose/nerdtree'
 map <leader>n :NERDTreeToggle<CR>
@@ -201,10 +201,12 @@ Plug 'sheerun/vim-polyglot'
 " fuzzy file finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-nmap <leader>f :Files<CR>
-nmap <leader>F :GFiles<CR>
-nmap <leader>l :Lines<CR>
-nmap <leader>b :Buffers<CR>
+nmap <leader>ff :Files<CR>
+nmap <leader>fg :GFiles<CR>
+nmap <leader>fl :Lines<CR>
+nmap <leader>fb :Buffers<CR>
+nmap <leader>fc :Commands<CR>
+nmap <leader>fh :History:<CR>
 
 " colorize rgb hex codes
 Plug 'lilydjwg/colorizer'
