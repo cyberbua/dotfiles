@@ -2,6 +2,17 @@
 # config #
 ##########
 
+workspace 1 output eDP1
+workspace 2 output eDP1
+workspace 3 output eDP1
+workspace 4 output eDP1
+workspace 5 output eDP1
+workspace 6 output eDP1
+workspace 7 output eDP1
+workspace 8 output eDP1
+workspace 9 output eDP1
+workspace 10 output HDMI1
+
 # set modifier key to windows
 set $mod Mod4
 
@@ -52,16 +63,16 @@ bindsym $mod+asciicircum scratchpad show
 # run file manager
 bindsym $mod+e exec --no-startup-id thunar
 
-# nautilus for fuzzy file search
-bindsym $mod+n exec --no-startup-id "nautilus --name=I3_FLOATING"
+# fuzzy file search & open
+bindsym $mod+n exec --no-startup-id fzf.sh file
 
 # lockscreen
 bindsym $mod+space exec --no-startup-id blurlock
 
 # screenshots
-bindsym Print exec --no-startup-id "xfce4-screenshooter --sync -f"
-bindsym $mod+Print exec --no-startup-id "xfce4-screenshooter --sync -w"
-bindsym $mod+ctrl+Print exec --no-startup-id "xfce4-screenshooter --sync -r"
+bindsym Print exec --no-startup-id "xfce4-screenshooter -f"
+bindsym $mod+Print exec --no-startup-id "xfce4-screenshooter -w"
+bindsym $mod+ctrl+Print exec --no-startup-id "xfce4-screenshooter -r"
 
 # toggle sound mute
 bindsym $mod+m exec --no-startup-id "amixer -q sset Master toggle"
@@ -113,6 +124,9 @@ bindsym $mod+t layout toggle split
 # toggle tiling / floating
 bindsym $mod+f floating toggle
 
+# toggle sticky
+bindsym $mod+Shift+s sticky toggle
+
 # change focus between tiling / floating windows
 bindsym $mod+x focus mode_toggle
 
@@ -156,6 +170,7 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-msg exit"
 
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         bindsym h resize shrink width 20 px or 5 ppt
@@ -168,5 +183,19 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
+#configure HDMI1 output
+mode "monitor" {
+        bindsym m exec --no-startup-id "xrandr --output HDMI1 --auto", mode "default"
+        bindsym e exec --no-startup-id "pkill compton; xrandr --output HDMI1 --auto --right-of eDP1; compton -b", mode "default"
+        bindsym o exec --no-startup-id "xrandr --output HDMI1 --off", mode "default"
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
 bindsym $mod+r mode "resize"
+
+# configure HDMI output
+bindsym $mod+Shift+p mode "monitor"
 ##############
