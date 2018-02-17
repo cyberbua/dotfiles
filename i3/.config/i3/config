@@ -11,7 +11,7 @@ workspace 6 output eDP1
 workspace 7 output eDP1
 workspace 8 output eDP1
 workspace 9 output eDP1
-workspace 10 output HDMI1
+workspace 10 output eDP1
 
 # set modifier key to windows
 set $mod Mod4
@@ -36,7 +36,8 @@ for_window [class="Gpick"] floating enable
 for_window [instance="I3_FLOATING"] floating enable
 
 # keep windows with specific instance name on the scratchpad
-for_window [instance="I3_SCRATCHPAD"] move scratchpad, scratchpad show, resize set 1522 482, move position 199 24, scratchpad show
+for_window [instance="I3_SCRATCHPAD"] move scratchpad, scratchpad show, \
+    resize set 1522 482, move position 199 24, scratchpad show
 
 # default layout
 workspace_layout stacking
@@ -138,7 +139,7 @@ bindsym $mod+p focus parent
 
 # switch to workspace
 bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2; layout tabbed
+bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
@@ -179,23 +180,28 @@ mode "resize" {
         bindsym l resize grow width 20 px or 5 ppt
 
         # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+        bindsym Return mode default
+        bindsym Escape mode default
 }
 
 #configure HDMI1 output
 mode "monitor" {
-        bindsym m exec --no-startup-id "xrandr --output HDMI1 --auto", mode "default"
-        bindsym e exec --no-startup-id "pkill compton; xrandr --output HDMI1 --auto --right-of eDP1; compton -b", mode "default"
-        bindsym o exec --no-startup-id "xrandr --output HDMI1 --off", mode "default"
+        bindsym m exec --no-startup-id "xrandr --output HDMI1 --auto", \
+            workspace 10 output HDMI1, mode default
+
+        bindsym e exec --no-startup-id "pkill compton && xrandr --output HDMI1 --auto --right-of eDP1 && compton -b", \
+            workspace 10 output HDMI1, mode default
+
+        bindsym o exec --no-startup-id "xrandr --output HDMI1 --off", \
+            workspace 10 output eDP1, mode default
 
         # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+        bindsym Return mode default
+        bindsym Escape mode default
 }
 
 bindsym $mod+r mode "resize"
 
 # configure HDMI output
-bindsym $mod+Shift+p mode "monitor"
+bindsym $mod+Shift+p mode "monitor", exec "sleep 1; i3-msg mode default"
 ##############
