@@ -14,6 +14,7 @@ git fsck --lost-found                            # show dangling commits
 git show COMMIT                                  # show what changes a commit made
 git update-index --assume-unchanged file         # ignore changes of tracked file
 git push origin -d name                          # delete remote branch
+git grep "string/regexp" $(git rev-list --all)   # search all branches for string/regex
 
 # lsof
 lsof -i tcp:8000 # list processes using port
