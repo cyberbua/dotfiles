@@ -8,8 +8,8 @@
 ;=====================================================
 
 [colors]
-background = #2F343F
-background-alt = #3A404D
+background = #1C1D22
+background-alt = #31333C
 foreground-alt = #616B82
 primary = #ffb52a
 foreground = #dfdfdf
@@ -45,7 +45,7 @@ module-margin-right = 2
 font-0 = RobotoMonoNerdFont:weight=medium:size=10;2
 font-1 = MaterialIcons:size=12;4
 
-modules-left = i3 backlight volume updates bitcoin
+modules-left = i3 backlight volume updates
 modules-center = date time
 modules-right = filesystem battery memory cpu temperature network
 
@@ -160,7 +160,7 @@ type = internal/date
 interval = 5
 date = "%a %d.%m"
 format-prefix = " "
-label = %date%
+label = %{A1:thunderbird:} %date% %{A}
 
 
 [module/time]
