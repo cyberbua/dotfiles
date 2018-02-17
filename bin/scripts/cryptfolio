@@ -24,7 +24,7 @@ def red(text):
 if __name__ == '__main__':
 
     coins = []
-    data = json.loads(requests.get('https://api.coinmarketcap.com/v1/ticker/?convert=EUR').text)
+    data = json.loads(requests.get('https://api.coinmarketcap.com/v1/ticker/?convert=EUR&limit=1000').text)
     for arg in sys.argv[1:]:
         coins.append(Coin([coin for coin in data if coin['symbol'] == arg.split(':')[0] or coin['id'] == arg.split(':')[0]][0], arg.split(':')[1]))
 
