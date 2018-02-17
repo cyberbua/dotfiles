@@ -3,6 +3,7 @@
 # noblacklist
 noblacklist ~/.cache/qutebrowser
 noblacklist ~/.config/qutebrowser
+noblacklist ~/.local/share/qutebrowser
 
 # blacklist
 include /etc/firejail/disable-common.inc
@@ -30,8 +31,6 @@ include /etc/firejail/whitelist-common.inc
 # read-only ~/.dotfiles
 # read-only ~/.vim
 
-# config
-ipc-namespace
 caps.drop all
 netfilter
 nodvd
@@ -39,8 +38,6 @@ nonewprivs
 noroot
 notv
 protocol unix,inet,inet6,netlink
-seccomp
-tracelog
-private-tmp
-# noexec ${HOME}
-noexec /tmp
+# blacklisting of chroot system calls breaks qt webengine
+seccomp.drop @clock,@cpu-emulation,@debug,@module,@obsolete,@raw-io,@reboot,@resources,@swap,acct,add_key,bpf,fanotify_init,io_cancel,io_destroy,io_getevents,io_setup,io_submit,ioprio_set,kcmp,keyctl,mount,name_to_handle_at,nfsservctl,ni_syscall,open_by_handle_at,personality,pivot_root,process_vm_readv,ptrace,remap_file_pages,request_key,setdomainname,sethostname,syslog,umount,umount2,userfaultfd,vhangup,vmsplice
+# tracelog

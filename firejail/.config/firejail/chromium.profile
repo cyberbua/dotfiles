@@ -22,11 +22,11 @@ mkdir ~/.cache/chromium
 mkdir ~/.pki
 
 # config
-# caps.drop all
+# caps.keep sys_chroot,sys_admin
 ipc-namespace
 netfilter
 nogroups
-noroot
+# noroot
 shell none
 private-dev
 private-tmp
