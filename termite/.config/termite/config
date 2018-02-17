@@ -13,25 +13,25 @@ scroll_on_keystroke = true
 search_wrap = true
 
 [colors]
-foreground = #EDEDED
-foreground_bold = #ffffff
-background = rgba(00, 32, 46, 0.8)
+foreground      = #abb2bf
+foreground_bold = #c4c6c9
+background      = rgba(40, 44, 52, 0.8)
 
-color0 = #00586E
-color1 = #EB1E1E
-color2 = #04C800
-color3 = #FFF01B
-color4 = #4694DB
-color5 = #C363D2
-color6 = #00B6C2
-color7 = #CACACA
-color8 = #5A5A5A
-color9 = #EB5454
-color10 = #8BE654
-color11 = #FFF288
-color12 = #7BC9FF
-color13 = #CF89DB
-color14 = #34E2E2
-color15 = #EEEEEC
+color0  = #353a44
+color1  = #e8696f
+color2  = #90bf6d
+color3  = #ebc174
+color4  = #50acea
+color5  = #c57ada
+color6  = #4ab7c3
+color7  = #b8babc
+color8  = #464d5a
+color9  = #e88388
+color10 = #a7cc8c
+color11 = #ebca8d
+color12 = #72bef2
+color13 = #d291e4
+color14 = #65c2cd
+color15 = #e3e5e9
 
 # vim: ft=dosini cms=#%s
