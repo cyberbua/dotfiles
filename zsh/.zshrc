@@ -26,13 +26,15 @@ ZSH_HIGHLIGHT_STYLES[alias]='fg=green,bold'
 ZSH_HIGHLIGHT_STYLES[builtin]='fg=green,bold'
 ZSH_HIGHLIGHT_STYLES[function]='fg=green,bold'
 ZSH_HIGHLIGHT_STYLES[command]='fg=green,bold'
-ZSH_HIGHLIGHT_STYLES[precommand]='fg=green'
 ZSH_HIGHLIGHT_STYLES[hashed-command]='fg=green,bold'
+ZSH_HIGHLIGHT_STYLES[precommand]='fg=green'
 ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=magenta'
-ZSH_HIGHLIGHT_STYLES[path]='fg=blue,bold'
-ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=blue,bold'
-ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=cyan,bold'
-ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=cyan,bold'
+ZSH_HIGHLIGHT_STYLES[redirection]='fg=magenta'
+ZSH_HIGHLIGHT_STYLES[path]='fg=blue'
+ZSH_HIGHLIGHT_STYLES[path_pathseparator]='fg=blue'
+ZSH_HIGHLIGHT_STYLES[globbing]='fg=cyan,bold'
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=cyan'
+ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=cyan'
 #############
 
 
@@ -58,6 +60,8 @@ alias -r lanip='ip addr show wlp2s0 | /usr/bin/grep -Po "inet \K[\d.]+"'
 
 alias -r v='nvim'
 alias -r sv='sudoedit'
+
+alias -r r='ranger'
 
 alias -r share='ip addr; webfsd -Fdp 8080'
 alias -r clip='xclip -selection clipboard'
