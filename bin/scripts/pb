@@ -1,5 +1,4 @@
 #!/bin/bash
-# TODO: better timeout notation for sunset (s,m,h)
 
 PB="https://pb.hmohamad.at"
 
@@ -11,16 +10,32 @@ clip() {
     echo "$OUTPUT"
 }
 
+tosec() {
+    sec=0
+    case "${1: -1}" in
+        s)
+            echo ${1::-1};;
+        m)
+            num=${1::-1}
+            echo $(( num * 60 ));;
+        h)
+            num=${1::-1}
+            echo $(( num * 60 * 60 ));;
+        d)
+            num=${1::-1}
+            echo $(( num * 60 * 60 * 24 ));;
+        *)
+            echo $1
+    esac
+
+}
+
 while [[ $# -ge 1 ]]; do
     case $1 in
-        -p)
-            PRIVATE="-F p=1";;
-        -s)
-            SUNSET="-F sunset=$2"; shift;;
-        -d)
-            DELETE="$2"; break 2;;
-        *)
-            ARG=$1;;
+        -p) PRIVATE="-F p=1";;
+        -s) SUNSET="-F sunset=$(tosec $2)"; shift;;
+        -d) DELETE="$2"; break 2;;
+        *) ARG=$1;;
     esac
     shift
 done
