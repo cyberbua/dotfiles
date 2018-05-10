@@ -7,7 +7,7 @@ fi
 
 # recompile pdf if .tex files change
 mkpdf() {
-    while inotifywait -qq --recursive -e modify -e create -e delete -e move --includei ".*\.tex$|.*\.bib$" .; do
+    while inotifywait -qq --recursive -e modify -e create -e delete -e move --includei ".*\.tex$|.*\.bib$|.*\.cls$|.*\.sty$" .; do
         make
     done
 }
