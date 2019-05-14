@@ -222,6 +222,10 @@ Plug 'wellle/targets.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'
 
+" ranger file chooser
+Plug 'hmohamad/neoranger'
+nnoremap <silent> <Leader>r :Ranger<CR>
+
 call plug#end()
 """""""""""
 
