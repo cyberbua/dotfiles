@@ -1,7 +1,8 @@
+rofi.font:             RobotoMono 11
 rofi.hide-scrollbar:   true
 rofi.bw:               0
-rofi.lines:            8
-rofi.width:            25
+rofi.lines:            10
+rofi.width:            32
 rofi.color-enabled:    true
 rofi.separator-style:  none
 rofi.kb-row-up:        Up,Alt+k
