@@ -152,7 +152,7 @@ endif
 """""""""""
 " Plugins "
 """""""""""
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 Plug 'junegunn/vim-easy-align'
 nmap ga <Plug>(EasyAlign)
