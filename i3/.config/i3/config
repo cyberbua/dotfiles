@@ -109,10 +109,10 @@ bindsym $mod+Shift+k move up 30 px
 bindsym $mod+Shift+l move right 30 px
 
 # set split direction
-bindsym $mod+Ctrl+h split h
-bindsym $mod+Ctrl+l split h
-bindsym $mod+Ctrl+j split v
-bindsym $mod+Ctrl+k split v
+bindsym $mod+Ctrl+h resize shrink width 20 px or 5 ppt 
+bindsym $mod+Ctrl+j resize grow height 20 px or 5 ppt  
+bindsym $mod+Ctrl+k resize shrink height 20 px or 5 ppt
+bindsym $mod+Ctrl+l resize grow width 20 px or 5 ppt   
 
 # enter fullscreen mode for the focused container
 bindsym $mod+a fullscreen toggle
@@ -170,19 +170,6 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-msg exit"
-
-
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        bindsym h resize shrink width 20 px or 5 ppt
-        bindsym j resize grow height 20 px or 5 ppt
-        bindsym k resize shrink height 20 px or 5 ppt
-        bindsym l resize grow width 20 px or 5 ppt
-
-        # back to normal: Enter or Escape
-        bindsym Return mode default
-        bindsym Escape mode default
-}
 
 #configure HDMI1 output
 mode "monitor" {
