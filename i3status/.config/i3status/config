@@ -1,0 +1,72 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+    output_format = "i3bar"
+    colors = true
+    color_good = "#90bf6d"
+    color_degraded = "#ebc174"
+    color_bad = "#e8696f"
+    interval = 2
+}
+
+order += "tztime local"
+order += "volume master"
+order += "disk /"
+order += "wireless _first_"
+order += "ethernet _first_"
+order += "battery all"
+order += "cpu_usage"
+order += "cpu_temperature 0"
+
+
+wireless _first_ {
+    format_up = "W:%quality @ %essid %ip"
+    format_down = ""
+}
+
+cpu_usage {
+    format = "CPU: %usage"
+}
+
+cpu_temperature 0 {
+    format = "T: %degrees °C"
+    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input"
+    max_threshold = 70
+}
+
+ethernet _first_ {
+    format_up = "E: %ip"
+    format_down = ""
+}
+
+battery all {
+    format = "%status %percentage"
+    low_threshold = 20
+    integer_battery_capacity = true
+}
+
+tztime local {
+    format = "%a %d.%m %H:%M"
+}
+
+load {
+    format = "%1min"
+}
+
+disk "/" {
+    format = "/: %avail"
+}
+
+volume master {
+    format = "VOL: %volume"
+    format_muted = "VOL: M (%volume)"
+    device = "default"
+    mixer = "Master"
+    mixer_idx = 0
+}
