@@ -94,7 +94,7 @@ exec "while pgrep sway; do termite --name SWAY_SCRATCHPAD; sleep 0.25; done"
 
 exec redshift -l 48:16 -t 6500:4100 -m wayland
 
-exec swayidle -w timeout 180 blurlock2
+exec swayidle -w timeout 180 blurlock
 
 exec mako
 
@@ -135,7 +135,7 @@ bindsym $mod+d exec "rofi -modi window,drun -show drun"
 bindsym $mod+grave scratchpad show
 
 # lockscreen
-bindsym $mod+space exec blurlock2
+bindsym $mod+space exec blurlock
 
 # screenshots
 bindsym Print exec 'grim - | tee /tmp/$(date "+%F_%T").png | wl-copy'
