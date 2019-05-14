@@ -74,9 +74,6 @@ noremap <C-l> :bnext<CR>
 noremap <C-h> :bprevious<CR>
 noremap <Tab> :b#<CR>
 
-" search using space
-map <space> /
-
 " Q to run the q macro
 noremap Q @q
 
@@ -158,10 +155,8 @@ Plug 'junegunn/vim-easy-align'
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 
-Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 
-Plug 'jreybert/vimagit'
 Plug 'tpope/vim-fugitive'
 nnoremap <leader>gr :Gread<CR>
 nnoremap <leader>gd :Gvdiff<CR>
@@ -220,25 +215,6 @@ function! s:togglecolorizer()
     edit
 endfunc
 nmap <leader>c :call <sid>togglecolorizer()<CR>
-
-" autocomplete
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_ignore_case = 1
-let g:deoplete#sources = {}
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
-" snippets
-Plug 'SirVer/ultisnips'
-let g:UltiSnipsExpandTrigger="<C-l>"
-Plug 'honza/vim-snippets'
-
-Plug 'ryanoasis/vim-devicons'
-
-" built in dictionary and synonym lookup
-Plug 'beloglazov/vim-online-thesaurus'
-let g:online_thesaurus_map_keys = 0
-nnoremap <leader>d :OnlineThesaurusCurrentWord<CR>
 
 " extend vim's text objects
 Plug 'wellle/targets.vim'
