@@ -42,5 +42,6 @@ date -r /the/file +%s # get date of a file in seconds
 pwdx 1234              # print path of a process (pid)
 nami -om /path/to/file # show permissions of all folders that lead to file
 nmcli connection up id 'Shared WiFi' # activate a connection by name
+find /usr/bin -perm /4000 -user root -exec ls -lah {} \; # show suid root files
 
 # vim:ft=sh
