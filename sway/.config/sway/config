@@ -1,0 +1,248 @@
+###############
+# definitions #
+###############
+# set modifier key to windows
+set $mod Mod4
+
+set $left h
+set $up k
+set $down j
+set $right l
+
+# set outputs
+set $main_output eDP-1
+set $external_output HDMI-A-1
+###############
+
+
+##########
+# config #
+##########
+workspace 1 output $main_output
+workspace 2 output $main_output
+workspace 3 output $main_output
+workspace 4 output $main_output
+workspace 5 output $main_output
+workspace 6 output $main_output
+workspace 7 output $main_output
+workspace 8 output $main_output
+workspace 9 output $main_output
+workspace 10 output $external_output $main_output
+
+# Font for window titles
+font pango:RobotoMono Nerd Font 7.5
+titlebar_padding 1
+
+# Use Mouse+$mod to drag floating windows
+floating_modifier $mod
+
+# disable fosus following mouse
+focus_follows_mouse no
+
+# snly show titlebars when necessary
+default_border pixel 2
+
+# hide cursor after 2 sec
+seat * hide_cursor 2000
+
+# hide broders when only a single container is visible
+hide_edge_borders smart
+
+# set the split direction based on the screen orientation
+default_orientation auto
+
+# set constraints for floating windows
+floating_maximum_size 1740 x 935
+
+# floating by default
+for_window [app_id="telegramdesktop"] floating enable
+for_window [app_id="pavucontrol"] floating enable
+for_window [app_id="SWAY_FLOATING"] floating enable
+
+# keep windows with specific instance name on the scratchpad
+for_window [app_id="SWAY_SCRATCHPAD"] move scratchpad, scratchpad show, \
+    resize set 1522 482, move position 199 1, scratchpad show
+
+# tag xwayland windows
+for_window [shell="xwayland"] title_format <span background="#e8696f" \
+    foreground="#282C34">[xwayland]</span> %title, border normal
+
+# default layout TODO: fix this
+workspace_layout stacking
+
+output * bg ~/wallpapers/LakeSide/Lakeside_dawn.jpg fit
+
+output $main_output pos 0 0
+output $external_output disable
+# output $external_output pos 0 0 scale 0.5
+
+input * {
+    repeat_delay 200
+    repeat_rate 30
+    xkb_numlock enabled
+    xkb_options ctrl:nocaps
+    xkb_layout us_custom
+}
+
+input 2:7:SynPS/2_Synaptics_TouchPad {
+    natural_scroll enabled
+    tap enabled
+}
+
+# always keep a terminal on the scratchpad
+exec "while pgrep sway; do termite --name SWAY_SCRATCHPAD; sleep 0.25; done"
+
+exec redshift -l 48:16 -t 6500:4100 -m wayland
+
+exec swayidle -w timeout 180 blurlock2
+
+exec mako
+
+bar {
+    font Roboto Mono Medium 10
+    status_command i3status
+    position top
+    output $main_output
+    tray_padding 3
+    separator_symbol " | "
+
+    # diable workspace scrolling
+    bindsym button4 nop
+    bindsym button5 nop
+    bindsym button6 nop
+    bindsym button7 nop
+
+    colors {
+        background #282C34
+        statusline #c8d0df
+        separator #c8d0df
+        # binding_mode #282C34 #90bf6d #282C34
+    }
+}
+##########
+
+
+###############
+# app hotkeys #
+###############
+# start a terminal
+bindsym $mod+Return exec termite
+
+# start rofi (a program launcher)
+bindsym $mod+d exec "rofi -modi window,drun -show drun"
+
+# show/hide scratchpad
+bindsym $mod+grave scratchpad show
+
+# lockscreen
+bindsym $mod+space exec blurlock2
+
+# screenshots
+bindsym Print exec 'grim - | tee /tmp/$(date "+%F_%T").png | wl-copy'
+bindsym Ctrl+Print exec 'slurp -d | grim -g - - | tee /tmp/$(date "+%F_%T").png | wl-copy'
+
+# handle volume keys
+bindsym --locked XF86AudioRaiseVolume exec "amixer -q sset Master 2%+"
+bindsym --locked Ctrl+XF86AudioRaiseVolume exec "amixer -q sset Master 20%+"
+bindsym --locked XF86AudioLowerVolume exec "amixer -q sset Master 2%-"
+bindsym --locked Ctrl+XF86AudioLowerVolume exec "amixer -q sset Master 20%-"
+
+# toggle sound mute
+bindsym --locked $mod+m exec "amixer -q sset Master toggle"
+
+# handle brightness keys (exponential scale!)
+bindsym --locked XF86MonBrightnessUp exec "zsh -c 'light -A $(( $(light -G) * 0.3 ))'"
+bindsym --locked XF86MonBrightnessDown exec "zsh -c 'light -U $(( $(light -G) * 0.3 ))'"
+
+# dismiss notifications
+bindsym $mod+n exec makoctl dismiss
+bindsym $mod+Ctrl+n exec makoctl dismiss --all
+###############
+
+
+################
+# sway hotkeys #
+################
+
+# close/kill focused window
+bindsym $mod+q kill
+
+# change focus
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# move focused window
+bindsym $mod+Shift+$left move left 25 px
+bindsym $mod+Shift+$down move down 25 px
+bindsym $mod+Shift+$up move up 25 px
+bindsym $mod+Shift+$right move right 20 px
+
+# resize focused direction
+bindsym $mod+Ctrl+$left resize shrink width 25 px
+bindsym $mod+Ctrl+$down resize grow height 25 px
+bindsym $mod+Ctrl+$up resize shrink height 25 px
+bindsym $mod+Ctrl+$right resize grow width 25 px
+
+# enter fullscreen mode for the focused container
+bindsym $mod+a fullscreen toggle
+
+# change container layout (stacked, tabbed, split)
+bindsym $mod+w layout toggle stacking tabbed
+bindsym $mod+s layout toggle splitv splith
+bindsym $mod+e split toggle
+
+# toggle tiling / floating
+bindsym $mod+f floating toggle
+
+# toggle sticky
+bindsym $mod+Shift+s sticky toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+x focus mode_toggle
+
+# focus parent container
+bindsym $mod+p focus parent
+bindsym $mod+Shift+p focus child
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# switch to previosly focused workspace
+bindsym $mod+Tab workspace back_and_forth
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# reload the configuration file
+bindsym $mod+Shift+r reload
+
+# exit sway (logs you out of your X session)
+bindsym $mod+Shift+e exec "swaymsg exit"
+
+# passthrough mode disables all hotkeys
+mode "passthrough" {
+    bindsym Ctrl+Escape mode default
+}
+
+bindsym Ctrl+Escape mode "passthrough"
+##############
