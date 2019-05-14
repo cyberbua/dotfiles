@@ -31,7 +31,7 @@ noroot
 protocol unix,inet,inet6,netlink
 seccomp
 shell none
-tracelog
+# tracelog
 # x11 xorg
 private-dev
 private-tmp
