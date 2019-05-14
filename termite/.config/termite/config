@@ -13,11 +13,11 @@ scroll_on_keystroke = true
 search_wrap = true
 
 [colors]
-foreground      = #abb2bf
-foreground_bold = #c4c6c9
-background      = rgba(40, 44, 52, 0.8)
+foreground      = #c8d0df
+foreground_bold = #d4dded
+background      = #282C34
 
-color0  = #353a44
+color0  = #464d5a
 color1  = #e8696f
 color2  = #90bf6d
 color3  = #ebc174
