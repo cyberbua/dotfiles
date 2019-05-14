@@ -2,7 +2,7 @@
 Version=1.0
 Name=Firefox Private Session - Firejail
 Comment=Browse the Web
-Exec=/usr/bin/firejail --private firefox --no-remote %u
+Exec=firejail --private /usr/bin/firefox --no-remote %u
 Icon=firefox
 Terminal=false
 Type=Application
