@@ -31,7 +31,9 @@ ZSH_HIGHLIGHT_STYLES[precommand]='fg=green'
 ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=magenta'
 ZSH_HIGHLIGHT_STYLES[redirection]='fg=magenta'
 ZSH_HIGHLIGHT_STYLES[path]='fg=blue'
+ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=blue'
 ZSH_HIGHLIGHT_STYLES[path_pathseparator]='fg=blue'
+ZSH_HIGHLIGHT_STYLES[path_prefix_pathseparator]='fg=blue'
 ZSH_HIGHLIGHT_STYLES[globbing]='fg=cyan,bold'
 ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=cyan'
 ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=cyan'
@@ -42,8 +44,6 @@ ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=cyan'
 #     ALIAS      #
 ##################
 alias -r sudo='sudo '
-alias -g gp='| grep -i'
-alias -g lss='| less'
 alias -r l='ls -lah --group-directories-first'
 alias -r ll='ls -lh --group-directories-first'
 
@@ -63,16 +63,13 @@ alias -r sv='sudoedit'
 
 alias -r r='ranger'
 
-alias -r share='ip addr; webfsd -Fdp 8080'
+alias -r share='ip addr; python -m http.server 8080'
 alias -r clip='xclip -selection clipboard'
 
 alias -r qr='qrencode -t UTF8'
 alias -r qrclip='xclip -o | qrencode -t UTF8'
 
 alias -r histclean='tac ~/.zsh_history | sort -t ";" -k 2 -u | sort -o ~/.zsh_history'
-
-# commit all changes with generic commit message for minor changes
-alias -r commit='git commit -am "unimportant changes"'
 
 # Use truecolor in tmux if possible TODO
 [[ "$COLORTERM" == truecolor ]] && alias -r tmux="env TERM=xterm-256color tmux"
@@ -159,7 +156,7 @@ if [ $(who|wc -l) -gt 1 ]; then
 fi
 
 # auto tmux attach
-if [ "$TERM" != 'screen' ] && [ -n "$SSH_TTY" ]; then
+if [ -n "$SSH_TTY" ] && [ "$TERM" != 'screen' ]; then
     tmux has-session && exec tmux attach || exec tmux
 fi
 
