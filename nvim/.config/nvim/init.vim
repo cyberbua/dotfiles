@@ -138,8 +138,8 @@ if has('nvim')
     tnoremap <A-k> <C-\><C-n><C-w>k
     tnoremap <A-l> <C-\><C-n><C-w>l
     " terminal split with <A-^>
-    nnoremap <A-^> :above 20sp term://$SHELL<cr>i
-    " exit terminal insert mode with <A-e> 
+    nnoremap <A-`> :above 20sp term://$SHELL<cr>i
+    " exit terminal insert mode with <A-e>
     tnoremap <A-e> <C-\><C-n>
     " close terminal when shell exits
     autocmd TermClose *:$SHELL,*:\$SHELL call feedkeys("\<CR>:\<BS>")
