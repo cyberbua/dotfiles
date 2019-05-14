@@ -180,10 +180,10 @@ Plug 'w0rp/ale'
 let g:ale_sign_error = '✹'
 let g:ale_sign_warning = '✹'
 let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 1
-
-Plug 'scrooloose/nerdtree'
-map <leader>n :NERDTreeToggle<CR>
+let g:ale_lint_on_text_changed = 0
+let g:ale_enabled = 0
+map <leader>ae :ALEEnable<CR>
+map <leader>ad :ALEDisable<CR>
 
 Plug 'vim-airline/vim-airline'
 let g:airline_powerline_fonts = 1
