@@ -186,9 +186,10 @@ map <leader>ae :ALEEnable<CR>
 map <leader>ad :ALEDisable<CR>
 
 Plug 'vim-airline/vim-airline'
-let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline_symbols_ascii = 1
+let g:airline_section_z = '%2p%% %l/%L : %2v'
 
 " language support collection
 Plug 'sheerun/vim-polyglot'
