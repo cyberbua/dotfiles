@@ -1,11 +1,9 @@
 #!/bin/bash
 
 # dependencies:
-# i3lock
-# ffmpeg
-# xdotool
-# slock (only for redundancy)
-# libnotify
+# - swaylock
+# - grim
+# - ffmpeg
 
 # exit if already running
 if [ -f /tmp/blurlock.lock ]; then
@@ -14,19 +12,9 @@ if [ -f /tmp/blurlock.lock ]; then
 fi
 
 cleanup() {
-    # disable screen timeout
-    xset s off
-
     # delete lockfile
     [[ -f /tmp/blurlock.lock ]] && rm /tmp/blurlock.lock
-}
-
-showinfo() {
-    # use notify-send to show basic status info
-    while [ -f /tmp/blurlock.lock ]; do 
-        notify-send -t 4900 "$(date "+%F %R")" "$(cat /sys/class/power_supply/BAT1/capacity)%, $(cat /sys/class/power_supply/BAT1/status)"
-        sleep 5
-    done
+    [[ -f /tmp/blurlock.png ]] && rm /tmp/blurlock.png
 }
 
 # create lockfile
@@ -34,24 +22,16 @@ touch /tmp/blurlock.lock
 date >> /tmp/blurlock.log
 
 # take screenshot and blur it
-RES=$(xdpyinfo | awk '/dimensions/{print $2}')
-ffmpeg -loglevel quiet -f x11grab -video_size "$RES" -y -i "$DISPLAY" -filter_complex "boxblur=20:1,boxblur=20:1" -vframes 1 /tmp/scrot.png
+grim - | ffmpeg -loglevel quiet -i pipe: -y -filter_complex "boxblur=20:1,boxblur=20:1" -frames:v 1 /tmp/blurlock.png
 
-# set screen timeout to 30 sec
-xset s 30
+# set screen timeout
+swayidle timeout 30 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' &
 
-# show some info until unlock
-showinfo &
+# lock screen, kill eerything if lockscreen crashes
+swaylock --image /tmp/blurlock.png &>> /tmp/blurlock.log || (cleanup; kill -9 -1)
 
-# allow ungrabbing pointer & screen
-setxkbmap -option grab:break_actions
-# ungrab pointer and screen (allows locking even when in virtualbox or rofi/dmenu)
-xdotool key XF86Ungrab
-# forbid ungrabbing pointer & screen (to prevent lockscreen bypass via ctrl + alt + KP_MULTIPLY)
-setxkbmap -option -option "$(setxkbmap -query | sed -n 's/options:\s*\(grab:[^:]*,\)\?\|,grab:[^,]*//gp')"
-
-# run i3lock; if it fails, run slock; if that one also fails, logout
-(i3lock -n -e -f -i /tmp/scrot.png || slock || (cleanup; kill -9 -1)) >> /tmp/blurlock.log
+# kill swayidle
+kill %%
 
 # finally cleanup
 cleanup
