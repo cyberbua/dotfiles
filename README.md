@@ -17,7 +17,7 @@
         - uBlock Origin
 
 ## HowTo
-All the config files in this repo are managed by [GNU stow](https://www.gnu.org/software/stow/), so I'd recommend installing it if you want to easily apply und update my configs. By default the stow command will create symlinks for files in the parent directory of where you execute the command. So my dotfiles setup assumes this repo is located in the root of your home directory ~/dotfiles. And all stow commands should be executed in that directory.
+All the config files in this repo are managed by [GNU stow](https://www.gnu.org/software/stow/), so I'd recommend installing it if you want to easily apply and update my configs. By default the stow command will create symlinks for files in the parent directory of where you execute the command. So my dotfiles setup assumes this repo is located in the root of your home directory ~/dotfiles. And all stow commands should be executed in that directory.
 
 ```bash
 # navigate to your home directory:
