@@ -98,6 +98,8 @@ exec swayidle -w timeout 180 blurlock
 
 exec mako
 
+exec $HOME/.config/i3status/updates.sh
+
 bar {
     font Roboto Mono Medium 10
     status_command i3status

@@ -16,6 +16,7 @@ general {
 }
 
 order += "tztime local"
+order += "cpu_temperature 1"
 order += "volume master"
 order += "disk /"
 order += "wireless _first_"
@@ -69,4 +70,10 @@ volume master {
     device = "default"
     mixer = "Master"
     mixer_idx = 0
+}
+
+cpu_temperature 1 {
+    format = "PKG: %degrees"
+    path = "/home/hassan/.config/i3status/updates"
+    max_threshold = 50
 }
