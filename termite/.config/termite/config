@@ -1,5 +1,5 @@
 [options]
-font = RobotoMono Nerd Font Medium 10
+font = RobotoMono Nerd Font Medium 11
 scrollback_lines = 10000
 audible_bell = false
 allow_bold = true
