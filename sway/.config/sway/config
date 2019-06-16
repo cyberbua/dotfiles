@@ -57,6 +57,7 @@ floating_maximum_size 1740 x 935
 # floating by default
 for_window [app_id="telegramdesktop"] floating enable
 for_window [app_id="pavucontrol"] floating enable
+for_window [app_id="nm-connection-editor"] floating enable
 for_window [app_id="SWAY_FLOATING"] floating enable
 
 # don't lock when in fullscreen mode
@@ -68,16 +69,15 @@ for_window [app_id="SWAY_SCRATCHPAD"] move scratchpad, scratchpad show, \
 
 # tag xwayland windows
 for_window [shell="xwayland"] title_format <span background="#e8696f" \
-    foreground="#282C34">[xwayland]</span> %title, border normal
+    foreground="#282C34">[%shell]</span> %title, border normal
 
-# default layout TODO: fix this
+# default layout
 workspace_layout stacking
 
-output * bg ~/wallpapers/LakeSide/Lakeside_dawn.jpg fit
+output $main_output bg ~/wallpapers/LakeSide/Lakeside_dawn.jpg fit
 
 output $main_output pos 0 0
-output $external_output disable
-# output $external_output pos 0 0 scale 0.5
+output $external_output pos 1920 0
 
 input * {
     repeat_delay 200
@@ -93,11 +93,11 @@ input 2:7:SynPS/2_Synaptics_TouchPad {
 }
 
 # always keep a terminal on the scratchpad
-exec "while pgrep sway; do termite --name SWAY_SCRATCHPAD; sleep 0.25; done"
+exec "while pgrep -x sway; do termite --name SWAY_SCRATCHPAD; sleep 0.25; done"
 
 exec redshift -l 48:16 -t 6500:4100 -m wayland
 
-exec swayidle -w timeout 180 blurlock
+exec swayidle -w timeout 120 blurlock
 
 exec mako
 
@@ -254,9 +254,9 @@ bindsym $mod+Ctrl+i exec 'if test -f /tmp/i3s_inhibit; then rm /tmp/i3s_inhibit;
     pkill -USR1 i3status; fi'
 
 # passthrough mode disables all hotkeys
-mode "passthrough" {
+mode passthrough {
     bindsym Ctrl+Escape mode default
 }
 
-bindsym Ctrl+Escape mode "passthrough"
+bindsym Ctrl+Escape mode passthrough
 ##############
