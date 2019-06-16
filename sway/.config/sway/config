@@ -79,7 +79,7 @@ output $main_output bg ~/wallpapers/LakeSide/Lakeside_dawn.jpg fit
 output $main_output pos 0 0
 output $external_output pos 1920 0
 
-input * {
+input type:keyboard {
     repeat_delay 200
     repeat_rate 30
     xkb_numlock enabled
@@ -87,9 +87,14 @@ input * {
     xkb_layout us_custom
 }
 
-input 2:7:SynPS/2_Synaptics_TouchPad {
+input type:touchpad {
     natural_scroll enabled
     tap enabled
+}
+
+input 6127:24647:Lenovo_ThinkPad_Compact_USB_Keyboard_with_TrackPoint {
+    accel_profile flat
+    scroll_factor 0.3
 }
 
 # always keep a terminal on the scratchpad
