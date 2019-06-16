@@ -148,8 +148,13 @@ bindsym $mod+grave scratchpad show
 bindsym $mod+space exec blurlock
 
 # screenshots
-bindsym Print exec 'grim - | tee /tmp/$(date "+%F_%T").png | wl-copy'
-bindsym Ctrl+Print exec 'slurp -d | grim -g - - | tee /tmp/$(date "+%F_%T").png | wl-copy'
+bindsym Print exec "grim /tmp/scrot.png", mode screenshot
+bindsym Shift+Print exec "slurp -d | grim -g - /tmp/scrot.png"; mode screenshot
+mode screenshot {
+    bindsym Ctrl+s exec 'mv /tmp/scrot.png /tmp/$(date "+%F_%T").png', mode default
+    bindsym Return exec 'wl-copy < /tmp/scrot.png', mode default
+    bindsym Escape mode default
+}
 
 # handle volume keys
 bindsym --locked XF86AudioRaiseVolume exec "amixer -q sset Master 2%+"
