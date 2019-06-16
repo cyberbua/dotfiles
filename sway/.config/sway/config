@@ -59,6 +59,9 @@ for_window [app_id="telegramdesktop"] floating enable
 for_window [app_id="pavucontrol"] floating enable
 for_window [app_id="SWAY_FLOATING"] floating enable
 
+# don't lock when in fullscreen mode
+for_window [shell=".*"] inhibit_idle fullscreen
+
 # keep windows with specific instance name on the scratchpad
 for_window [app_id="SWAY_SCRATCHPAD"] move scratchpad, scratchpad show, \
     resize set 1522 482, move position 199 1, scratchpad show
@@ -238,8 +241,17 @@ bindsym $mod+Shift+0 move container to workspace 10
 # reload the configuration file
 bindsym $mod+Shift+r reload
 
-# exit sway (logs you out of your X session)
-bindsym $mod+Shift+e exec "swaymsg exit"
+# exit sway
+bindsym $mod+Shift+e exit
+
+# inhibit idle for current window
+bindsym $mod+i mark --toggle inhibit_idle, inhibit_idle fullscreen, \
+    exec 'swaymsg "[con_mark=\"inhibit_idle\"] inhibit_idle visible"', \
+
+bindsym $mod+Ctrl+i exec 'if test -f /tmp/i3s_inhibit; then rm /tmp/i3s_inhibit; \
+    swaymsg "[shell=\".*\"] inhibit_idle fullscreen"; pkill -USR1 i3status; \
+    else touch /tmp/i3s_inhibit; swaymsg "[shell=\".*\"] inhibit_idle open"; \
+    pkill -USR1 i3status; fi'
 
 # passthrough mode disables all hotkeys
 mode "passthrough" {
