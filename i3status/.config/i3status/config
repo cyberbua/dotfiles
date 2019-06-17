@@ -15,6 +15,7 @@ general {
     interval = 2
 }
 
+order += "path_exists IDLE"
 order += "tztime local"
 order += "cpu_temperature 1"
 order += "volume master"
@@ -76,4 +77,10 @@ cpu_temperature 1 {
     format = "PKG: %degrees"
     path = "/home/hassan/.config/i3status/updates"
     max_threshold = 50
+}
+
+path_exists IDLE {
+    path = "/tmp/i3s_inhibit"
+    format = "%title"
+    format_down = ""
 }
