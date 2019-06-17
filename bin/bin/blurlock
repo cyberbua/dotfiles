@@ -11,6 +11,8 @@ if [ -f /tmp/blurlock.lock ]; then
     exit 1
 fi
 
+OUTPUT=$(swaymsg -pt get_outputs | awk '/focused/{ print $2 }')
+
 cleanup() {
     # delete lockfile
     [[ -f /tmp/blurlock.lock ]] && rm /tmp/blurlock.lock
@@ -22,13 +24,13 @@ touch /tmp/blurlock.lock
 date >> /tmp/blurlock.log
 
 # take screenshot and blur it
-grim - | ffmpeg -loglevel quiet -i pipe: -y -filter_complex "boxblur=20:1,boxblur=20:1" -frames:v 1 /tmp/blurlock.png
+grim -t ppm -o $OUTPUT - | ffmpeg -loglevel quiet -i pipe: -y -filter_complex "boxblur=20:1,boxblur=20:1" -frames:v 1 /tmp/blurlock.png
 
 # set screen timeout
 swayidle timeout 30 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' &
 
 # lock screen, kill eerything if lockscreen crashes
-swaylock --image /tmp/blurlock.png &>> /tmp/blurlock.log || (cleanup; kill -9 -1)
+swaylock --image $OUTPUT:/tmp/blurlock.png &>> /tmp/blurlock.log || (cleanup; kill -9 -1)
 
 # kill swayidle
 kill %%
