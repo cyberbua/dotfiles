@@ -18,20 +18,27 @@ foreground_bold = #d4dded
 background      = #282C34
 
 color0  = #464d5a
+color8  = #5f687a
+
 color1  = #e8696f
-color2  = #90bf6d
-color3  = #ebc174
-color4  = #50acea
-color5  = #c57ada
-color6  = #4ab7c3
-color7  = #b8babc
-color8  = #464d5a
 color9  = #e88388
+
+color2  = #90bf6d
 color10 = #a7cc8c
+
+color3  = #ebc174
 color11 = #ebca8d
+
+color4  = #50acea
 color12 = #72bef2
+
+color5  = #c57ada
 color13 = #d291e4
+
+color6  = #4ab7c3
 color14 = #65c2cd
+
+color7  = #b8babc
 color15 = #e3e5e9
 
 # vim: ft=dosini cms=#%s
