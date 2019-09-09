@@ -1,0 +1,89 @@
+# DIRS
+$AUTO_PUSHD = True
+aliases['d'] = 'dirs -v'
+aliases['..'] = 'cd ..'
+aliases['...'] = 'cd ...'
+
+aliases['l'] = 'ls -lah --group-directories-first'
+aliases['ll'] = 'ls -lh --group-directories-first'
+
+aliases['md'] = 'mkdir -p'
+aliases['rf'] = 'rm -rf'
+aliases['rd'] = 'rmdir'
+
+# EDITOR
+$EDITOR = 'nvim'
+aliases['v'] = $EDITOR
+aliases['sv'] = 'sudoedit'
+
+# ALIASES
+aliases['ip'] = 'ip -color'
+aliases['dd'] = 'dd status=progress'
+aliases['lb'] = 'lsblk -o NAME,LABEL,SIZE,FSTYPE,MOUNTPOINT'
+aliases['t'] = 'tree -Ca'
+aliases['share'] = 'ip addr; python -m hhtp.server 8080'
+
+# RANGER
+def _ranger_cd():
+    path_file='/tmp/tmp-ranger'
+    ranger f'--cmd=map s chain shell bash -c "echo %d > {path_file}"; quit'
+    test -f @(path_file) and cd @$(cat @(path_file)) and rm @(path_file)
+    return 0
+
+aliases['r'] = _ranger_cd
+
+# PACMAN
+usercmd = 'Ss Si Sg Sw Qs Qo Ql Qk Qc Qd Qe Qem Qme Qm Qi Qkk Qu Qdt Qtd Fs Fl'
+sudocmd = 'S Syu Rns Sy Syy Syyu U Sc R'
+for c in usercmd.split(): aliases[c] = f'pacman -{c}'
+for c in sudocmd.split(): aliases[c] = f'sudo pacman -{c}'
+$PKGDEST = '/var/cache/pacman/pkg/aur'
+
+# TERM
+if $TERM == 'xterm-termite': $TERM='xterm-256color'
+
+#
+$HISTCONTROL = 'ignoredups'
+
+
+# COMPLETION
+$CASE_SENSITIVE_COMPLETIONS = False
+$SUGGEST_COMMANDS = False
+$UPDATE_COMPLETIONS_ON_KEYPRESS = True
+$COMPLETION_IN_THREAD = True
+
+# PROMPT
+def _prompt():
+    env = '{env_name}'
+    who = '{BOLD_GREEN}{user}@{hostname} ' if 'SSH_CONNECTION' in ${...} else ''
+    cwd = '{BOLD_BLUE}{cwd} ' if $PROMPT_FIELDS['cwd']() != '~' else ''
+    branch = '{branch_color}{curr_branch:{} }'
+    end = '{BOLD_PURPLE}{prompt_end}{NO_COLOR} '
+    git = '{gitstatus:{} }'
+    vte = '{vte_new_tab_cwd}'
+
+    return f'{vte}{env}{who}{cwd}{git}{end}'
+
+$PROMPT = _prompt
+
+
+# FZF
+from prompt_toolkit.keys import Keys
+
+def fzf_insert(items, buffer, query, prefix='', suffix=''):
+    choice = $(echo @(items) | fzf --reverse --tac --query=@(buffer.text) --tiebreak=index +m).replace('\n', '')
+
+    if choice:
+        buffer.text = prefix + choice + suffix
+
+@events.on_ptk_create
+def custom_keybindings(bindings, **kw):
+    handler = bindings.add
+
+    @handler(Keys.ControlR)
+    def fzf_history(event):
+        items = $(history show all)
+        fzf_insert(items, event.current_buffer, event.current_buffer.text)
+
+
+# vim: ft=python cms=#%s
