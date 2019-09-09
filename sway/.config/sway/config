@@ -106,6 +106,8 @@ exec swayidle -w timeout 120 blurlock
 
 exec mako
 
+exec nm-applet
+
 exec $HOME/.config/i3status/updates.sh
 
 bar {
