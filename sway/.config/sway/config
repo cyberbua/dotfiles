@@ -258,7 +258,7 @@ bindsym $mod+Shift+e exit
 
 # inhibit idle for current window
 bindsym $mod+i mark --toggle inhibit_idle, inhibit_idle fullscreen, \
-    exec 'swaymsg "[con_mark=\"inhibit_idle\"] inhibit_idle focused"', \
+    exec 'swaymsg "[con_mark=\"inhibit_idle\"] inhibit_idle focus"'
 
 bindsym $mod+Ctrl+i exec 'if test -f /tmp/i3s_inhibit; then rm /tmp/i3s_inhibit; \
     swaymsg "[shell=\".*\"] inhibit_idle fullscreen"; pkill -USR1 i3status; \
