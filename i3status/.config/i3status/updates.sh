@@ -1,6 +1,12 @@
 #!/bin/bash
 
 while pgrep -x sway; do
-    echo -n "$(checkupdates | wc -l)001" > $HOME/.config/i3status/updates
-    sleep 4h
+    UPDATES=$(checkupdates | wc -l)
+    if [ $UPDATES -eq 0 ]; then
+        rm $HOME/.config/i3status/updates
+    else
+        echo $UPDATES > $HOME/.config/i3status/updates
+    fi
+
+    sleep 3h
 done
