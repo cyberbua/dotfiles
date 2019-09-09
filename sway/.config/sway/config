@@ -40,13 +40,16 @@ floating_modifier $mod
 focus_follows_mouse no
 
 # snly show titlebars when necessary
-default_border pixel 2
+default_border normal 3
 
 # hide cursor after 2 sec
 seat * hide_cursor 2000
 
 # hide broders when only a single container is visible
-hide_edge_borders smart
+hide_edge_borders --i3 smart
+
+# no titlebar borders
+titlebar_border_thickness 0
 
 # set the split direction based on the screen orientation
 default_orientation auto
