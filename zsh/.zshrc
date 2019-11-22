@@ -68,6 +68,8 @@ bindkey -M viins "^E" end-of-line
 bindkey -M viins "^[." insert-last-word
 bindkey -M viins "^R" history-incremental-search-backward
 bindkey -M viins "^S" history-incremental-search-forward
+bindkey -M viins "^U" kill-whole-line
+bindkey -M viins "^Y" yank
 
 # up/down for history search
 autoload -U up-line-or-beginning-search down-line-or-beginning-search
