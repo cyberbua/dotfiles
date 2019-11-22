@@ -12,7 +12,7 @@ general {
     color_good = "#90bf6d"
     color_degraded = "#ebc174"
     color_bad = "#e8696f"
-    interval = 2
+    interval = 1
 }
 
 order += "path_exists IDLE"
