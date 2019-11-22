@@ -24,6 +24,7 @@ alias -r rd=rmdir
 for i in {0..9}; do alias -r $i="cd ~$i"; done
 
 eval $(dircolors)   # set LS_COLORS
+LS_COLORS="$LS_COLORS:ow=01;33" # fix colors for 777 files
 alias -r ls='ls --color=auto'
 alias -r l='ls -lah --group-directories-first'
 alias -r ll='ls -lh --group-directories-first'
@@ -37,8 +38,10 @@ setopt PUSHD_IGNORE_DUPS    # no duplicates in dir stack
 # EDITOR {{{
 if (( $+commands[nvim] )); then
     export EDITOR=nvim
+    export DIFFPROG='nvim -d'
 elif (( $+commands[vim] )); then
     export EDITOR=vim
+    export DIFFPROG='vim -d'
 elif (( $+commands[vi] )); then
     export EDITOR=vi
 fi
@@ -67,8 +70,7 @@ bindkey -M viins "^R" history-incremental-search-backward
 bindkey -M viins "^S" history-incremental-search-forward
 
 # up/down for history search
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
+autoload -U up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey -M viins "^[[A" up-line-or-beginning-search
@@ -94,7 +96,7 @@ stty -ixon
 # HISTORY {{{
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=50000
-SAVEHIST=10000
+SAVEHIST=20000
 
 setopt EXTENDED_HISTORY       # record timestamp of command in HISTFILE
 setopt SHARE_HISTORY          # share command history data
@@ -112,7 +114,7 @@ autoload -Uz compinit
 compinit -d $ZSH/.zcompdump-${ZSH_VERSION}
 
 # use completion menu
-zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':completion:*' menu select
 
 # case- and hyphen-insensitive completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
@@ -171,6 +173,7 @@ zle -N zle-line-finish
 
 
 # ALIASES {{{
+alias -r sudo='sudo '
 alias -r ip='ip -color'
 alias -r dd='dd status=progress'
 alias -r lb='lsblk -o NAME,SIZE,LABEL,FSTYPE,MOUNTPOINT'
