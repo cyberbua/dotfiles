@@ -187,8 +187,13 @@ alias -r t='tree -Ca'
 if (( $+commands[fzf] )); then
     source $ZSH/fzf.zsh
 
-    # fzf bindings
+    # insert file name with Ctrl-F
+    zle -N _fzf-file-widget
     bindkey '^F' _fzf-file-widget
+
+    # history search with Ctrl-R
+    zle -N _fzf-history-widget
+    bindkey '^R' _fzf-history-widget
 fi
 # }}}
 
