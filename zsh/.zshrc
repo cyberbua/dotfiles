@@ -2,7 +2,7 @@
 ZSH=~/.zsh
 
 # PATH
-typeset -U path
+typeset -U PATH path
 path=(~/bin $path)
 
 # FPATH
@@ -189,7 +189,27 @@ fi
 
 
 # SYNTAX
-source $ZSH/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+if test -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh; then
+    source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+    # highlighting rules
+    ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+    ZSH_HIGHLIGHT_STYLES[alias]='fg=green,bold'
+    ZSH_HIGHLIGHT_STYLES[builtin]='fg=green,bold'
+    ZSH_HIGHLIGHT_STYLES[function]='fg=green,bold'
+    ZSH_HIGHLIGHT_STYLES[command]='fg=green,bold'
+    ZSH_HIGHLIGHT_STYLES[hashed-command]='fg=green,bold'
+    ZSH_HIGHLIGHT_STYLES[precommand]='fg=green'
+    ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=magenta'
+    ZSH_HIGHLIGHT_STYLES[redirection]='fg=magenta'
+    ZSH_HIGHLIGHT_STYLES[path]='fg=blue'
+    ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=blue'
+    ZSH_HIGHLIGHT_STYLES[path_pathseparator]='fg=blue'
+    ZSH_HIGHLIGHT_STYLES[path_prefix_pathseparator]='fg=blue'
+    ZSH_HIGHLIGHT_STYLES[globbing]='fg=cyan,bold'
+    ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=cyan'
+    ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=cyan'
+fi
 
 # PACMAN
 if (( $+commands[pacman] )); then
