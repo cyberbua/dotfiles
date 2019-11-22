@@ -30,6 +30,9 @@ set pumheight=15
 set synmaxcol=2048
 set noshowmode
 
+" autofold on {{{
+set foldmethod=marker
+
 " keep indentation on linebreaks
 let &showbreak = '↳ '
 set breakindent
@@ -113,7 +116,7 @@ noremap c "cc
 nnoremap C "cC
 
 " don't override register when pasting over something
-vnoremap p "_dP
+" vnoremap p "_dhp
 
 " keep visual selection when shifting
 xnoremap < <gv
