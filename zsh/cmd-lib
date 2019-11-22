@@ -31,7 +31,8 @@ udisksctl unmount -b /dev/sdx       # unmount block device
 sudo cryptsetup -v --cipher aes-xts-plain64 --key-size 512 --hash sha512 --iter-time 5000 --use-random --verify-passphrase luksFormat /dev/sdX # format device with LUKS encryption
 
 # misc
-python -m http.server 8080                              # http file server in current directory
+python3 -m http.server 8080                             # http file server in current directory (python3)
+python2 -m SimpleHTTPServer 8080                        # http file server in current directory (python2)
 tmux has-session && exec tmux attach || exec tmux       # tmux attach or create session
 sudo dd bs=4M if=/dev/sdX | gzip > /path/to/file.img.gz # create gzipped image
 gzip -dc file.img.gz | sudo dd bs=4M of=/dev/sdX        # flash gzipped image
