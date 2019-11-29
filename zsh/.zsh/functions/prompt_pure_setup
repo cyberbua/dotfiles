@@ -99,7 +99,9 @@ prompt_pure_preprompt_render() {
     local -a preprompt_parts
 
     # Set the path.
-    preprompt_parts+=('%F{${prompt_pure_colors[path]}}%~%f')
+    if [[ $PWD != $HOME ]]; then
+        preprompt_parts+=('%F{${prompt_pure_colors[path]}}%~%f')
+    fi
 
     # Add Git branch and dirty status info.
     typeset -gA prompt_pure_vcs_info
@@ -543,7 +545,7 @@ prompt_pure_setup() {
         host                 242
         path                 blue
         prompt:error         red
-        prompt:success       magenta
+        prompt:success       green
         user                 242
         user:root            default
         virtualenv           242
