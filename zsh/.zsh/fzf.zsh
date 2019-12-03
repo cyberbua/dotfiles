@@ -14,7 +14,7 @@ _fzf-file-widget() {
 _fzf-history-widget() {
     local selected num
     setopt localoptions noglobsubst noposixbuiltins pipefail 2> /dev/null
-    selected=$(fc -rl 1 | __fzfcmd --query=${LBUFFER} --no-multi --tiebreak=index)
+    selected=($(fc -rl 1 | __fzfcmd --query=${LBUFFER} --no-multi --tiebreak=index))
     local ret=$?
     if [ -n "$selected" ]; then
         num=$selected[1]
