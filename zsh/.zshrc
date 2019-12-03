@@ -246,3 +246,8 @@ if [[ $TERM == xterm-termite ]]; then
     source /etc/profile.d/vte.sh
     __vte_osc7
 fi
+
+# source local rc file if it exists
+if [ -f $ZSH/localrc.zsh ]; then
+    source $ZSH/localrc.zsh
+fi
