@@ -61,6 +61,7 @@ export KEYTIMEOUT=1
 bindkey "^[[3~" delete-char
 bindkey "^[3;5~" delete-char
 bindkey "\e[3~" delete-char
+bindkey "^?" backward-delete-char
 
 # add some of the emacs key bindings to viins mode
 bindkey -M viins "^A" beginning-of-line
