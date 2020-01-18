@@ -274,8 +274,11 @@ bindsym $mod+Ctrl+i exec 'if test -f /tmp/i3s_inhibit; then rm /tmp/i3s_inhibit;
 
 # passthrough mode disables all hotkeys
 mode passthrough {
-    bindsym Ctrl+Escape mode default
+    bindsym $mod+Escape mode default
+    bindsym $mod+Shift+Tab mode default; workspace back_and_forth
+    bindsym $mod+space exec blurlock
 }
 
-bindsym Ctrl+Escape mode passthrough
+bindsym $mod+Escape mode passthrough
+bindsym $mod+Shift+Tab mode passthrough; workspace back_and_forth
 ##############
