@@ -1,3 +1,4 @@
 zsh/.zsh/.zcompdump*
 zsh/.zsh/localrc.zsh
 __*__*
+tmux/.tmux.conf.local
