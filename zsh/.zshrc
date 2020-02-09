@@ -152,13 +152,13 @@ PROMPT=" $PROMPT"
 function zle-line-init zle-keymap-select {
     if [[ ${KEYMAP} == vicmd ]] ||
        [[ $1 = 'block' ]]; then
-        echo -ne '\e[2 q'
+        echo -ne '\e[1 q'
 
     elif [[ ${KEYMAP} == main ]] ||
          [[ ${KEYMAP} == viins ]] ||
          [[ ${KEYMAP} = '' ]] ||
          [[ $1 = 'beam' ]]; then
-        echo -ne '\e[6 q'
+        echo -ne '\e[5 q'
     fi
     prompt_pure_update_vim_prompt_widget
     zle reset-prompt
@@ -224,8 +224,8 @@ fi
 
 # PACMAN
 if (( $+commands[pacman] )); then
-    usercmd=(Ss Si Sg Sw Qs Qo Ql Qk Qc Qd Qe Qem Qme Qm Qi Qkk Qu Qdt Qtd Fs Fl)
-    sudocmd=(S Syu Rns Sy Syy Syyu U Sc R)
+    usercmd=(Ss Si Sg Sw Qs Qo Ql Qk Qc Qd Qe Qem Qme Qm Qi Qkk Qu Qdt Qtd F Fl)
+    sudocmd=(S Syu Rns Sy Syy Syyu U Sc R Fy)
 
     for c in $usercmd; do; alias $c="pacman -$c"; done
     for c in $sudocmd; do; alias $c="sudo pacman -$c"; done
