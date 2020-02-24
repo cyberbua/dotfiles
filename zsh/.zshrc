@@ -241,6 +241,20 @@ fi
 }
 
 
+# lf
+(( $+commands[lf] )) && lf() {
+    local tmp="$(mktemp)"
+    /usr/bin/lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        local dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        if [ -d "$dir" ] && [ "$dir" != "$(pwd)" ]; then
+            cd "$dir"
+        fi
+    fi
+}
+
+
 # set current dir for VTE based terminals
 if [[ $TERM == xterm-termite ]]; then
     export TERM=xterm-256color
