@@ -30,7 +30,7 @@ set pumheight=15
 set synmaxcol=2048
 set noshowmode
 
-" autofold on {{{
+" autofold on '{{{  }}}'
 set foldmethod=marker
 
 " keep indentation on linebreaks
@@ -192,7 +192,8 @@ Plug 'vim-airline/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_symbols_ascii = 1
-let g:airline_section_z = '%2p%% %l/%L : %2v'
+let g:airline_section_y = '0x%B %{airline#util#wrap(airline#parts#ffenc(),0)}'
+let g:airline_section_z = '%2p%% %l/%L:%3v'
 
 " language support collection
 Plug 'sheerun/vim-polyglot'
