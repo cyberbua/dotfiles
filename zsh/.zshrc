@@ -244,7 +244,7 @@ fi
 # lf
 (( $+commands[lf] )) && lf() {
     local tmp="$(mktemp)"
-    /usr/bin/lf -last-dir-path="$tmp" "$@"
+    $commands[lf] -last-dir-path="$tmp" "$@"
     if [ -f "$tmp" ]; then
         local dir="$(cat "$tmp")"
         rm -f "$tmp"
