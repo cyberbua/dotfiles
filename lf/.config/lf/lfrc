@@ -1,0 +1,11 @@
+# options
+set info size
+set tabstop 4
+set dircounts
+set incsearch
+set period 2
+set scrolloff 3
+
+# bindings
+map D delete
+map F5 load
