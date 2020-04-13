@@ -244,9 +244,9 @@ fi
 # lf
 (( $+commands[lf] )) && lf() {
     local tmp="$(mktemp)"
-    $commands[lf] -last-dir-path="$tmp" "$@"
+    $commands[lf] -command="cmd lfcd \${{echo \$f > $tmp}}; map Q :lfcd; quit" "$@"
     if [ -f "$tmp" ]; then
-        local dir="$(cat "$tmp")"
+        local dir="$(dirname "$(cat "$tmp")")"
         rm -f "$tmp"
         if [ -d "$dir" ] && [ "$dir" != "$(pwd)" ]; then
             cd "$dir"
