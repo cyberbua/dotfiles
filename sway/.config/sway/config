@@ -147,8 +147,8 @@ bar {
 # start a terminal
 bindsym $mod+Return exec termite
 
-# start rofi (a program launcher)
-bindsym $mod+d exec "rofi -modi window,drun -show drun"
+# start wofi (a program launcher)
+bindsym $mod+d exec "wofi --show drun"
 
 # show/hide scratchpad
 bindsym $mod+grave scratchpad show
