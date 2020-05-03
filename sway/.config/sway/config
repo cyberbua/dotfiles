@@ -156,6 +156,9 @@ bindsym $mod+grave scratchpad show
 # lockscreen
 bindsym $mod+space exec blurlock
 
+# sleep
+bindsym --locked $mod+space exec systemctl suspend
+
 # screenshots
 bindsym Print exec "grim /tmp/scrot.png", mode screenshot
 bindsym Shift+Print exec "slurp -d | grim -g - /tmp/scrot.png"; mode screenshot
@@ -175,18 +178,24 @@ bindsym --locked Ctrl+XF86AudioLowerVolume exec "amixer -q sset Master 20%-"
 bindsym --locked $mod+m exec "amixer -q sset Master toggle"
 
 # handle brightness keys (exponential scale!)
-bindsym --locked XF86MonBrightnessUp exec "zsh -c 'light -A $(( $(light -G) * 0.3 ))'"
-bindsym --locked XF86MonBrightnessDown exec "zsh -c 'light -U $(( $(light -G) * 0.3 ))'"
+bindsym --locked XF86MonBrightnessUp exec light -T 1.3
+bindsym --locked XF86MonBrightnessDown exec light -T 0.7
 
 # dismiss notifications
 bindsym $mod+n exec makoctl dismiss
 bindsym $mod+Ctrl+n exec makoctl dismiss --all
+
+# configure displays
+bindsym $mod+p exec wdisplays
 ###############
 
 
 ################
 # sway hotkeys #
 ################
+# enable/disable internal screen on lid open/close
+bindswitch --reload --locked lid:on output eDP-1 disable
+bindswitch --reload --locked lid:off output eDP-1 enable
 
 # close/kill focused window
 bindsym $mod+q kill
