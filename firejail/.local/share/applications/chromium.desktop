@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Chromium - Firejail
 Comment=Access the Internet
-Exec=env -u GDK_BACKEND firejail /usr/bin/chromium %U
+Exec=firejail /usr/bin/chromium %U
 Terminal=false
 Icon=chromium
 Type=Application
