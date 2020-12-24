@@ -109,16 +109,18 @@ input 6127:24647:Lenovo_ThinkPad_Compact_USB_Keyboard_with_TrackPoint {
     scroll_factor 0.3
 }
 
+exec kanshi
+
 # always keep a terminal on the scratchpad
 exec "while pgrep -x sway; do termite --name SWAY_SCRATCHPAD; sleep 0.25; done"
 
-exec redshift -l 48:16 -t 6500:4100 -m wayland
-
-exec swayidle -w timeout 120 blurlock
+exec swayidle -w timeout 360 blurlock
 
 exec mako
 
 exec nm-applet
+
+exec gammastep
 
 exec $HOME/.config/i3status/updates.sh
 
@@ -126,7 +128,7 @@ bar {
     font Roboto Mono Medium 10
     status_command i3status
     position top
-    output $main_output
+    # output $internal
     tray_padding 3
     separator_symbol " | "
 
@@ -143,6 +145,9 @@ bar {
         # binding_mode #282C34 #90bf6d #282C34
     }
 }
+
+# colors
+client.focused_inactive  #222222  #222222  #888888  #292d2e  #222222
 ##########
 
 
@@ -165,13 +170,8 @@ bindsym --inhibited $mod+space exec blurlock
 bindsym --locked $mod+space exec systemctl suspend
 
 # screenshots
-bindsym Print exec "grim /tmp/scrot.png", mode screenshot
-bindsym Shift+Print exec "slurp -d | grim -g - /tmp/scrot.png"; mode screenshot
-mode screenshot {
-    bindsym Ctrl+s exec 'mv /tmp/scrot.png /tmp/$(date "+%F_%T").png', mode default
-    bindsym Return exec 'wl-copy < /tmp/scrot.png', mode default
-    bindsym Escape mode default
-}
+bindsym --no-repeat Print exec "pgrep -x slurp || slurp -d | grim -g - - | swappy -f - -o /tmp/$(date '+%F_%T').png"
+bindsym --no-repeat Shift+Print exec "grim - | swappy -f - -o /tmp/$(date '+%F_%T').png"
 
 # handle volume keys
 bindsym --inhibited --locked XF86AudioRaiseVolume exec "amixer -q sset Master 2%+"
