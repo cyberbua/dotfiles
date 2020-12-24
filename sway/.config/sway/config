@@ -153,13 +153,13 @@ bar {
 bindsym $mod+Return exec termite
 
 # start wofi (a program launcher)
-bindsym $mod+d exec "wofi --show drun"
+bindsym --no-repeat --inhibited $mod+d exec "wofi --show drun"
 
 # show/hide scratchpad
-bindsym $mod+grave scratchpad show
+bindsym --inhibited $mod+grave scratchpad show
 
 # lockscreen
-bindsym $mod+space exec blurlock
+bindsym --inhibited $mod+space exec blurlock
 
 # sleep
 bindsym --locked $mod+space exec systemctl suspend
@@ -174,17 +174,17 @@ mode screenshot {
 }
 
 # handle volume keys
-bindsym --locked XF86AudioRaiseVolume exec "amixer -q sset Master 2%+"
-bindsym --locked Ctrl+XF86AudioRaiseVolume exec "amixer -q sset Master 20%+"
-bindsym --locked XF86AudioLowerVolume exec "amixer -q sset Master 2%-"
-bindsym --locked Ctrl+XF86AudioLowerVolume exec "amixer -q sset Master 20%-"
+bindsym --inhibited --locked XF86AudioRaiseVolume exec "amixer -q sset Master 2%+"
+bindsym --inhibited --locked Ctrl+XF86AudioRaiseVolume exec "amixer -q sset Master 20%+"
+bindsym --inhibited --locked XF86AudioLowerVolume exec "amixer -q sset Master 2%-"
+bindsym --inhibited --locked Ctrl+XF86AudioLowerVolume exec "amixer -q sset Master 20%-"
 
 # toggle sound mute
-bindsym --locked $mod+m exec "amixer -q sset Master toggle"
+bindsym --inhibited --locked $mod+m exec "amixer -q sset Master toggle"
 
 # handle brightness keys (exponential scale!)
-bindsym --locked XF86MonBrightnessUp exec light -T 1.3
-bindsym --locked XF86MonBrightnessDown exec light -T 0.7
+bindsym --inhibited --locked XF86MonBrightnessUp exec light -T 1.3
+bindsym --inhibited --locked XF86MonBrightnessDown exec light -T 0.7
 
 # dismiss notifications
 bindsym $mod+n exec makoctl dismiss
@@ -206,10 +206,10 @@ bindswitch --reload --locked lid:off output eDP-1 enable
 bindsym $mod+q kill
 
 # change focus
-bindsym $mod+$left focus left
-bindsym $mod+$down focus down
-bindsym $mod+$up focus up
-bindsym $mod+$right focus right
+bindsym --inhibited $mod+$left focus left
+bindsym --inhibited $mod+$down focus down
+bindsym --inhibited $mod+$up focus up
+bindsym --inhibited $mod+$right focus right
 
 # move focused window
 bindsym $mod+Shift+$left move left 25 px
@@ -241,35 +241,35 @@ bindsym $mod+Shift+s sticky toggle
 bindsym $mod+x focus mode_toggle
 
 # focus parent container
-bindsym $mod+p focus parent
-bindsym $mod+Shift+p focus child
+# bindsym $mod+p focus parent
+# bindsym $mod+Shift+p focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym --inhibited $mod+1 workspace 1
+bindsym --inhibited $mod+2 workspace 2
+bindsym --inhibited $mod+3 workspace 3
+bindsym --inhibited $mod+4 workspace 4
+bindsym --inhibited $mod+5 workspace 5
+bindsym --inhibited $mod+6 workspace 6
+bindsym --inhibited $mod+7 workspace 7
+bindsym --inhibited $mod+8 workspace 8
+bindsym --inhibited $mod+9 workspace 9
+bindsym --inhibited $mod+0 workspace 10
 
 # switch to previosly focused workspace
-bindsym $mod+Tab workspace back_and_forth
+bindsym --inhibited $mod+Tab workspace back_and_forth
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym --inhibited $mod+Shift+1 move container to workspace 1
+bindsym --inhibited $mod+Shift+2 move container to workspace 2
+bindsym --inhibited $mod+Shift+3 move container to workspace 3
+bindsym --inhibited $mod+Shift+4 move container to workspace 4
+bindsym --inhibited $mod+Shift+5 move container to workspace 5
+bindsym --inhibited $mod+Shift+6 move container to workspace 6
+bindsym --inhibited $mod+Shift+7 move container to workspace 7
+bindsym --inhibited $mod+Shift+8 move container to workspace 8
+bindsym --inhibited $mod+Shift+9 move container to workspace 9
+bindsym --inhibited $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
 bindsym $mod+Shift+r reload
@@ -279,7 +279,7 @@ bindsym $mod+Shift+e exit
 
 # inhibit idle for current window
 bindsym $mod+i mark --toggle inhibit_idle, inhibit_idle fullscreen, \
-    exec 'swaymsg "[con_mark=\"inhibit_idle\"] inhibit_idle focus"'
+    exec 'swaymsg "[con_mark=\"inhibit_idle\"] inhibit_idle visible"'
 
 bindsym $mod+Ctrl+i exec 'if test -f /tmp/i3s_inhibit; then rm /tmp/i3s_inhibit; \
     swaymsg "[shell=\".*\"] inhibit_idle fullscreen"; pkill -USR1 i3status; \
