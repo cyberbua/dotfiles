@@ -109,6 +109,9 @@ input 6127:24647:Lenovo_ThinkPad_Compact_USB_Keyboard_with_TrackPoint {
     scroll_factor 0.3
 }
 
+# fix slow GTK app startup
+exec systemctl --user import-environment
+
 exec kanshi
 
 # always keep a terminal on the scratchpad
@@ -170,8 +173,9 @@ bindsym --inhibited $mod+space exec blurlock
 bindsym --locked $mod+space exec systemctl suspend
 
 # screenshots
-bindsym --no-repeat Print exec "pgrep -x slurp || slurp -d | grim -g - - | swappy -f - -o /tmp/$(date '+%F_%T').png"
-bindsym --no-repeat Shift+Print exec "grim - | swappy -f - -o /tmp/$(date '+%F_%T').png"
+bindsym --no-repeat Print exec "export TIME=$(date '+%F_%T'); pgrep -x slurp || slurp -b '#00000066' -d | grim -g - /tmp/$TIME.png; ksnip -e /tmp/$TIME.png"
+bindsym --no-repeat --inhibited $mod+Print exec "export TIME=$(date '+%F_%T'); pgrep -x slurp || slurp -b '#00000066' -d | grim -g - /tmp/$TIME.png; ksnip -e /tmp/$TIME.png"
+bindsym --no-repeat --inhibited Shift+Print exec "grim /tmp/$(date '+%F_%T').png"
 
 # handle volume keys
 bindsym --inhibited --locked XF86AudioRaiseVolume exec "amixer -q sset Master 2%+"
