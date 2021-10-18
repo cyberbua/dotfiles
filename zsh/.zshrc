@@ -255,13 +255,6 @@ fi
 }
 
 
-# set current dir for VTE based terminals
-if [[ $TERM == xterm-termite ]]; then
-    export TERM=xterm-256color
-    source /etc/profile.d/vte.sh
-    __vte_osc7
-fi
-
 # source local rc file if it exists
 if [ -f $ZSH/localrc.zsh ]; then
     source $ZSH/localrc.zsh
