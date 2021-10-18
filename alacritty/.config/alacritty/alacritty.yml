@@ -1,0 +1,41 @@
+env:
+  TERM: xterm-256color
+
+scrolling:
+  history: 32768
+
+font:
+  normal:
+    family: RobotoMono Nerd Font
+
+  size: 11.0
+
+colors:
+  primary:
+    background: '#282C34'
+    foreground: '#c8d0df'
+
+  normal:
+    black:   '#464d5a'
+    red:     '#e8696f'
+    green:   '#90bf6d'
+    yellow:  '#ebc174'
+    blue:    '#50acea'
+    magenta: '#c57ada'
+    cyan:    '#4ab7c3'
+    white:   '#b8babc'
+
+  bright:
+    black:   '#5f687a'
+    red:     '#e88388'
+    green:   '#a7cc8c'
+    yellow:  '#ebca8d'
+    blue:    '#72bef2'
+    magenta: '#d291e4'
+    cyan:    '#65c2cd'
+    white:   '#e3e5e9'
+
+draw_bold_text_with_bright_colors: true
+
+key_bindings:
+  - { key: T,   mods: Control|Shift, action: SpawnNewInstance }
