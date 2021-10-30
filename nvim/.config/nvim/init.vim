@@ -66,12 +66,6 @@ set list listchars=trail:•,tab:\|\ ,
 " comma as leader
 let mapleader=" "
 
-" disable the damn arrow keys
-noremap <Up>    <Nop>
-noremap <Down>  <Nop>
-noremap <Left>  <Nop>
-noremap <Right> <Nop>
-
 " buffer navigation
 noremap <C-l> :bnext<CR>
 noremap <C-h> :bprevious<CR>
@@ -97,10 +91,12 @@ vnoremap L g_
 " Y to yank without <cr> (thats what yy is for)
 nnoremap Y y$
 
-" save/quit
-nnoremap <C-s>  :update<cr>
+" save with Ctrl-S
+" flow control has to be disabled in zsh/bash
+nnoremap <C-s> :update<cr>
 inoremap <C-s> <ESC>:update<cr>
 
+" make Ctrl-Q either close the current buffer or quit vim completely
 function! s:closeorquit()
     if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) > 1
         bdelete
@@ -114,9 +110,6 @@ nnoremap <silent> <C-Q> :call <sid>closeorquit()<CR>
 noremap x "xx
 noremap c "cc
 nnoremap C "cC
-
-" don't override register when pasting over something
-" vnoremap p "_dhp
 
 " keep visual selection when shifting
 xnoremap < <gv
@@ -140,7 +133,7 @@ if has('nvim')
     tnoremap <A-j> <C-\><C-n><C-w>j
     tnoremap <A-k> <C-\><C-n><C-w>k
     tnoremap <A-l> <C-\><C-n><C-w>l
-    " terminal split with <A-^>
+    " terminal split with <A-`>
     nnoremap <A-`> :above 20sp term://$SHELL<cr>i
     " exit terminal insert mode with <A-e>
     tnoremap <A-e> <C-\><C-n>
@@ -174,20 +167,6 @@ Plug 'rakr/vim-one'
 " show git diff in gutter
 Plug 'airblade/vim-gitgutter'
 
-" move lines with <C-k>/<C-j>
-Plug 'matze/vim-move'
-let g:move_key_modifier = 'C'
-
-" linter
-Plug 'w0rp/ale'
-let g:ale_sign_error = '✹'
-let g:ale_sign_warning = '✹'
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 0
-let g:ale_enabled = 0
-map <leader>ae :ALEEnable<CR>
-map <leader>ad :ALEDisable<CR>
-
 Plug 'vim-airline/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
@@ -197,16 +176,6 @@ let g:airline_section_z = '%2p%% %l/%L:%3v'
 
 " language support collection
 Plug 'sheerun/vim-polyglot'
-
-" fuzzy file finder
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
-Plug 'junegunn/fzf.vim'
-nmap <leader>ff :Files<CR>
-nmap <leader>fg :GFiles<CR>
-nmap <leader>fl :Lines<CR>
-nmap <leader>fb :Buffers<CR>
-nmap <leader>fc :Commands<CR>
-nmap <leader>fh :History:<CR>
 
 " colorize rgb hex codes
 Plug 'lilydjwg/colorizer'
@@ -220,15 +189,6 @@ function! s:togglecolorizer()
     edit
 endfunc
 nmap <leader>c :call <sid>togglecolorizer()<CR>
-
-" extend vim's text objects
-Plug 'wellle/targets.vim'
-Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-indent'
-
-" ranger file chooser
-Plug 'hmohamad/neoranger'
-nnoremap <silent> <Leader>r :Ranger<CR>
 
 call plug#end()
 """""""""""
