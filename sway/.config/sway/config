@@ -1,6 +1,6 @@
 # include local config for things like outputs, wallpapers etc.
 # has to define at least the following variables: $external, $internal
-inlude config.local
+include config.local
 
 ###############
 # definitions #
