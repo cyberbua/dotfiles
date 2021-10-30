@@ -256,6 +256,6 @@ fi
 
 
 # source local rc file if it exists
-if [ -f $ZSH/localrc.zsh ]; then
-    source $ZSH/localrc.zsh
+if [ -f $HOME/.zshrc.local ]; then
+    source $HOME/.zshrc.local
 fi
