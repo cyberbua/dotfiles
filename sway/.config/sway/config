@@ -1,3 +1,7 @@
+# include local config for things like outputs, wallpapers etc.
+# has to define at least the following variables: $external, $internal
+inlude config.local
+
 ###############
 # definitions #
 ###############
@@ -9,25 +13,22 @@ set $up k
 set $down j
 set $right l
 
-# set outputs
-set $main_output eDP-1
-set $external_output HDMI-A-1
 ###############
 
 
 ##########
 # config #
 ##########
-workspace 1 output $main_output
-workspace 2 output $main_output
-workspace 3 output $main_output
-workspace 4 output $main_output
-workspace 5 output $main_output
-workspace 6 output $main_output
-workspace 7 output $main_output
-workspace 8 output $main_output
-workspace 9 output $main_output
-workspace 10 output $external_output $main_output
+workspace 1 output $external $internal
+workspace 2 output $external $internal
+workspace 3 output $external $internal
+workspace 4 output $external $internal
+workspace 5 output $external $internal
+workspace 6 output $external $internal
+workspace 7 output $external $internal
+workspace 8 output $external $internal
+workspace 9 output $external $internal
+workspace 10 output $internal $external
 
 # Font for window titles
 font pango:RobotoMono Nerd Font 7.5
@@ -85,11 +86,6 @@ for_window [shell="xwayland"] title_format <span background="#e8696f" \
 
 # default layout
 workspace_layout stacking
-
-output $main_output bg ~/wallpapers/LakeSide/Lakeside_dawn.jpg fit
-
-output $main_output pos 0 0
-output $external_output pos 1920 0
 
 input type:keyboard {
     repeat_delay 200
