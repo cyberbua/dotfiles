@@ -6,7 +6,12 @@ set incsearch
 set period 1
 set scrolloff 3
 
+set previewer ~/.config/lf/pv.sh
+
 # bindings
 map D delete
 map <f-5> reload
 map <esc> clear
+
+cmd open-with %"$@" $fx
+map o push :open-with<space>
