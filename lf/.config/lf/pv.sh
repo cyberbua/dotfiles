@@ -3,18 +3,6 @@
 set -o noclobber -o noglob -o nounset -o pipefail
 IFS=$'\n'
 
-## If the option `use_preview_script` is set to `true`,
-## then this script will be called and its output will be displayed in ranger.
-## ANSI color codes are supported.
-## STDIN is disabled, so interactive scripts won't work properly
-
-## This script is considered a configuration file and must be updated manually.
-## It will be left untouched if you upgrade ranger.
-
-## Because of some automated testing we do on the script #'s for comments need
-## to be doubled up. Code that is commented out, because it's an alternative for
-## example, gets only one #.
-
 ## Meanings of exit codes:
 ## code | meaning    | action of ranger
 ## -----+------------+-------------------------------------------
@@ -24,7 +12,6 @@ IFS=$'\n'
 ## Script arguments
 FILE_PATH="${1}"         # Full path of the highlighted file
 PV_WIDTH="${2}"          # Width of the preview pane (number of fitting characters)
-## shellcheck disable=SC2034 # PV_HEIGHT is provided for convenience and unused
 PV_HEIGHT="${3}"         # Height of the preview pane (number of fitting characters)
 
 FILE_BASENAME=${FILE_PATH##*/}
@@ -40,7 +27,7 @@ handle_extension() {
         #     exit 1;;
         ## Archive
         *.tar|*.tar.gz|*.tgz|*.tar.bz|*.tbz|*.tar.bz2|*.tbz2|*.tar.xz|*.txz|*.tar.lzo|*.tzo|*.tar.zst)
-            tar --list --file "${FILE_PATH}" | head -n ${PV_HEIGHT}
+            tar --list --file "${FILE_PATH}"
             ;;
 
         *.zip|*.jar|*.war|*.apk)
@@ -141,8 +128,14 @@ handle_mime() {
 
         ## Text
         text/* | */xml)
-            env bat --color=always --style="plain" --theme=ansi -- "${FILE_PATH}" ||
+            bat --color=always --style="plain" --theme=ansi -- "${FILE_PATH}" ||
             head -n ${PV_HEIGHT} "${FILE_PATH}"
+            ;;
+
+        ## JSON
+        application/json)
+            jq --color-output . "${FILE_PATH}" ||
+            python -m json.tool -- "${FILE_PATH}"
             ;;
 
         ## DjVu
