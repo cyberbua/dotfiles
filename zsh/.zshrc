@@ -244,12 +244,15 @@ fi
 # lf
 (( $+commands[lf] )) && lf() {
     local tmp="$(mktemp)"
-    $commands[lf] -command="cmd lfcd \${{echo \$f > $tmp}}; map Q :lfcd; quit" "$@"
-    if [ -f "$tmp" ]; then
-        local dir="$(dirname "$(cat "$tmp")")"
+    $commands[lf] -last-dir-path "${tmp}" -command='cmd lfcd ${{touch /tmp/lfcd}}; map Q :lfcd; quit' $@
+    if [[ -f "$tmp" ]]; then
+        local dir="$(cat "$tmp")"
         rm -f "$tmp"
-        if [ -d "$dir" ] && [ "$dir" != "$(pwd)" ]; then
-            cd "$dir"
+        if [[ -f /tmp/lfcd ]]; then
+            rm /tmp/lfcd
+            if [[ -d "$dir" ]]; then
+                cd "$dir"
+            fi
         fi
     fi
 }
