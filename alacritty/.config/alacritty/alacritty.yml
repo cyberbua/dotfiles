@@ -7,7 +7,7 @@ scrolling:
 font:
   normal:
     family: RobotoMono Nerd Font
-
+  style: Medium
   size: 11.0
 
 window:
