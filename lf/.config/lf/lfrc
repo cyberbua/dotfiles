@@ -16,3 +16,6 @@ map <esc> clear
 
 cmd open-with %"$@" $fx
 map o push :open-with<space>
+
+cmd mkdir %IFS=" "; mkdir -p -- "$*"
+map M push :mkdir<space>
