@@ -17,6 +17,11 @@ map <esc> clear
 map f filter
 map E $$EDITOR $fx
 
+cmap <tab> cmd-menu-complete
+cmap <backtab> cmd-menu-complete-back
+cmap <up> cmd-history-prev
+cmap <down> cmd-history-next
+
 map gt cd /tmp
 map gm cd /run/media/
 
@@ -26,11 +31,7 @@ map o push :open-with<space>
 cmd mkdir %IFS=" "; mkdir -p -- "$*"
 map M push :mkdir<space>
 
-cmap <tab> cmd-menu-complete
-cmap <backtab> cmd-menu-complete-back
-
-cmap <up> cmd-history-prev
-cmap <down> cmd-history-next
+map U %du -sch $fx
 
 # extras
 set previewer ~/.config/lf/pv.sh
