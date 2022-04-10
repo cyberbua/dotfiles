@@ -1,3 +1,4 @@
 zsh/.zsh/.zcompdump*
 __*__*
 *.local
+!firejail/**/*.local

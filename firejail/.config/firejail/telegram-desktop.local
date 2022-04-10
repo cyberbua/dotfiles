@@ -1,0 +1,3 @@
+ignore mkdir ${HOME}/.TelegramDesktop
+
+# set 'allow-tray yes' in /etc/firejail/firejail.config
