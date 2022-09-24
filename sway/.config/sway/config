@@ -121,8 +121,6 @@ exec nm-applet
 
 exec "while pgrep -x sway; do sleep 5s; gammastep; done"
 
-exec $HOME/.config/i3status/updates.sh
-
 bar {
     font Roboto Mono Medium 10
     status_command i3status-rs

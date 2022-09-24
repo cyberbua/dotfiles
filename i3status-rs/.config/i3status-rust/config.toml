@@ -1,0 +1,79 @@
+[theme]
+name = "native"
+
+[theme.overrides]
+good_fg = "#90bf6d"
+warning_fg = "#ebc174"
+critical_fg = "#e8696f"
+
+[icons]
+name = "none"
+
+[[block]]
+block = "time"
+format = "%a %d.%m %R"
+interval = 10
+[block.icons_overrides]
+time = ""
+
+[[block]]
+block = "pomodoro"
+length = 25
+break_length = 5
+notifier = "notifysend"
+[block.icons_overrides]
+pomodoro = "POM"
+
+[[block]]
+block = "pacman"
+interval = 3600
+hide_when_uptodate = true
+
+[[block]]
+block = "sound"
+step_width = 3
+max_vol = 100
+
+[[block]]
+block = "networkmanager"
+ap_format = "{ssid} {strength}"
+interface_name_include = ['^(en|eth|wlan|wlp|wg|tun)']
+on_click = "nm-connection-editor"
+
+[[block]]
+block = "disk_space"
+path = "/"
+info_type = "available"
+format = "{path}: {available}"
+alert = 10
+warning = 20
+
+[[block]]
+block = "battery"
+interval = 10
+format = "{percentage}"
+
+[[block]]
+block = "memory"
+format_mem = "{mem_avail}"
+format_swap = "{swap_free}"
+clickable = true
+interval = 5
+warning_mem = 80
+critical_mem = 95
+on_click = "alacritty -e htop"
+[block.icons_overrides]
+memory_mem = "MEM"
+memory_swap = "SWP"
+
+[[block]]
+block = "cpu"
+interval = 1
+format = "{utilization}"
+on_click = "alacritty -e htop"
+
+[[block]]
+block = "temperature"
+format = "{max}"
+collapsed = false
+chip = "*-isa-*"
