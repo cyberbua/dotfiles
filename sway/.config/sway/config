@@ -66,7 +66,7 @@ for_window [app_id="wdisplays"] floating enable, resize set 980 500
 for_window [app_id="SWAY_FLOATING"] floating enable
 
 # firefox sharing indicator
-for_window [app_id="firefox" title="Firefox - Sharing Indicator"] floating enable, \
+for_window [app_id="firefox" title="Firefox — Sharing Indicator"] floating enable, \
     border none, sticky enable, move position 0 200, opacity set 0.5
 
 # auto enable floting mode for firefox picture in picture mode
@@ -106,7 +106,7 @@ input 6127:24647:Lenovo_ThinkPad_Compact_USB_Keyboard_with_TrackPoint {
 }
 
 # fix slow GTK app startup
-exec systemctl --user import-environment
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 
 exec kanshi
 
@@ -125,17 +125,10 @@ exec $HOME/.config/i3status/updates.sh
 
 bar {
     font Roboto Mono Medium 10
-    status_command i3status
+    status_command i3status-rs
     position top
-    # output $internal
     tray_padding 3
     separator_symbol " | "
-
-    # diable workspace scrolling
-    bindsym button4 nop
-    bindsym button5 nop
-    bindsym button6 nop
-    bindsym button7 nop
 
     colors {
         background #282C34
