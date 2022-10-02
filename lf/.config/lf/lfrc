@@ -22,14 +22,22 @@ cmap <backtab> cmd-menu-complete-back
 cmap <up> cmd-history-prev
 cmap <down> cmd-history-next
 
+map gr cd /
 map gt cd /tmp
-map gm cd /run/media/
+map gm cd /run/media
+map gd cd ~/Downloads
 
 cmd open-with %"$@" $fx
 map o push :open-with<space>
 
 cmd mkdir %IFS=" "; mkdir -p -- "$*"
 map M push :mkdir<space>
+
+# like ! (shell-wait) but append $fx
+map @ push !<space>$fx<c-a>
+
+# rename, but place the cursor before the extension
+map R push r<a-b><c-b>
 
 map U %du -sch $fx
 
