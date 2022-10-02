@@ -23,6 +23,10 @@ break_length = 5
 notifier = "notifysend"
 [block.icons_overrides]
 pomodoro = "POM"
+pomodoro_paused = "P"
+pomodoro_started = "R"
+pomodoro_stopped = "S"
+pomodoro_break = "B"
 
 [[block]]
 block = "pacman"
@@ -33,10 +37,14 @@ hide_when_uptodate = true
 block = "sound"
 step_width = 3
 max_vol = 100
+on_click = "pavucontrol -t 1"
+[block.icons_overrides]
+volume_muted = "VOL M"
 
 [[block]]
 block = "networkmanager"
-ap_format = "{ssid} {strength}"
+ap_format = "{ssid^10} {strength}"
+device_format = "{ap} {name} {ips}"
 interface_name_include = ['^(en|eth|wlan|wlp|wg|tun)']
 on_click = "nm-connection-editor"
 
@@ -50,8 +58,11 @@ warning = 20
 
 [[block]]
 block = "battery"
-interval = 10
+interval = 5
 format = "{percentage}"
+[block.icons_overrides]
+bat_full = "BAT"
+bat_empty = "BAT"
 
 [[block]]
 block = "memory"

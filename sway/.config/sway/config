@@ -126,7 +126,6 @@ bar {
     status_command i3status-rs
     position top
     tray_padding 3
-    separator_symbol " | "
 
     colors {
         background #282C34
