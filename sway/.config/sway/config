@@ -43,9 +43,6 @@ focus_follows_mouse no
 # snly show titlebars when necessary
 default_border normal 3
 
-# hide cursor after 6 sec
-seat * hide_cursor 6000
-
 # hide broders when only a single container is visible
 hide_edge_borders --i3 smart
 
@@ -144,7 +141,7 @@ client.focused_inactive  #222222  #222222  #888888  #292d2e  #222222
 # app hotkeys #
 ###############
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec "alacritty msg create-window || alacritty"
 
 # start wofi (a program launcher)
 bindsym --no-repeat --inhibited $mod+d exec "wofi --show drun"
