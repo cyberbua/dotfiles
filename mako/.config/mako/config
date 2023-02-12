@@ -1,1 +1,7 @@
 default-timeout=5000
+
+[app-name=notify-send summary~=Pomodoro]
+anchor=top-center
+default-timeout=20000
+background-color=#900000
+border-color=#470909
