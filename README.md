@@ -2,10 +2,10 @@
 
 - **OS:** Arch Linux
 - **Window Manager/Compositor:** sway
-- **Bar:** swaybar + i3status
+- **Bar:** swaybar + i3status-rs
 - **Terminal:** [termite](https://github.com/thestinger/termite)
 - **Shell:** Zsh
-    - bits and pieces of [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
+    - bits and pieces of [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) and others
 - Theme and fonts
     - **GTK Theme:** Arc Darker
     - **icon theme:** Ultra Flat
@@ -34,32 +34,4 @@ stow zsh tmux
 
 # uninstall tmux configs:
 stow -D tmux
-```
-
-## Config Locations
-```
-├── .config
-│   ├── bspwm/bspwmrc        # bspwm config (window manager config)
-│   ├── sxhkd/sxhkdrc        # sxhkd config (keyboard bindings)
-│   ├── polybar/             # bar config and scripts
-│   ├── termite/config       # terminal emulator config
-│   ├── Thunar/uca.xml       # thunar custom actions
-│   ├── rofi/config          # application launcher settings
-│   ├── htop/htoprc          # htop settings
-│   ├── compton.conf         # compositor config (for them nice shadows)
-│   └── chromium-flags.conf  # chromium flags (use ram as cache etc.)
-├── .local
-│   └── share
-│       ├── fonts/           # drop fonts here
-│       └── icons/           # drop icon themes here 
-├── bin
-│   └── blurlock             # lockscreen script
-├── .themes/                 # drop GTK themes here
-├── .oh-my-zsh               # zsh config and plugins
-├── .vim
-│   └── autoload/plug.vim    # plugin manager itself
-├── .tmux.conf
-├── .vimrc
-├── .xinitrc
-└── .zshrc
 ```
