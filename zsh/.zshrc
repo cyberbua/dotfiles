@@ -78,6 +78,10 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey -M viins "^[[A" up-line-or-beginning-search
 bindkey -M viins "^[[B" down-line-or-beginning-search
+bindkey -M viins "^K" up-line-or-beginning-search
+bindkey -M viins "^J" down-line-or-beginning-search
+bindkey -M vicmd "k" up-line-or-beginning-search
+bindkey -M vicmd "j" down-line-or-beginning-search
 
 # esc-esc to toogle sudo
 _sudo-toggle() {
