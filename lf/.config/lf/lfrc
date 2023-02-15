@@ -17,6 +17,9 @@ map <esc> clear
 map f filter
 map E $$EDITOR $fx
 
+map P paste
+map p :paste; clear
+
 cmap <tab> cmd-menu-complete
 cmap <backtab> cmd-menu-complete-back
 cmap <up> cmd-history-prev
