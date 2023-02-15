@@ -37,8 +37,8 @@ titlebar_padding 1
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
 
-# disable fosus following mouse
-focus_follows_mouse no
+# enable fosus following mouse
+focus_follows_mouse yes
 
 # snly show titlebars when necessary
 default_border normal 3
