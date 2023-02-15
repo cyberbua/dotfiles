@@ -21,6 +21,8 @@ block = "pomodoro"
 length = 25
 break_length = 5
 notifier = "notifysend"
+message = "Pomodoro over!\nTake a break!"
+break_message = "Break over!\nTime to work!"
 [block.icons_overrides]
 pomodoro = "POM"
 pomodoro_paused = "P"
