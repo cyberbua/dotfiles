@@ -148,7 +148,7 @@ handle_mime() {
         ## Image
         image/*)
             ## Preview as text conversion
-            chafa "${FILE_PATH}" ||
+            chafa "${FILE_PATH}" --animate=off||
             exiftool "${FILE_PATH}"
             ;;
 
