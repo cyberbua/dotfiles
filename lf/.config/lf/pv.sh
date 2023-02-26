@@ -148,6 +148,7 @@ handle_mime() {
         ## Image
         image/*)
             ## Preview as text conversion
+            chafa "${FILE_PATH}" ||
             exiftool "${FILE_PATH}"
             ;;
 
