@@ -1,7 +1,0 @@
-#!/bin/bash
-[[ $1 == "ls" ]] && ls $(dirname $0)/colorscripts/ && exit
-
-for var in "$@"
-do
-	$(dirname $0)/colorscripts/$var
-done
