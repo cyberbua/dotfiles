@@ -95,7 +95,7 @@ require("lazy").setup({
     build = ':TSUpdate',
     config = function()
       require("nvim-treesitter.configs").setup({
-        ensure_installed = {'bash', 'bibtex', 'c', 'cpp', 'css', 'diff', 'gitcommit', 'gitignore', 'go', 'help', 'html', 'ini', 'java', 'javascript', 'json', 'json5', 'jsonc', 'latex', 'make', 'markdown', 'markdown_inline', 'perl', 'php', 'python', 'regex', 'rust', 'smali', 'sql', 'toml', 'typescript', 'vim', 'yaml'},
+        ensure_installed = {'bash', 'bibtex', 'c', 'cpp', 'css', 'diff', 'gitcommit', 'go', 'help', 'html', 'ini', 'java', 'javascript', 'json', 'json5', 'jsonc', 'latex', 'make', 'markdown', 'markdown_inline', 'perl', 'php', 'python', 'regex', 'rust', 'smali', 'toml', 'typescript', 'vim', 'yaml'},
         highlight = {
           enable = true,
         },
