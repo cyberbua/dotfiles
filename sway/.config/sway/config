@@ -141,7 +141,7 @@ client.focused_inactive  #222222  #222222  #888888  #292d2e  #222222
 # app hotkeys #
 ###############
 # start a terminal
-bindsym $mod+Return exec "alacritty msg create-window || alacritty"
+bindsym $mod+Return exec alacritty
 
 # start wofi (a program launcher)
 bindsym --no-repeat --inhibited $mod+d exec "wofi --show drun"
