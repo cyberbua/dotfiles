@@ -17,8 +17,8 @@ vim.opt.smartcase = true                -- except searches containing upper case
 
 -- misc
 vim.opt.number = true                   -- show line numbers
-vim.opt.relativenumber = true                   -- show line numbers
-vim.opt.scrolloff = 8                   -- maintain lines below/above cursor 
+vim.opt.relativenumber = true           -- relative numbers for efficient movement
+vim.opt.scrolloff = 8                   -- maintain lines below/above cursor
 vim.opt.pumheight = 15                  -- max size of completion menu
 vim.opt.wildmode = 'longest:full,full'  -- complete to longest match first
 vim.opt.virtualedit = 'block'           -- allow visual block in empty space
@@ -28,7 +28,7 @@ vim.opt.autoread = true                 -- re-read file when changed externally
 vim.opt.splitbelow = true               -- create window-splits below
 vim.opt.splitright = true               -- create window-splits on the right
 vim.opt.list = true                     -- show certain whitespace characters
-vim.opt.listchars:append{trail = '•', tab = '| '}
+vim.opt.listchars:append{trail = '•', tab = '| '}   -- show tabs and trailing spaces
 
 vim.opt.mousemodel = 'extend'           -- right mouse button extends selection
 vim.opt.mouse = 'a'                     -- enable mouse in all modes

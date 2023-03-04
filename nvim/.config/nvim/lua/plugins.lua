@@ -7,10 +7,11 @@ require("lazy").setup({
     priority = 1000,
     init = function()
       require('onedark').load()
+      vim.cmd("highlight SpellBad gui=undercurl guifg=reset")
+      vim.cmd("highlight SpellCap gui=undercurl guifg=reset")
+      vim.cmd("highlight SpellRare gui=undercurl guifg=reset")
+      vim.cmd("highlight SpellLocal gui=undercurl guifg=reset")
     end,
-    opts = {
-      style = 'dark'
-    }
   },
 
   {
@@ -90,6 +91,22 @@ require("lazy").setup({
   },
 
   {
+    'ibhagwan/fzf-lua',
+    enabled = true,
+    config = function()
+      require("nvim-surround").setup({ })
+      map('n', '<leader>F', ':FzfLua resume<cr>', {desc = 'FZF resume last query'})
+      map('n', '<leader>ff', ':FzfLua files<cr>', {desc = 'FZF files in PWD'})
+      map('n', '<leader>fg', ':FzfLua git_files<cr>', {desc = 'FZF files in git'})
+      map('n', '<leader>fb', ':FzfLua buffers<cr>', {desc = 'FZF buffers'})
+      map('n', '<leader>fl', ':FzfLua lines<cr>', {desc = 'FZF lines in open buffers'})
+      map('n', '<leader>fL', ':FzfLua blines<cr>', {desc = 'FZF lines current buffer'})
+      map('n', '<leader>fh', ':FzfLua help_tags<cr>', {desc = 'FZF help tags'})
+      map('n', '<leader>fm', ':FzfLua man_pages<cr>', {desc = 'FZF man pages'})
+    end
+  },
+
+  {
     'nvim-treesitter/nvim-treesitter',
     enabled = true,
     build = ':TSUpdate',
@@ -127,6 +144,7 @@ require("lazy").setup({
     dependencies = {"nvim-treesitter/nvim-treesitter"},
     config = function()
       vim.opt.updatetime = 1000   -- used for highlight_definitions
+      vim.cmd("highlight TSDefinitionUsage cterm=underline guibg=#2c5372")
       require("nvim-treesitter.configs").setup({
         refactor = {
           highlight_definitions = {
