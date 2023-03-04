@@ -1,5 +1,5 @@
 [theme]
-name = "native"
+theme = "native"
 
 [theme.overrides]
 good_fg = "#90bf6d"
@@ -7,86 +7,104 @@ warning_fg = "#ebc174"
 critical_fg = "#e8696f"
 
 [icons]
-name = "none"
+icons = "none"
 
 [[block]]
 block = "time"
-format = "%a %d.%m %R"
-interval = 10
-[block.icons_overrides]
-time = ""
+format = " $timestamp.datetime(f:'%a %d.%m %R') "
 
 [[block]]
 block = "pomodoro"
-length = 25
-break_length = 5
-notifier = "notifysend"
+notify_cmd = "notify-send '{msg}'"
 message = "Pomodoro over!\nTake a break!"
 break_message = "Break over!\nTime to work!"
 [block.icons_overrides]
 pomodoro = "POM"
-pomodoro_paused = "P"
-pomodoro_started = "R"
-pomodoro_stopped = "S"
-pomodoro_break = "B"
 
 [[block]]
 block = "pacman"
 interval = 3600
-hide_when_uptodate = true
+format = " UPD $pacman "
 
 [[block]]
 block = "sound"
 step_width = 3
 max_vol = 100
-on_click = "pavucontrol -t 1"
-[block.icons_overrides]
-volume_muted = "VOL M"
+[[block.click]]
+button = "left"
+cmd = "pavucontrol -t 1"
 
 [[block]]
-block = "networkmanager"
-ap_format = "{ssid^10} {strength}"
-device_format = "{ap} {name} {ips}"
-interface_name_include = ['^(en|eth|wlan|wlp|wg|tun)']
-on_click = "nm-connection-editor"
+block = "net"
+device = "^wl"
+format = " $device $signal_strength% $ssid $ip "
+missing_format = ""
+[[block.click]]
+button = "left"
+cmd = "nm-connection-editor"
+
+[[block]]
+block = "net"
+device = "^(enp|eth)"
+format = " $device $ip "
+missing_format = ""
+[[block.click]]
+button = "left"
+cmd = "nm-connection-editor"
+
+[[block]]
+block = "net"
+device = "^wg"
+format = " $device $ip "
+missing_format = " wg "
+[[block.click]]
+button = "left"
+cmd = "nm-connection-editor"
+
+[[block]]
+block = "net"
+device = "^tun"
+format = " $device $ip "
+missing_format = ""
+[[block.click]]
+button = "left"
+cmd = "nm-connection-editor"
 
 [[block]]
 block = "disk_space"
 path = "/"
 info_type = "available"
-format = "{path}: {available}"
+format = " $path: $available "
 alert = 10
 warning = 20
 
 [[block]]
 block = "battery"
-interval = 5
-format = "{percentage}"
+format = " $icon $percentage "
+full_format = " $icon FULL "
+full_threshold = 95
 [block.icons_overrides]
-bat_full = "BAT"
-bat_empty = "BAT"
+bat_charging = "CHR"
 
 [[block]]
 block = "memory"
-format_mem = "{mem_avail}"
-format_swap = "{swap_free}"
-clickable = true
+format = " $icon $mem_avail "
 interval = 5
 warning_mem = 80
 critical_mem = 95
-on_click = "alacritty -e htop"
-[block.icons_overrides]
-memory_mem = "MEM"
-memory_swap = "SWP"
+[[block.click]]
+button = "left"
+cmd = "alacritty -e htop"
 
 [[block]]
 block = "cpu"
 interval = 1
-format = "{utilization}"
-on_click = "alacritty -e htop"
+format = " $icon $utilization "
+[[block.click]]
+button = "left"
+cmd = "alacritty -e htop"
 
 [[block]]
 block = "temperature"
-format = "{max}"
-collapsed = false
+format = " $icon $max "
 chip = "*-isa-*"
