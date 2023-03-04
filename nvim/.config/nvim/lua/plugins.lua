@@ -94,13 +94,22 @@ require("lazy").setup({
     enabled = true,
     build = ':TSUpdate',
     config = function()
+      function fun_disable(lang, buf)
+        local max_filesize = 1000 * 1024 -- 1000 KB
+        local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+        if ok and stats and stats.size > max_filesize then
+          return true
+        end
+      end
       require("nvim-treesitter.configs").setup({
         ensure_installed = {'bash', 'bibtex', 'c', 'cpp', 'css', 'diff', 'gitcommit', 'go', 'help', 'html', 'ini', 'java', 'javascript', 'json', 'json5', 'jsonc', 'latex', 'make', 'markdown', 'markdown_inline', 'perl', 'php', 'python', 'regex', 'rust', 'smali', 'toml', 'typescript', 'vim', 'yaml'},
         highlight = {
           enable = true,
+          disable = fun_disable
         },
         incremental_selection = {
           enable = true,
+          disable = fun_disable,
           keymaps = {
             init_selection = "<cr>",
             node_incremental = "<cr>",
@@ -114,15 +123,19 @@ require("lazy").setup({
 
   {
     "nvim-treesitter/nvim-treesitter-refactor",
-    enabled =true,
+    enabled = true,
     dependencies = {"nvim-treesitter/nvim-treesitter"},
     config = function()
       vim.opt.updatetime = 1000   -- used for highlight_definitions
       require("nvim-treesitter.configs").setup({
         refactor = {
-          highlight_definitions = { enable = true},
+          highlight_definitions = {
+            enable = true,
+            disable = fun_disable
+          },
           smart_rename = {
             enable = true,
+            disable = fun_disable,
             keymaps = {
               smart_rename = "<leader>r"
             },
