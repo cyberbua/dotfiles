@@ -24,7 +24,7 @@ All the config files in this repo are managed by [GNU stow](https://www.gnu.org/
 cd ~
 
 # clone this repository:
-git clone https://github.com/hmohamad/dotfiles
+git clone https://github.com/cyberbua/dotfiles
 
 # enter the directory:
 cd dotfiles
