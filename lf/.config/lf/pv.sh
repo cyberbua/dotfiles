@@ -19,12 +19,7 @@ FILE_BASENAME_LOWER="${FILE_BASENAME,,}"
 
 handle_extension() {
     case "${FILE_BASENAME_LOWER}" in
-        # ## Archive
-        # a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|\
-        # rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)
-        #     atool --list -- "${FILE_PATH}" | head -n ${PV_HEIGHT}
-        #     bsdtar --list --file "${FILE_PATH}" | head -n ${PV_HEIGHT}
-        #     exit 1;;
+
         ## Archive
         *.tar|*.tar.gz|*.tgz|*.tar.bz|*.tbz|*.tar.bz2|*.tbz2|*.tar.xz|*.txz|*.tar.lzo|*.tzo|*.tar.zst)
             tar --list --file "${FILE_PATH}"
@@ -51,37 +46,21 @@ handle_extension() {
             exiftool "${FILE_PATH}"
             ;;
 
-        ## BitTorrent
-        *.torrent)
-            transmission-show -- "${FILE_PATH}"
-            ;;
-
         ## OpenDocument
         *.odt|*.ods|*.odp|*.sxw)
-            ## Preview as text conversion
-            odt2txt "${FILE_PATH}" ||
             ## Preview as markdown conversion
             pandoc -s -t markdown -- "${FILE_PATH}"
             ;;
 
-        ## XLSX
-        *.xlsx)
-            ## Preview as csv conversion
-            ## Uses: https://github.com/dilshod/xlsx2csv
-            xlsx2csv -- "${FILE_PATH}"
-            ;;
-
         ## HTML
         *.htm|*.html|*.xhtml)
-            ## Preview as text conversion
-            w3m -dump "${FILE_PATH}" ||
-            lynx -dump -- "${FILE_PATH}" ||
-            elinks -dump "${FILE_PATH}" ||
+            ## Preview as markdown conversion
             pandoc -s -t markdown -- "${FILE_PATH}"
             ;;
 
         ## JSON
         *.json)
+            bat --color=always --style="plain" --theme=base16 -- "${FILE_PATH}" ||
             jq --color-output . "${FILE_PATH}" ||
             python -m json.tool -- "${FILE_PATH}"
             ;;
@@ -96,18 +75,9 @@ handle_extension() {
 handle_mime() {
     MIMETYPE="$( file --dereference --brief --mime-type -- "${FILE_PATH}" )"
     case "${MIMETYPE}" in
-        ## RTF and DOC
-        text/rtf|*msword)
-            ## Preview as text conversion
-            ## note: catdoc does not always work for .doc files
-            ## catdoc: http://www.wagner.pp.ru/~vitus/software/catdoc/
-            catdoc -- "${FILE_PATH}"
-            ;;
 
-        ## DOCX, ePub, FB2 (using markdown)
-        ## You might want to remove "|epub" and/or "|fb2" below if you have
-        ## uncommented other methods to preview those formats
-        *wordprocessingml.document|*/epub+zip|*/x-fictionbook+xml)
+        ## RTF, DOCX, ePub, FB2 (using pandoc)
+        text/rtf|*wordprocessingml.document|*/epub+zip|*/x-fictionbook+xml)
             ## Preview as markdown conversion
             pandoc -s -t markdown -- "${FILE_PATH}"
             ;;
@@ -118,37 +88,23 @@ handle_mime() {
             mu view -- "${FILE_PATH}"
             ;;
 
-        ## XLS
-        *ms-excel)
-            ## Preview as csv conversion
-            ## xls2csv comes with catdoc:
-            ##   http://www.wagner.pp.ru/~vitus/software/catdoc/
-            xls2csv -- "${FILE_PATH}"
-            ;;
-
         ## Text
         text/* | */xml)
-            bat --color=always --style="plain" --theme=ansi -- "${FILE_PATH}" ||
-            head -n ${PV_HEIGHT} "${FILE_PATH}"
+            bat --color=always --style="plain" --theme=base16 -- "${FILE_PATH}" ||
+            cat "${FILE_PATH}"
             ;;
 
         ## JSON
         application/json)
+            bat --color=always --style="plain" --theme=base16 -- "${FILE_PATH}" ||
             jq --color-output . "${FILE_PATH}" ||
             python -m json.tool -- "${FILE_PATH}"
-            ;;
-
-        ## DjVu
-        image/vnd.djvu)
-            ## Preview as text conversion (requires djvulibre)
-            djvutxt "${FILE_PATH}" | fmt -w "${PV_WIDTH}"
-            exiftool "${FILE_PATH}"
             ;;
 
         ## Image
         image/*)
             ## Preview as text conversion
-            chafa "${FILE_PATH}" --animate=off||
+            chafa "${FILE_PATH}" --animate=off --size "${PV_WIDTH}x${PV_HEIGHT}"||
             exiftool "${FILE_PATH}"
             ;;
 
@@ -164,7 +120,8 @@ handle_mime() {
             ;;
 
         *)
-            echo '----- File Type Classification -----' && file --dereference --brief -- "${FILE_PATH}"
+            echo -n 'File Type Classification: '
+            file --dereference --brief -- "${FILE_PATH}"
             hexdump --canonical --length 2048 "${FILE_PATH}"
             ;;
 
