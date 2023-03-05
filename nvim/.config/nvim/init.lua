@@ -34,8 +34,9 @@ vim.opt.mousemodel = 'extend'           -- right mouse button extends selection
 vim.opt.mouse = 'a'                     -- enable mouse in all modes
 
 -- spell
-vim.opt.spellfile = '~/.config/nvim/spell/custom.utf-8.add'
+vim.opt.spellfile = vim.fn.expand('~/.config/nvim/spell/custom.utf-8.add')
 vim.opt.spelllang = 'de,en'
+vim.opt.spellsuggest = 'best,20'
 vim.opt.complete:append('kspell')
 
 

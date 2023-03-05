@@ -30,7 +30,7 @@ require("lazy").setup({
       vim.o.timeoutlen = 300
       require("which-key").setup({
         plugins = {
-          spelling = true
+          spelling = false
         },
         operators = { gc = "Comments" },  -- does thi do anything?
       })
