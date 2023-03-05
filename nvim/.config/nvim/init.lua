@@ -104,8 +104,9 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 -- plugin manager
--- install with this command:
+-- install with these commands:
 -- git clone --filter=blob:none "https://github.com/folke/lazy.nvim.git" --branch=stable ~/.local/share/nvim/lazy/lazy.nvim
+-- git -C ~/.local/share/nvim/lazy/lazy.nvim checkout $(jq -r '."lazy.nvim".commit' ~/.config/nvim/lazy-lock.json)
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if vim.loop.fs_stat(lazypath) then
     vim.opt.runtimepath:prepend(lazypath)
