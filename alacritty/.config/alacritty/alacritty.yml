@@ -6,6 +6,9 @@ font:
     family: RobotoMono Nerd Font
     style: Medium
   size: 11.0
+  offset:
+    x: 0
+    y: 3
 
 window:
   padding:
