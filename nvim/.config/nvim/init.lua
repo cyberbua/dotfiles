@@ -18,6 +18,7 @@ vim.opt.smartcase = true                -- except searches containing upper case
 -- misc
 vim.opt.number = true                   -- show line numbers
 vim.opt.relativenumber = true           -- relative numbers for efficient movement
+vim.opt.signcolumn = 'auto:1-9'         -- permanently show at leas one sign column
 vim.opt.scrolloff = 8                   -- maintain lines below/above cursor
 vim.opt.pumheight = 20                  -- max size of completion menu
 vim.opt.wildmode = 'longest:full,full'  -- complete to longest match first
