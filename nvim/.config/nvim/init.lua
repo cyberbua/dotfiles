@@ -19,7 +19,7 @@ vim.opt.smartcase = true                -- except searches containing upper case
 vim.opt.number = true                   -- show line numbers
 vim.opt.relativenumber = true           -- relative numbers for efficient movement
 vim.opt.scrolloff = 8                   -- maintain lines below/above cursor
-vim.opt.pumheight = 15                  -- max size of completion menu
+vim.opt.pumheight = 20                  -- max size of completion menu
 vim.opt.wildmode = 'longest:full,full'  -- complete to longest match first
 vim.opt.virtualedit = 'block'           -- allow visual block in empty space
 vim.opt.cursorline = true               -- highlight the line where the cursor is
@@ -70,6 +70,7 @@ map('x', '<LeftRelease>', '"*ygv', opts)
 
 -- use <leader> + yank/paste for secondary clipboard
 map('', '<leader>y', '"+y', {desc = 'yank to system clipboard'})
+map('n', '<leader>Y', '"+y$', {desc = 'y$ to system clipboard'})
 map('', '<leader>p', '"+p', {desc = 'paste from system clipboard'})
 map('', '<leader>P', '"+P', {desc = 'Paste from system clipboard'})
 
@@ -85,6 +86,7 @@ map('i', '<c-s>', '<esc>:update<cr>', opts)
 -- remove search highlighting with <esc>
 map('n', '<esc>', ':nohlsearch<return><esc>', opts)
 
+-- close current buffer or nvim entirely if it is the last buffer
 vim.cmd([[
 function! s:closeorquit()
     if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) > 1
