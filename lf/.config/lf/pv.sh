@@ -104,13 +104,13 @@ handle_mime() {
         ## Image
         image/*)
             ## Preview as text conversion
-            chafa "${FILE_PATH}" --animate=off --size "${PV_WIDTH}x${PV_HEIGHT}"||
+            chafa "${FILE_PATH}" --animate=off --size "${PV_WIDTH}x${PV_HEIGHT}" ||
             exiftool "${FILE_PATH}"
             ;;
 
         ## Video and audio
         video/* | audio/*)
-            mediainfo "${FILE_PATH}"
+            ffmpegthumbnailer -i "${FILE_PATH}" -c png -o - | chafa --size "${PV_WIDTH}x${PV_HEIGHT}" ||
             exiftool "${FILE_PATH}"
             ;;
 
