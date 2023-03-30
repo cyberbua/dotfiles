@@ -3,12 +3,12 @@ scrolling:
 
 font:
   normal:
-    family: RobotoMono Nerd Font
+    family: Roboto Mono
     style: Medium
   size: 11.0
   offset:
     x: 0
-    y: 3
+    y: 0
 
 window:
   padding:
