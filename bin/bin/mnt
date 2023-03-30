@@ -47,7 +47,7 @@ if [[ $1 != "-u" ]]; then
         # if first argument is label
         mnt /dev/disk/by-label/"$1" "$OPT"
     else
-        lsblk -o NAME,LABEL,SIZE,FSTYPE,MOUNTPOINT
+        lsblk -o NAME,LABEL,SIZE,FSTYPE,MOUNTPOINTS
     fi
 elif [[ $1 == "-u" ]]; then
     shift
@@ -64,7 +64,7 @@ elif [[ $1 == "-u" ]]; then
         # if first argument is label
         umnt /dev/disk/by-label/"$1" "$OPT"
     else
-        lsblk -o NAME,LABEL,SIZE,FSTYPE,MOUNTPOINT
+        lsblk -o NAME,LABEL,SIZE,FSTYPE,MOUNTPOINTS
     fi
 fi
 # if regular file (ISO, img)
