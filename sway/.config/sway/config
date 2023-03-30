@@ -31,7 +31,7 @@ workspace 9 output $external $internal
 workspace 10 output $internal $external
 
 # Font for window titles
-font pango:RobotoMono Nerd Font 7.5
+font pango:Roboto Mono Medium 7.5
 titlebar_padding 1
 
 # Use Mouse+$mod to drag floating windows
