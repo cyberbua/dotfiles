@@ -37,7 +37,7 @@ cmd = "pavucontrol -t 1"
 [[block]]
 block = "net"
 device = "^wl"
-format = " $device $signal_strength% $ssid $ip "
+format = " $device $signal_strength $ssid $ip "
 missing_format = ""
 [[block.click]]
 button = "left"
