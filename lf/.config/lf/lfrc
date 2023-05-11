@@ -9,6 +9,7 @@ set scrolloff 4
 set timefmt '2006-01-02 15:04:05'
 set shellopts '-eu'  # fail safely
 set ifs "\n"         # make split filenames correctly
+set ruler 'df:acc:progress:selection:ind'
 
 # bindings
 map D delete
@@ -44,6 +45,7 @@ map I push r<c-a>
 map A push r<c-e>
 map S push r<c-e><c-u>
 
+# print folder disk usage
 map U %du -sch $fx
 
 # extras
