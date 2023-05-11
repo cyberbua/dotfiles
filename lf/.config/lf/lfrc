@@ -39,8 +39,10 @@ map M push :mkdir<space>
 # like ! (shell-wait) but append $fx
 map @ push !<space>$fx<c-a>
 
-# rename, but place the cursor before the extension
-map R push r<a-b><c-b>
+# rename, but vi-analogous
+map I push r<c-a>
+map A push r<c-e>
+map S push r<c-e><c-u>
 
 map U %du -sch $fx
 
