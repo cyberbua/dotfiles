@@ -55,9 +55,17 @@ function map(mode, lhs, rhs, opts)
     vim.keymap.set(mode, lhs, rhs, defaults)
 end
 
--- move around wrapped lines easily
-map('n', 'j', 'gj', opts)
-map('n', 'k', 'gk', opts)
+-- remap j/k to gj/gk, but only in modes where it makes sense
+function smart_move(key)
+    mode = vim.api.nvim_get_mode()['mode']
+    if mode == 'V' or mode == '' then
+        vim.api.nvim_feedkeys(key, 'n', false)
+    else
+        vim.api.nvim_feedkeys('g'..key, 'n', false)
+    end
+end
+map('', 'j', function() smart_move('j') end, opts)
+map('', 'k', function() smart_move('k') end, opts)
 
 -- indent visual selections
 map('x', '>', '>gv', opts)

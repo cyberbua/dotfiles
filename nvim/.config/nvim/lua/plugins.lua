@@ -87,6 +87,7 @@ require("lazy").setup({
           lualine_y = {'tabs'}
         },
       })
+      vim.opt.showmode = false
     end
   },
 
