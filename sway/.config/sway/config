@@ -179,6 +179,9 @@ bindsym $mod+Ctrl+n exec makoctl dismiss --all
 
 # configure displays
 bindsym $mod+p exec wdisplays
+
+# mirrir display
+bindsym $mod+shift+p exec "(pgrep wl-present && wl-present toggle-freeze) || wl-present mirror"
 ###############
 
 
