@@ -9,7 +9,7 @@ set scrolloff 4
 set timefmt '2006-01-02 15:04:05'
 set shellopts '-eu'  # fail safely
 set ifs "\n"         # make split filenames correctly
-set ruler 'df:acc:progress:selection:ind'
+set ruler 'df:acc:progress:selection:filter:ind'
 
 # bindings
 map D delete
