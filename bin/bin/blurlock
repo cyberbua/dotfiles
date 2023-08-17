@@ -27,7 +27,7 @@ date >> /tmp/blurlock.log
 grim -t ppm -o $OUTPUT - | ffmpeg -loglevel quiet -i pipe: -y -filter_complex "boxblur=20:1,boxblur=20:1" -frames:v 1 /tmp/blurlock.png
 
 # set screen timeout
-swayidle timeout 30 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' &
+swayidle timeout 30 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' &
 
 # lock screen, kill eerything if lockscreen crashes
 swaylock --image $OUTPUT:/tmp/blurlock.png &>> /tmp/blurlock.log || (cleanup; kill -9 -1)
