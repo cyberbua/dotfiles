@@ -104,6 +104,7 @@ stty -ixon
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=50000
 SAVEHIST=20000
+HISTORY_IGNORE="(ls|l|cd|less) *"
 
 setopt EXTENDED_HISTORY       # record timestamp of command in HISTFILE
 setopt SHARE_HISTORY          # share command history data
