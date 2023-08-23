@@ -53,7 +53,7 @@ titlebar_border_thickness 0
 default_orientation auto
 
 # set constraints for floating windows
-floating_maximum_size 1740 x 935
+floating_maximum_size 1900 x 1060
 
 # floating by default
 for_window [app_id="telegramdesktop"] floating enable
@@ -223,6 +223,11 @@ bindsym $mod+e split toggle
 
 # toggle tiling / floating
 bindsym $mod+f floating toggle
+
+# horizontal gaps for single-window work on ultrawide screens
+bindsym $mod+g gaps horizontal current plus 100"
+bindsym $mod+Shift+g gaps horizontal current minus 100"
+bindsym $mod+Ctrl+g gaps horizontal current set 0"
 
 # toggle sticky
 bindsym $mod+Shift+s sticky toggle
