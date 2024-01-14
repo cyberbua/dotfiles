@@ -1,0 +1,51 @@
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+black = "#5f687a"
+blue = "#72bef2"
+cyan = "#65c2cd"
+green = "#a7cc8c"
+magenta = "#d291e4"
+red = "#e88388"
+white = "#e3e5e9"
+yellow = "#ebca8d"
+
+[colors.normal]
+black = "#464d5a"
+blue = "#50acea"
+cyan = "#4ab7c3"
+green = "#90bf6d"
+magenta = "#c57ada"
+red = "#e8696f"
+white = "#b8babc"
+yellow = "#ebc174"
+
+[colors.primary]
+background = "#282C34"
+foreground = "#c8d0df"
+
+[font]
+size = 11.0
+
+[font.normal]
+family = "Roboto Mono"
+style = "Medium"
+
+[font.offset]
+x = 0
+y = 0
+
+[[keyboard.bindings]]
+action = "CreateNewWindow"
+key = "T"
+mods = "Control|Shift"
+
+[mouse]
+hide_when_typing = true
+
+[scrolling]
+history = 32768
+
+[window.padding]
+x = 8
